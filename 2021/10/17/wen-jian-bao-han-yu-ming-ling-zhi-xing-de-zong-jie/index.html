@@ -429,12 +429,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+                                <span class="chip bg-color">命令执行</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+                                <span class="chip bg-color">文件包含</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">总结</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                Web安全
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +473,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    219
                 </div>
                 
 
@@ -472,7 +493,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="文件包含是什么？"><a href="#文件包含是什么？" class="headerlink" title="文件包含是什么？"></a>文件包含是什么？</h2><blockquote>
+<p>服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，这会为开发者节省大量的时间。这意味着您可以创建供所有网页引用的标准页眉或菜单文件。当页眉需要更新时，您只更新一个包含文件就可以了，或者当您向网站添加一张新页面时，仅仅需要修改一下菜单文件（而不是更新所有网页中的链接）。</p>
+</blockquote>
+<h2 id="文件包含使用的函数。"><a href="#文件包含使用的函数。" class="headerlink" title="文件包含使用的函数。"></a>文件包含使用的函数。</h2><p>php中文件包含主要有以下四个方法。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">require</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="include与require的解释"><a href="#include与require的解释" class="headerlink" title="include与require的解释"></a>include与require的解释</h3><h2 id="本地的文件包含漏洞"><a href="#本地的文件包含漏洞" class="headerlink" title="本地的文件包含漏洞"></a>本地的文件包含漏洞</h2><p>测试源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token variable">$a</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="1.png"></p>
+<p>我们就可以通过include进行目录遍历。</p>
+<h2 id="命令执行漏洞"><a href="#命令执行漏洞" class="headerlink" title="命令执行漏洞"></a>命令执行漏洞</h2>
                 
             </div>
             <hr/>
@@ -535,7 +577,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+                                    <span class="chip bg-color">命令执行</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+                                    <span class="chip bg-color">文件包含</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">总结</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -767,8 +821,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Violet
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -975,7 +1033,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

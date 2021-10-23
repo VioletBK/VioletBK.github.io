@@ -429,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/xss/">
+                                <span class="chip bg-color">xss</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                Web安全
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.6k
                 </div>
                 
 
@@ -472,7 +485,180 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>跨站脚本攻击 Cross-site scripting</p>
+<h2 id="其他常用的JS语句"><a href="#其他常用的JS语句" class="headerlink" title="其他常用的JS语句"></a>其他常用的JS语句</h2><h3 id="JS事件"><a href="#JS事件" class="headerlink" title="JS事件"></a>JS事件</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">
+&lt;img src&#x3D;&quot;1&quot; onerror&#x3D;&quot;alert(1)&quot; &gt; &#x2F;&#x2F; onerror 事件会在文档或图像加载过程中发生错误时被触发。 很明显，我们的图片链接肯定不正
+确，所以会触发onerror中的JS代码
+
+&lt;input type&#x3D;&quot;text&quot; onfocus&#x3D;&quot;alert(1)&quot;&gt;    &#x2F;&#x2F; 当目标焦点为这个歌文本框时，弹出xss代码，同样的我们可以使用其他事件。
+
+&lt;span onmouseover&#x3D;&quot;alert(1)&quot;&gt;violet&lt;&#x2F;span&gt;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="JS中伪协议。基本是在标签中链接中被使用。"><a href="#JS中伪协议。基本是在标签中链接中被使用。" class="headerlink" title="JS中伪协议。基本是在标签中链接中被使用。"></a>JS中伪协议。基本是在标签中链接中被使用。</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">
+&lt;a href&#x3D;&quot;javascript:alert(1)&quot;&gt;violet&lt;&#x2F;a&gt;
+
+&lt;iframe src&#x3D;&quot;javascript:alert(1)&quot;&gt;&lt;&#x2F;iframe&gt;
+
+location.href &#x3D; &#39;javascript:alert(1)&#39;   &#x2F;&#x2F; 这个在本练习中不太好使。
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="base64编码的-data-伪协议。"><a href="#base64编码的-data-伪协议。" class="headerlink" title="base64编码的  data: 伪协议。"></a>base64编码的  data: 伪协议。</h3><p>好家伙，没想到JS中也可以使用这个。当然形式不太一样。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">
+<span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span> ，它的base64编码为PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"</span><span class="token operator">></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>很可惜在这里的环境没有办法使用。我自己写了代码也不行，不知道为啥。</p>
+<h3 id="使用-eval、new-Function、setTimeout-执行字符串时"><a href="#使用-eval、new-Function、setTimeout-执行字符串时" class="headerlink" title="使用 eval、new Function、setTimeout 执行字符串时"></a>使用 eval、new Function、setTimeout 执行字符串时</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js">
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token string">'alert(1)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">'alert(2)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">'alert(3)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><p>在xss中为了安全，通常会对特殊字符进行编码使其成为普通的字符，不具有语言功能。譬如，将&lt;编码为‘&amp;lt’;。htmlspecialchars也有相同的作用。</p>
+<p>为什么要进行HTML实体的编码呢？</p>
+<p>这涉及到浏览器的解析过程。</p>
+<p>浏览器在解析HTML文档期间，根据文档中的内容，会经过 HTML解析、JS解析和URL解析几个过程</p>
+<p>首先浏览器接收到一个HTML文档时，会触发HTML解析器对HTML文档进行词法解析，这完成HTML解码工作并创建DOM树。</p>
+<p>如果HTML文档中存在JS的上下文环境，JavaScript解析器会介入对内联脚本进行解析，完成JS的解码工作。</p>
+<p>如果浏览器遇到需要URL的上下文环境，URL解析器也会介入完成URL的解码工作。</p>
+<p>URL解析器的解码顺序会根据URL所在位置不同，可能在JavaScript解析器之前或之后解析</p>
+<h3 id="HTML实体编码"><a href="#HTML实体编码" class="headerlink" title="HTML实体编码"></a>HTML实体编码</h3><p>浏览器会对一些字符进行特殊识别处理，比如将 &lt; &gt; 识别为标签的开始结束。</p>
+<p>要想在HTML页面中呈现出特殊字符，就需要用到对应的字符实体。比如在HTML解析过程中，如果要求输出值为 &lt; &gt; ，那么输入值应该为其对应的实体 &lt; &gt;</p>
+<p>字符实体以&amp;开头 + 预先定义的实体名称，以分号结束，如“&lt;”的实体名称为&lt; </p>
+<p>或以&amp;开头 + #符号 以及字符的十进制数字，如”&lt;”的实体编号为&#60;</p>
+<p>或以&amp;开头 + #x符号 以及字符的十六进制数字，如”&lt;”的实体编号为&#x3c;</p>
+<p>字符都是有实体编号的但有些字符没有实体名称。</p>
+<p>如果想要知道实体编号可以用htmlspecialchars尝试一下。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.rakko.tools/tools/21/">字符与编码实体的转换</a></p>
+<h3 id="Javascript编码"><a href="#Javascript编码" class="headerlink" title="Javascript编码"></a>Javascript编码</h3><p>Unicode 是字符集，而 utf-8,utf-16,utf-32 是编码规则</p>
+<p>最常用的如“\uXXXX”这种写法为Unicode转义序列，表示一个字符，其中xxxx表示一个16进制数字</p>
+<p>如”&lt;” Unicode编码为“\u003c”，不区分大小写</p>
+<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/unicode.aspx">unicode与普通编码相互转化</a></p>
+<p>这个到时候会转换成16进制。</p>
+<h3 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h3><p>%加字符的ASCII编码对于的2位16进制数字，如”/”对应的URL编码为%2f</p>
+<p>转换可以使用 JS 自带的 encodeURIComponent 和 decodeURLComponent 方法来对特殊字符进行转义，也可以对照ASCII表为每个字符进行转换</p>
+<h3 id="编码解码分析"><a href="#编码解码分析" class="headerlink" title="编码解码分析"></a>编码解码分析</h3><pre class="line-numbers language-html" data-language="html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//www.baidu.com?a=1&amp;b=2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+等价于
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//www.baidu.com?a=1%26b=2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+等价于
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//www.baidu.com?a=1<span class="token entity" title="&#37;">&amp;#37;</span><span class="token entity" title="&#50;">&amp;#50;</span><span class="token entity" title="&#54;">&amp;#54;</span>b=2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面等同。可以看出需要在引号中才可使用。</p>
+<p>编码顺序：URL编码 -&gt; HTML编码</p>
+<p>解码顺序：HTML解码 -&gt; URL解码</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+等价于
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript">\u0061\u006c\u0065\u0072\<span class="token function">u0074</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+等价于
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token operator">&amp;</span>#<span class="token number">92</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">117</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">54</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">49</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">92</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">117</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">54</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">99</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">92</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">117</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">54</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">53</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">92</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">117</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">55</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">50</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">92</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">117</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">48</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">55</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">52</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">40</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">49</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">41</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>abc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>编码顺序：Javascript编码 -&gt; HTML编码</p>
+<p>解码顺序：HTML解码 -&gt; Javascript解码</p>
+<p>需要注意的是，在JS的解码中，相关的<strong>标识符</strong>才能被正确解析（如这里的 alert 标识符），</p>
+<p>像圆括号、双引号、单引号等等这些控制字符，在进行JavaScript解析的时候仅会被解码为对应的字符串文本（比如这里并未对 (1) 进行编码，如果对括号及括号里面内容做JS编码，将无法执行alert函数 ）</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"javascript:alert(1&lt;2)"</span><span class="token operator">></span>abc<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+等价于
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"javascript:\u0061\u006c\u0065\u0072\u0074(1&lt;2)"</span><span class="token operator">></span>abc<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+等价于（使用<span class="token constant">JS</span>的方法进行的<span class="token constant">URL</span>编码）
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"javascript:alert(1%3C2)"</span><span class="token operator">></span>abc<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+等价于（使用转换成对应<span class="token constant">ASCII</span>编码对应<span class="token number">2</span>位<span class="token number">16</span>进制数字的<span class="token constant">URL</span>编码）
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"javascript:%5c%75%30%30%36%31%5c%75%30%30%36%63%5c%75%30%30%36%35%5c%75%30%30%37%32%5c%75%30%30%37%34%28%31%3C%32%29"</span><span class="token operator">></span>abc<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+等价于
+<span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"javascript:alert(1%3C2)"</span><span class="token operator">></span>abc<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>编码顺序：Javascript编码 -&gt; URL编码 -&gt; HTML编码</p>
+<p>解码顺序：HTML解码 -&gt; URL解码 -&gt; Javascript解码</p>
+<p>这里还需要注意的是，在URL的编码中，不能对协议类型（这里的 javascript: ）进行编码，否则URL解析器会认为它无类型，导致无法正确识别</p>
+<h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><pre class="line-numbers language-none"><code class="language-none">
+?name&#x3D;&lt;script&gt;alert(0)&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这里没进行任何的过滤，我们输入一段JS代码即可。</p>
+<p>我们通过解析源码可以发现，这里的php代码，会将我们传入的语句原封不动的添加到我们的浏览器页面中。也就是说，这里出现很明显的XSS漏洞。</p>
+<p>同时，我们应当了解到，PHP的echo语句很特殊，浏览器会对php的echo语句进行等同我们自己所写前端代码一样的处理。比如，这里我们使用了echo 输出我们写入的JS，他不是将它作为字符串显示到页面就完事了。而是，将其真正作为一句JS代码进行了处理。</p>
+<h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><p><img src="level2-1.png"></p>
+<p>进入后，我们通过观察页面可以发现，url中参数keyword与输入框中内容相对应，那么不难猜想，我们可以通过输入参数来改变文本框中内容。那么我们再来尝试一下上一个问题中的JS代码。</p>
+<p>很可惜，结果是并不可以。很奇怪，我们的JS代码竟然没有起作用，而是单纯的作为html代码显示了。</p>
+<p><img src="level2-2.png"></p>
+<p>那么，我们看一下现在的网页代码是怎样的。</p>
+<p><img src="level2-3.png"></p>
+<p>我们可以发现，我们JS被编码了，导致我们的代码没有办法正常的去执行。那么，我们看一下源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"keyword"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;h2 align=center>没有找到和"</span><span class="token operator">.</span><span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"相关的结果.&lt;/h2>"</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;center>
+&lt;form action=level2.php method=GET>
+&lt;input name=keyword  value="'</span><span class="token operator">.</span><span class="token variable">$str</span><span class="token operator">.</span>'"<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里出现了一个特殊的函数，这个函数的作用是什么呢？</p>
+<blockquote>
+<p>htmlspecialchars() 函数把预定义的字符转换为 HTML 实体。</p>
+</blockquote>
+<blockquote>
+<p>预定义的字符是：</p>
+</blockquote>
+<blockquote>
+<p>&amp; （和号）成为 &amp;<br>“ （双引号）成为 “<br>‘ （单引号）成为 ‘<br>&lt; （小于）成为 &lt;</p>
+<blockquote>
+<p>（大于）成为 &gt;</p>
+</blockquote>
+</blockquote>
+<p>似乎无解了，但是我们可以发现不只是一个地方出现我们写入的JS代码，还有一个地方也出现了。那就是，我们的文本框中。从页面代码，和源码中我们可以发现，似乎我们在文本框中的内容没有被编码，而仅仅是被设置在””中。这样子，我们就可以绕过这里的过滤。</p>
+<p>那么，我们稍微闭合一下value标签即可。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&quot;&gt;&lt;span%20onmouseover&#x3D;&quot;alert(1)&quot;&gt;violet&lt;&#x2F;span&gt;“
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="level3-4"><a href="#level3-4" class="headerlink" title="level3,4"></a>level3,4</h2><p>我们尝试一下上面的语句，但是很可惜的发现，我们的方法不好用了。因为，文本框中的内容也被过滤。那么，我们该怎么办呢？很简单，构造一下事件。这是由input的特殊性决定的。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&#39; onclick&#x3D;&#39;alert(violet)&#39;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h2><p>我们输入上一题的payload，发现我们结果无法正确显示了。</p>
+<p><img src="level5.png"></p>
+<p>可以猜测on被过滤了。同样的，我们尝试script标签，也被过滤了。</p>
+<p>我们不妨使用一下javascript伪协议试一试，毕竟谁知道它的过滤是不是严谨。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&quot;&gt;&lt;a%20href&#x3D;&quot;javascript:alert(1)&quot;&gt;violet&lt;&#x2F;a&gt;&lt;&quot;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>看了一下源码，它的script的过滤为 “ &lt;script过滤为&lt;s_cript”</p>
+<h2 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h2><p>各种尝试了一下，发现它把该过滤的都过滤了，但是转念一想如果我将属性大写了呢？于是，一尝试果然可以。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&quot;&gt;&lt;a+hRef%3D&quot;javascript%3Aalert%281%29&quot;&gt;violet&lt;%2Fa&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>至于上一个题，它在转换前，将我们传入的值都变为了小写。所以不可以。</p>
+<h2 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h2><p>我们发现on，script被替换为空，所以我们可以尝试双写绕过。</p>
+<pre class="line-numbers language-none"><code class="language-none">
+oonnmouseover%3D&quot;alert%28%29&quot;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h2><p>这里使用html编码</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">
+<span class="token entity" title="&#106;">&amp;#106;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#118;">&amp;#118;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#115;">&amp;#115;</span><span class="token entity" title="&#99;">&amp;#99;</span><span class="token entity" title="&#114;">&amp;#114;</span><span class="token entity" title="&#105;">&amp;#105;</span><span class="token entity" title="&#112;">&amp;#112;</span><span class="token entity" title="&#116;">&amp;#116;</span><span class="token entity" title="&#58;">&amp;#58;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#108;">&amp;#108;</span><span class="token entity" title="&#101;">&amp;#101;</span><span class="token entity" title="&#114;">&amp;#114;</span><span class="token entity" title="&#116;">&amp;#116;</span><span class="token entity" title="&#40;">&amp;#40;</span><span class="token entity" title="&#48;">&amp;#48;</span><span class="token entity" title="&#41;">&amp;#41;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h2><p>这个题目，如果连接没有正常的url链接，将被替换为这个链接不正确。所以我们可以在我们上面的payload之后添加//<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">
+<span class="token entity" title="&#106;">&amp;#106;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#118;">&amp;#118;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#115;">&amp;#115;</span><span class="token entity" title="&#99;">&amp;#99;</span><span class="token entity" title="&#114;">&amp;#114;</span><span class="token entity" title="&#105;">&amp;#105;</span><span class="token entity" title="&#112;">&amp;#112;</span><span class="token entity" title="&#116;">&amp;#116;</span><span class="token entity" title="&#58;">&amp;#58;</span><span class="token entity" title="&#97;">&amp;#97;</span><span class="token entity" title="&#108;">&amp;#108;</span><span class="token entity" title="&#101;">&amp;#101;</span><span class="token entity" title="&#114;">&amp;#114;</span><span class="token entity" title="&#116;">&amp;#116;</span><span class="token entity" title="&#40;">&amp;#40;</span><span class="token entity" title="&#48;">&amp;#48;</span><span class="token entity" title="&#41;">&amp;#41;</span>//http://www.baidu.com
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h2><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/imwtr/p/9721563.html">前端XSS相关整理</a></p>
+
                 
             </div>
             <hr/>
@@ -535,7 +721,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/xss/">
+                                    <span class="chip bg-color">xss</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1003,7 +1193,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

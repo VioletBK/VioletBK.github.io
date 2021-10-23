@@ -429,12 +429,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%97%A0%E7%BA%BF/">
+                                <span class="chip bg-color">无线</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                计算机基础
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +469,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    905
                 </div>
                 
 
@@ -472,7 +489,116 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="IEE-802-11"><a href="#IEE-802-11" class="headerlink" title="IEE 802.11"></a>IEE 802.11</h2><p>定义了WLAN Mac和物理层协议</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li><p>与有线服务交互</p>
+</li>
+<li><p>更高的传输速率</p>
+</li>
+<li><p>更高可靠性</p>
+</li>
+<li><p>持续的网络连接</p>
+</li>
+</ul>
+<h3 id="设立的协议"><a href="#设立的协议" class="headerlink" title="设立的协议"></a>设立的协议</h3><p>多个物理层协议：IR，FHSS，DSSS，OFDM，FDMA</p>
+<p>MAC 子协议：</p>
+<p>MAC管理协议和服务</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>它以蜂窝网络（cellular architecture）为基础，划分为多个BSS（ Basic Service Set），每个BSS由AP控制（Access Point）</p>
+<p>WLAN可以由一个BSS和一个AP构成。但是，一般来说它是由多个BSS组成，其中AP是有名叫分布式系统主干（DS）连接的，例如因特网。</p>
+<p>相互连接的WLAN由BSSs，AP，DS组成构成802网络，又被称为ESS（Extended Service Set）</p>
+<p><img src="1.png"></p>
+<p>IBSS不需要AP，可以直接进行互相交流</p>
+<h3 id="连接模式"><a href="#连接模式" class="headerlink" title="连接模式"></a>连接模式</h3><h4 id="Infrastructure-mode"><a href="#Infrastructure-mode" class="headerlink" title="Infrastructure mode"></a>Infrastructure mode</h4><p>端与端之间交流通过一个，或者多个通过有线进行连接的AP进行连接。</p>
+<ul>
+<li><p>端选择一个AP并与其连接</p>
+</li>
+<li><p>AP支持漫游（AP support roaming）</p>
+</li>
+<li><p>AP提供功能</p>
+<p>  时间同步：指引</p>
+<p>  能源管理：</p>
+<p>  点协调</p>
+</li>
+</ul>
+<h4 id="Ad-hoc-mode"><a href="#Ad-hoc-mode" class="headerlink" title="Ad hoc mode"></a>Ad hoc mode</h4><p>多跳，不需要基础设备，不需要AP，端与断就可以互相连接。</p>
+<h3 id="IEEE标准的数字体系"><a href="#IEEE标准的数字体系" class="headerlink" title="IEEE标准的数字体系"></a>IEEE标准的数字体系</h3><p>802.* 与 802.1*适用与所有的802技术。</p>
+<ul>
+<li><p>802.11*是适用于所有WiFI设备，但是不适用于基于802.15的ZigBee设备</p>
+</li>
+<li><p>标准中都是大写字母的是基础标准。</p>
+<ul>
+<li>比如IEEE 802.1AB-2009</li>
+</ul>
+</li>
+<li><p>标准中有小写的字母的是拓展/添加/修改的。这些修改过的协议一般是由多个基础协议汇总的（Merge）</p>
+<ul>
+<li>比如 IEEE 802.1w - 2001是由IEE 802.1D-2004汇总</li>
+</ul>
+</li>
+<li><p>标准是由数字字母排序的</p>
+<ul>
+<li>IEEE 802.1a … IEEE 802.1z，802.1aa …. 802.1ab</li>
+</ul>
+</li>
+</ul>
+<h3 id="ISM"><a href="#ISM" class="headerlink" title="ISM"></a>ISM</h3><p>WLAN 一般使用 ISM 波段</p>
+<p><img src="2.png"></p>
+<h4 id="2-4GHZ"><a href="#2-4GHZ" class="headerlink" title="2.4GHZ"></a>2.4GHZ</h4><p>IEEE 802.11 b/g/n 定义了2.4GHz频段的WLANs（2.4 - 2.4835GHz, 83.5MHZ）</p>
+<p>2.4GHz频段被分了14个载波通道（carrier channel），它们之间部分重叠。每个中心频道的间隔是5Mhz</p>
+<p>在802.11b中，每个通道占据了22MHz的频谱范围</p>
+<p>在802.11g/n中，每个通道占据了20Mhz的频道范围</p>
+<p><img src="3.png"></p>
+<h4 id="5GHZ"><a href="#5GHZ" class="headerlink" title="5GHZ"></a>5GHZ</h4><p>IEEE 802.11 a/n/ac 定义了5GHz频段</p>
+<p>2002年有5个不重叠的通道在5.8GHz的频段工作（5.725 -5.875GHz，150MHz）</p>
+<p>2012年在5.15GHz到5.35GHz 添加了8个通道。但是，他们仅仅在室内使用。每个通道占据20Mhz。</p>
+<h4 id="6GHz"><a href="#6GHz" class="headerlink" title="6GHz"></a>6GHz</h4><p>6GHz为wifi和5G带来了新的带宽。</p>
+<p>目前来说，6GHZ在大部分的国家和地区都处于研究阶段。仅仅有少部分设备支持6G。</p>
+<h4 id="60GHZ"><a href="#60GHZ" class="headerlink" title="60GHZ"></a>60GHZ</h4><p>60GHz占据了9Ghz的频段（57-66Ghz），同时它是毫米波。</p>
+<p>用于者四个频段，每个占据约2Ghz。</p>
+<p>相对于其他频段，60GHz有着如下优点。</p>
+<ol>
+<li><p>大的频谱：9GHz</p>
+<ul>
+<li>2.4GHz是80MHz，5GHz是350Mhz。</li>
+<li>用相同的方式调制和编码模式，更易实现千兆比特数据传输（gigdbit data rate）</li>
+<li>复杂的256-QAM不再需要，QPSK或者16-QAM即可</li>
+</ul>
+</li>
+<li><p>更容易实现波束成形，芯片上的天线阵列。</p>
+</li>
+<li><p>更小的干扰，不需要穿墙。</p>
+</li>
+<li><p>指向天线（directional Antennas），空间复用更容易</p>
+</li>
+<li><p>更强的传输能量</p>
+</li>
+</ol>
+<p>同样的它也有缺点</p>
+<ol>
+<li><p>更大的天线：</p>
+<ul>
+<li>更强的氧气吸收</li>
+<li>需要更强的能量</li>
+<li>需要更高的天线获取率，指向性天线（容易被遮挡）</li>
+<li>更短的距离</li>
+</ul>
+</li>
+<li><p>directional deafness：（不知道咋翻译好）</p>
+<ul>
+<li>载波探测不可能</li>
+<li>RTS，CTS不在工作</li>
+<li>Multicast困难</li>
+</ul>
+</li>
+<li><p>容易被遮挡</p>
+</li>
+</ol>
+<h3 id="802-11a-和-802-11b"><a href="#802-11a-和-802-11b" class="headerlink" title="802.11a 和 802.11b"></a>802.11a 和 802.11b</h3><h4 id="802-11-b"><a href="#802-11-b" class="headerlink" title="802.11 b"></a>802.11 b</h4><p>使用了DSSS（Direct Sequence Spread Spectrum）。2.4Ghz</p>
+<p>数据速率为5.5Mbps和11Mbps</p>
+<p>使用了CCK和PBDC调制机制。</p>
+<p>它使WIFI真正流行。</p>
+<h4 id="802-11a"><a href="#802-11a" class="headerlink" title="802.11a"></a>802.11a</h4><h2 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h2><p>Wireless Fidelity 无线保真。是WIFI Alliance的商标</p>
+
                 
             </div>
             <hr/>
@@ -535,7 +661,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%97%A0%E7%BA%BF/">
+                                    <span class="chip bg-color">无线</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -774,7 +908,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在做一些CTF题目中，感觉自己对于Linux了解不足，于是，在此学习。
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -1003,7 +1137,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

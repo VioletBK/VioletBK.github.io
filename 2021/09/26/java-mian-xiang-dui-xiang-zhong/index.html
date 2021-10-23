@@ -429,12 +429,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%80%E5%8F%91/">
+                                <span class="chip bg-color">开发</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java/" class="post-category">
+                                Java
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +469,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    3.3k
                 </div>
                 
 
@@ -472,7 +489,219 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="封装性"><a href="#封装性" class="headerlink" title="封装性"></a>封装性</h2><h3 id="为什么要有封装性"><a href="#为什么要有封装性" class="headerlink" title="为什么要有封装性"></a>为什么要有封装性</h3><p> 首先我们程序设计追求“高内聚、低耦合”</p>
+<p>高内聚：类的内部数据操作细节自己完成，不允许外部干涉</p>
+<p>低耦合：仅仅对外暴露少量的方法用于使用。</p>
+<p> 简单的说</p>
+<p>把该隐藏的隐藏起来，该暴露的暴露出来，这就是封装性的设计思想</p>
+<h3 id="问题的引入"><a href="#问题的引入" class="headerlink" title="问题的引入"></a>问题的引入</h3><p>放我们创建一个类的对象以后，我们可以通过“对象、属性”的方式，对对象的属性进行复制。这里，复制操作要受到属性的数据类型和存储范围的制约。除此以外，没有其他制约条件。到那时，在实际问题中，我们往往需要给属性赋值加入额外的限定条件。这个条件就不能在属性声明时体现，我们只能通过方法进行限制条件的添加。</p>
+<p>同时我们要避免用户使用“对象。属性”的方式对属性进行复制，则需要将属性设为私有</p>
+<h3 id="封装性的体现"><a href="#封装性的体现" class="headerlink" title="封装性的体现"></a>封装性的体现</h3><p>体现一：我们将类的属性私有化(private)，同时，提供公共(public)的方法来获取和设置</p>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">
+class Animals&#123;
+    String name;
+    private int age;
+    private int legs;
+
+    public void  setLegs(int l)&#123;
+        if(l &gt;&#x3D; 0 &amp;&amp; l % 2&#x3D;&#x3D; 0)&#123;
+            legs &#x3D; l;
+        &#125;
+        else &#123;
+            legs&#x3D;0;
+        &#125;
+    &#125;
+
+    public void eat()&#123;
+        System.out.println(&quot;eat&quot;);
+    &#125;
+    public void show()&#123;
+        System.out.println(&quot;name &#x3D; &quot; + name + &quot;, age &#x3D; &quot; + age + &quot;, legs &#x3D; &quot; + legs);
+    &#125;
+    &#x2F;&#x2F; age的get和set方法
+    public int getAge()&#123;
+        return age;
+    &#125;
+    public void setAge(int a)&#123;
+        age &#x3D; a;
+    &#125;
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>体现二：不对外暴露的方法</p>
+<p>体现三：单例模式（将构造器私有化）</p>
+<p>体现四：如果不希望类在保外被调用，可以将类设置为default</p>
+<h3 id="Java的四种权限"><a href="#Java的四种权限" class="headerlink" title="Java的四种权限"></a>Java的四种权限</h3><h4 id="从小到达的顺序为"><a href="#从小到达的顺序为" class="headerlink" title="从小到达的顺序为"></a>从小到达的顺序为</h4><p>private –&gt; default –&gt; protected –&gt; public</p>
+<h4 id="具体的修饰范围"><a href="#具体的修饰范围" class="headerlink" title="具体的修饰范围"></a>具体的修饰范围</h4><p>private 类内部</p>
+<p>default 包内部</p>
+<p>protected 不同包的子类</p>
+<p>public 同一项目內</p>
+<h4 id="权限修饰符可以修饰的结构说明"><a href="#权限修饰符可以修饰的结构说明" class="headerlink" title="权限修饰符可以修饰的结构说明"></a>权限修饰符可以修饰的结构说明</h4><p>1.Java规定4种权限（从小到大）：private default,protected,public</p>
+<p>2.4种权限可以用来修饰类以及类中的内部结构、属性、方法、构造体、内部类</p>
+<p>3.具体的，4中权限都可以用来修饰类的内部结构：属性、方法、构造器、内部类；</p>
+<p>修饰类只能使用default和public</p>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li><p>创建对象</p>
+</li>
+<li><p>初始化属性</p>
+</li>
+</ol>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>1.如果没有显示的定义类的构造器的话，则系统默认提供一个空参的构造器</p>
+<p>2.定义构造器的格式”权限修饰符 类名（形参列表）{}，如果没有设置权限，那么他的权限跟随类的权限。</p>
+<p>3.一个类中定义的多个构造其，彼此构成重构</p>
+<p>4.一旦我们显示的定义了类的构造其以后，系统就不在提供默认的空参构造器</p>
+<p>5.一个类中，至少有一个构造器</p>
+<h3 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h3><p>Javabean是一种用java语言习而成的可重用组件</p>
+<p>所谓javabean是符合如下标准的java类<br>（1）类是公共的<br>（2）有一个无参的公共构造器<br>（3）有属性，且有的get、set方法</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><ol>
+<li><p>可以调用的结构：属性、方法：构造器</p>
+</li>
+<li><p>this调用属性、方法</p>
+</li>
+</ol>
+<p>this理解为：当前对象（属性、方法）或 当前证件建立的对象（构造器）</p>
+<p>2.1 在类的方法和构造器中，我们可以使用this.属性或者this.方法的方式，调用当前对象的属性或方法。但是，通常情况下，我们都选择省略this。特殊情况下，如果方法的形参和类的属性同名，我们必须显示的使用this.变量，表明变量是属性而非形参。</p>
+<p>2.2 在类的构造其中，我们可以使用this.属性或者this.方法的方式，调用当前正在创建的对象属性或者方法，但是，通常情况下，我们选择省略this.。特殊情况下，如果构造器的形参与类的属性同名时，我们必须现实的使用“this.变量”de fangshi ,表明此变量是属性，而非形参。</p>
+<ol start="3">
+<li>this调用构造器</li>
+</ol>
+<p>（1）我们在类的构造器中，可以显示的使用“this（形参列表）”方式，调用本类中指定的其他构造器</p>
+<p>（2）构造器不能通过“this（形参列表）”的方式调用自己</p>
+<p>（3）构造器的调用必须放到首行</p>
+<p>（4）不能在一个构造器中调用多个构造器</p>
+<h2 id="import-和-package"><a href="#import-和-package" class="headerlink" title="import 和 package"></a>import 和 package</h2><h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><h4 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h4><p><img src="mvc.png"></p>
+<h4 id="JDK常用的包"><a href="#JDK常用的包" class="headerlink" title="JDK常用的包"></a>JDK常用的包</h4><h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>import:导入</p>
+<ol>
+<li><p>在源文件中现实的使用import结构导入指定包下的类、接口</p>
+</li>
+<li><p>声明在包的声明和类的声明之间</p>
+</li>
+<li><p>如果需要导入多个结构，则并列的写入即可</p>
+</li>
+<li><p>使用“xxx.”的方式，表示可以导入xxx包下的所有结构</p>
+</li>
+<li><p>如果使用的类或接口是本包下定义的可以省略import</p>
+</li>
+<li><p>如果使用的类或者接口是java.lang下定义的，可以省略import结构</p>
+</li>
+<li><p>如果在源文件中，使用不同包下的同名的类，则必须至少有一个类需要一全类名的方式下面是</p>
+</li>
+<li><p>“xxx.”仅代表类等，不代表结构，如果是结构下的类，仍然需要写明</p>
+</li>
+</ol>
+<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><h3 id="为什么要有类的继承性"><a href="#为什么要有类的继承性" class="headerlink" title="为什么要有类的继承性"></a>为什么要有类的继承性</h3><ol>
+<li>减少了冗余，提高了代码的复用程度</li>
+<li>便于功能的拓展</li>
+<li>为之后多态的使用提供了前提</li>
+</ol>
+<p><img src="extend.png"></p>
+<h3 id="继承性的格式"><a href="#继承性的格式" class="headerlink" title="继承性的格式"></a>继承性的格式</h3><p>class A extend B{}<br>   A：子类、派生类、subclass。<br>   B：父类、超类、基类、superclass</p>
+<h3 id="子类继承父类以后有什么不同？"><a href="#子类继承父类以后有什么不同？" class="headerlink" title="子类继承父类以后有什么不同？"></a>子类继承父类以后有什么不同？</h3><ol>
+<li><p>体现：一旦子类A继承父类B以后，子类A中就获取了父类B中声明的所有结构、属性、方法。</p>
+<p> 特别的，父类中声明为private的属性或者方法，子类继承父类以后，仍然认为获取了父类中私有结构只有因为封装性的影响，使得子类不能调用父类的结构而已</p>
+</li>
+<li><p>子类继承父类以后，还可以声明自己特有的属性或者方法。实现的功能拓展。</p>
+<p>子类和父类的关系，不同于子集与集合的关系。</p>
+</li>
+</ol>
+<h3 id="Java继承性的说明"><a href="#Java继承性的说明" class="headerlink" title="Java继承性的说明"></a>Java继承性的说明</h3><ol>
+<li><p>一个类可以被多个子类继承</p>
+</li>
+<li><p>Java类单继承性：一个子类只能有一个父类</p>
+</li>
+<li><p>子父类是一个相对的概念。</p>
+</li>
+<li><p>子类直接继承的父类，称为直接父类。间接继承的，称为间接父类。</p>
+</li>
+<li><p>子类继承父类以后，就获取了直接父类以及所有间接父类中声明的属性和方法。</p>
+</li>
+</ol>
+<h3 id="Java-lang-Object类的理解"><a href="#Java-lang-Object类的理解" class="headerlink" title="Java.lang.Object类的理解"></a>Java.lang.Object类的理解</h3><ol>
+<li><p>如果我们没有显示的声明一个类的父类的话，则此类继承与java.lang.Object类</p>
+</li>
+<li><p>所有的java类（除了java.lang.Object）以外都直接或简介的继承java.lang.Object类</p>
+</li>
+<li><p>意味着所有的java类都具有java.lang.Object类中声明的方法。</p>
+</li>
+</ol>
+<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><p>子类继承父类以后，可以队父类中同名、同参数的方法，进行覆盖操作。</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>方法的生命：权限修饰符 返回值类型 方法名（形参列表）{<br>// 方法体<br>}<br>约定俗成：子类中的叫重写方法，父类中的叫做被重写的方法。</p>
+<p>（1）子类重写的方法的方法名和形参列表与父类被重写的方法的形参列表相同</p>
+<p>（2）子类中重写的权限修饰符不小于父类被重写的权限修饰符</p>
+<p>特殊情况：子类中不能重写父类中private权限的方法。</p>
+<p>（3）返回值类型，<br>父类的返回值类型为void，则子类重写的返回值类型也只能为void</p>
+<p>父类的返回值类型为A类，则子类重写的返回值类型可以使A类或者A类的子类</p>
+<p>父类的返回值类型是基本数据类型(double)，则子类重写的方法的返回值类型必须是相同的基本数据类型(double)。</p>
+<p>（4）子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型。</p>
+<p>子类和父类中同名同参数的方法要么都声明为非static的，要么都声明为static（非重写）</p>
+<h3 id="重载与重写"><a href="#重载与重写" class="headerlink" title="重载与重写"></a>重载与重写</h3><p>两者的概念</p>
+<p>重载，重写的具体规则</p>
+<p>重载：不体现多态性</p>
+<p>重写：体现多态性</p>
+<p>重载：是指允许存在多个同名方法，而这些方法的参数不同。编译器根据方法不同的参数表，对同名方案的名称进行修饰。对于编译器而言，这些同名方法就成了不同的方法。他们的调用地址在编译期就已经绑定了。Java的重载包括父类和子类，即子类可以重载父类同名不同参数的方法。 </p>
+<p>所以，对于重载而言，在方法在调用前，编译器就已经确认了所要调用的方法，这被称为早绑定或者金泰绑定</p>
+<p>对于多态，只有在方法调用的那一刻，解释运行器才可以确认所要调用的具体方法，这被成为晚绑定或者动态绑定</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token keyword">class</span> <span class="token class-name">Circle</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">findArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token comment">// 求面积</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Cylinder</span> <span class="token keyword">extends</span> <span class="token class-name">Circl</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">findArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token comment">// 求表面积</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><h3 id="可以调用的结构"><a href="#可以调用的结构" class="headerlink" title="可以调用的结构"></a>可以调用的结构</h3><p>属性、方法、构造器</p>
+<h3 id="super调用属性、方法"><a href="#super调用属性、方法" class="headerlink" title="super调用属性、方法"></a>super调用属性、方法</h3><ol>
+<li><p>我们可以再子类的方法或者构造器中，通过使用super.id或者super.方法的方式，显示的调用父类中声明的属性或方法，但是，通常情况下，我们习惯省略super</p>
+</li>
+<li><p>特殊情况，当父类和子类中定义了同名的属性，我们想要在子类中调用父类中声明的属性，则必须显示的使用super。属性的方式，表明调用的是父类中声明的属性</p>
+</li>
+<li><p>方法：当子类重写了父类中的方法后，我们想要在子类的方法中调用父类被重写的方法时，则必须显示的使用“super。方法”，表明调用的是父类中声明的属性</p>
+</li>
+</ol>
+<h3 id="super调用构造器"><a href="#super调用构造器" class="headerlink" title="super调用构造器"></a>super调用构造器</h3><ol>
+<li><p>我们再子类的构造器汇总显示的使用”super(形参列表)”的方式，调用父类中声明的指定构造器</p>
+</li>
+<li><p>super（形参列表）使用，必须声明在子类构造器的首行</p>
+</li>
+<li><p>我们在类的构造器中，针对this形参或者super形参只能二选一</p>
+</li>
+<li><p>我们再构造器的首行挤没显示的声明this或者super，则默认调用的是父类中空参的的构造其，super</p>
+</li>
+<li><p>在类的多个构造中，至少有一个类的构造器中使用“super”，调用构造器</p>
+</li>
+</ol>
+<h2 id="子类对象实例化的过程"><a href="#子类对象实例化的过程" class="headerlink" title="子类对象实例化的过程"></a>子类对象实例化的过程</h2><ol>
+<li><p>从结果来看（继承性）：</p>
+<p>子类继承父类以后，就获取了父类中声明的属性或方法<br>创建子类的对象，在堆空间，就会加载所有父类中声明的属性</p>
+</li>
+<li><p>从过程上来看</p>
+<p>当我们通过子类的构造其创建子类对象是，我们一定会直接或简介的调用其父类的构造器，进而调用父类的父类构造器。。。直到调用了java.lang.Object中空间<br>的构造器位置。正因为加载过所有父类的结构，所以才能看到内存中有父类中的结构，子类对象才可以考虑进行调用</p>
+<p>明确，虽然创建对象的时，调用了父类的构造器，但从始到终就创造了一个对象，即new的子对象</p>
+</li>
+</ol>
+<h2 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>可以理解为一个事物的多种形态</p>
+<h3 id="何为多态性"><a href="#何为多态性" class="headerlink" title="何为多态性"></a>何为多态性</h3><p>对象的多态性：父类的引用指向子类的对象（或者子类的对象赋给父类的引用）</p>
+<p>Person p = new Man();<br>p1.eat();</p>
+<h3 id="使用，虚拟方法调用"><a href="#使用，虚拟方法调用" class="headerlink" title="使用，虚拟方法调用"></a>使用，虚拟方法调用</h3><p>有了对象的多态性以后，我们在编译器，只能调用父类中声明的方法，但在运行过程中，我们实际执行的是子类重写父类的方法</p>
+<p>总结：编译看左面，运行看右面</p>
+<h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>1）类的继承（2）方法的重写</p>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><h3 id="向上转型与向下转型"><a href="#向上转型与向下转型" class="headerlink" title="向上转型与向下转型"></a>向上转型与向下转型</h3><h4 id="为什么使用向下转型"><a href="#为什么使用向下转型" class="headerlink" title="为什么使用向下转型"></a>为什么使用向下转型</h4><p>有了对象的多态性以后，内存中实际上家在儿子类特有的属性和方法，但是由于变量声明为父类类型，导致编译时，只能调用父类中声明的属性方法。子类特有的属性方法不能调用。</p>
+<h4 id="如何才能调用子类特有的属性和方法"><a href="#如何才能调用子类特有的属性和方法" class="headerlink" title="如何才能调用子类特有的属性和方法"></a>如何才能调用子类特有的属性和方法</h4><p>向下转型：使用强制类型转化</p>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><p>使用强转时，肯呢出现类型异常。所以，我们在转换前前使用instanceof进行判断。a instanceof A 判断独享是否时A的一个势力。如果是返回true，否则false</p>
+<h3 id="多态性的理解"><a href="#多态性的理解" class="headerlink" title="多态性的理解"></a>多态性的理解</h3><ol>
+<li><p>实现代码的通用性</p>
+</li>
+<li><p>Object类中定义的public boolen equals(Object obj){}<br> JDBC使用java程序操作数据库（Mysql，Oracle）</p>
+</li>
+<li><p>抽象类、接口的使用肯定体现多态性（）</p>
+</li>
+</ol>
+<h2 id="封装类"><a href="#封装类" class="headerlink" title="封装类"></a>封装类</h2>
                 
             </div>
             <hr/>
@@ -535,7 +764,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%80%E5%8F%91/">
+                                    <span class="chip bg-color">开发</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1011,7 +1248,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

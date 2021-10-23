@@ -429,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/misc/">
+                                <span class="chip bg-color">misc</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/misc/" class="post-category">
+                                misc
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.8k
                 </div>
                 
 
@@ -472,7 +485,102 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="misc3"><a href="#misc3" class="headerlink" title="misc3"></a>misc3</h2><p>发现是一个bpg文件，bpg是一种特殊的压缩方式，无法直接查看，所以需要特殊工具查看。</p>
+<p>使用指令 bpgview.exe misc3.bpg</p>
+<h2 id="misc4"><a href="#misc4" class="headerlink" title="misc4"></a>misc4</h2><h3 id="png"><a href="#png" class="headerlink" title="png"></a>png</h3><p>我们通过winhex分别打开文件</p>
+<p>看到text1的二进制信息，我们可以看出这个png文件。</p>
+<p><img src="pngHeader.png"></p>
+<h3 id="jpg"><a href="#jpg" class="headerlink" title="jpg"></a>jpg</h3><p>如何判断是jpg文件。</p>
+<p>二进制形式打开文件，文件开始字节为FF D8，文件结束两字节为FF D9。则初步判定文件为jpeg。</p>
+<p>jpeg的SOI（start of image） 为ff d8，EOD（end of image）为ff d9。</p>
+<p>头部：</p>
+<p><img src="jpgHeader.png"></p>
+<p>尾部：</p>
+<p><img src="jpgLaster.png"></p>
+<p>所以这一题我们，我们继续改后缀。</p>
+<h3 id="bmp"><a href="#bmp" class="headerlink" title="bmp"></a>bmp</h3><blockquote>
+<p>一共14字节，下面逐个解释。<br>  0-1：bfType，表示文件类型，BMP格式的文件这两个字节是0x424D，10进制就是19778，字符显示就是‘BM’；<br>  2-5：bfSize，表示文件的大小，这里的是0x0004B436，十进制是308278，也就是301kb，检查文件信息，验证正确；<br>  6-7：bfReserved1，保留位，必须设置为0；<br>  8-9：bfReserved2，保留位，必须设置为0；<br>  a-d：bfOffBits，4字节的偏移，表示从文件头到位图数据的偏移，这里是0x00000436，十进制是1078，后面会做验证；</p>
+</blockquote>
+<p><img src="bmpHeader.png"></p>
+<p>修改bmp格式即可。</p>
+<h3 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h3><blockquote>
+<p>GIF的前6个字节内容是GIF的署名和版本号。我们可以通过前3个字节判断文件是否为GIF格式，后3个字节判断GIF格式的版本。</p>
+</blockquote>
+<p><img src="gifHeader.png"></p>
+<h3 id="tif"><a href="#tif" class="headerlink" title="tif"></a>tif</h3><blockquote>
+<p>一共8个字节</p>
+</blockquote>
+<p>  0-1字节为II或MM，前者表示小字节在前（4D4D），后者表示大字节在前（4949）。</p>
+<p>  2-3字节为特定的数值42</p>
+<p>  4-7字节为第一个图像文件目录IFD的偏移量（必须是2的倍数）</p>
+<p><img src="tifHeader.png"></p>
+<h3 id="webp"><a href="#webp" class="headerlink" title="webp"></a>webp</h3><p><img src="webpHeader.png"></p>
+<blockquote>
+<p>RIFF文件的基本元素是一个块。它包括了Chunk FourCC 、 Chunk Size、 Chunk Payload三部分 。其中Chunk FourCC是一个32位ASCII编码的块文件的唯一标识。  Chunk Size则代表该块文件的大小， Chunk Payload则是数据有效承载，如果“块大小”为奇数，则添加一个填充字节（应为0）。<br>  我们常用ChunkHeader(‘ABCD’)来描述RIFF文件，这里ABCD则是FourCC单个块，则该元素大小为8个字节。<br>  1，’RIFF’: 32 bits：32位 ASCII字符“ R”，“ I”，“ F”，“ F”。<br>  2，文件大小，32位，从偏移量8开始的文件大小，以字节为单位。此字段的最大值为2 ^ 32减去10个字节，因此，整个文件的大小最多为4GiB减去2个字节。<br>  3，’WEBP’: 32 bits：ASCII字符“ W”，“ E”，“ B”，“ P”。</p>
+</blockquote>
+<h2 id="misc5"><a href="#misc5" class="headerlink" title="misc5"></a>misc5</h2><p>使用winhex打开后，发现在文件的最后存在flag</p>
+<h2 id="misc6"><a href="#misc6" class="headerlink" title="misc6"></a>misc6</h2><p>在文件的中间位置。</p>
+<h2 id="misc7"><a href="#misc7" class="headerlink" title="misc7"></a>misc7</h2><p>可以用notepad++打开然后，查找ctf，便可以发现flag。</p>
+<h2 id="misc8"><a href="#misc8" class="headerlink" title="misc8"></a>misc8</h2><p>可以使用kali工具binwalk或者foremost来分离。这里，我先使用winhex进行分离。首先，我们可以发现，在文件中有着89 50 4e 47开头的另一个png文件。所以我们在此，alt+1选中，再到文件尾部alt+2，之后与edit中选择创建新文件即可看到图片中flag。</p>
+<p><img src="misc8.png"></p>
+<h2 id="misc9"><a href="#misc9" class="headerlink" title="misc9"></a>misc9</h2><p>这里可以使用010editor</p>
+<p>也可以用misc6中的方式。所以啥叫图片块。</p>
+<h2 id="misc10"><a href="#misc10" class="headerlink" title="misc10"></a>misc10</h2><p>binwalk</p>
+<p>我们可以使用binwalk直接进行分解。？但是啥原理。</p>
+<p>根据8神本人所说，他将flag伪装成为IDAT块中zlib模块，并加上长度位，标志位，以及CRC校验位。而binwalk能够检测出是因为，他检测到了 zlib标志位并将其分离出来。</p>
+<h2 id="misc11"><a href="#misc11" class="headerlink" title="misc11"></a>misc11</h2><p>删去第一个IDAT块。使用tweakpng-1.4.6</p>
+<blockquote>
+<p>PNGDebugger.exe  ../test/example.png</p>
+</blockquote>
+<p>010editor</p>
+<h2 id="misc12"><a href="#misc12" class="headerlink" title="misc12"></a>misc12</h2><p>删除前8个。IDAT块。</p>
+<h2 id="misc13"><a href="#misc13" class="headerlink" title="misc13"></a>misc13</h2><p>根据提示，显示flag在文件尾，我们可以在文件尾发现可疑字符串。注意，下面也有一串类似的，但是它是假的。</p>
+<p><img src="misc13.png"></p>
+<p>可以看出他每隔一个字符就为一个正确的flag，所以我们可以每隔一个取一个字符，下面为脚本。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+
+Hex <span class="token operator">=</span> <span class="token string">"631A74B96685738668AA6F4B77B07B216114655336A5655433346578612534DD38EF66AB35103195381F628237BA6545347C3254647E373A64E465F136FA66F5341E3107321D665438F1333239E9616C7D"</span>
+flag <span class="token operator">=</span> <span class="token string">""</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>Hex<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">+=</span> Hex<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    flag <span class="token operator">+=</span> Hex<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">bytes</span><span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="misc14"><a href="#misc14" class="headerlink" title="misc14"></a>misc14</h2><p>根据提示，不妨猜想图中图，我们查找ffd8即可查找到里面的图，之后就是分离。</p>
+<h2 id="misc15"><a href="#misc15" class="headerlink" title="misc15"></a>misc15</h2><p>winhex打开，就能看到flag。前几次没有看到，以后还是要仔细一些。</p>
+<h2 id="misc16"><a href="#misc16" class="headerlink" title="misc16"></a>misc16</h2><p>binwalk一把梭哈</p>
+<h2 id="misc17"><a href="#misc17" class="headerlink" title="misc17"></a>misc17</h2><p>binwalk没有发现，我们使用zsteg分析一下，<strong>zsteg misc17.png</strong>。发现一串不正常数据，位置为extraData:0。</p>
+<p><img src="misc17-1.png"></p>
+<p>接下来就是将其分解出来，<strong>zsteg -E “extradata:0” misc17.png &gt; 1.txt</strong>。</p>
+<p>最后，使用binwalk提取出图片。</p>
+<h2 id="misc18-20"><a href="#misc18-20" class="headerlink" title="misc18-20"></a>misc18-20</h2><p>使用此网站进行查看：<a target="_blank" rel="noopener" href="https://exif.tuchong.com/view/11537682/">https://exif.tuchong.com/view/11537682/</a></p>
+<h2 id="misc21"><a href="#misc21" class="headerlink" title="misc21"></a>misc21</h2><p>使用hex将所得信息进行16进制转化即可</p>
+<h2 id="misc22"><a href="#misc22" class="headerlink" title="misc22"></a>misc22</h2><p>使用magicEXIF打开即可。</p>
+<h2 id="misc23"><a href="#misc23" class="headerlink" title="misc23"></a>misc23</h2><p>提示：flag在时间里。</p>
+<p>使用kali上exif工具查看，此文件的exif信息，然后收集时间并在<a target="_blank" rel="noopener" href="https://tool.lu/timestamp/">在线工具</a>查看秒数，从而再如misc16一样即可。</p>
+<h2 id="misc41"><a href="#misc41" class="headerlink" title="misc41"></a>misc41</h2><p>H4ppy Apr1l F001’s D4y！<br>愚人节到了，一群笨蛋往南飞，一会儿排成S字，一会儿排成B字。</p>
+<p>一开始一点思路都没有，看到头部信息不是ffd8改了之后也没啥效果。一看writeup人都傻了，原来关键是F001。我们搜索FF01便可以发现显示结果有隐约的图形规律。所以，我们一点点看就可以写出payload了。</p>
+<p><img src="misc41.png"></p>
+<p>ctfshow{fcbd427caf4a52f1147ab44346cd1cdd}</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最近参加了个比赛骚操作满满，团体赛各打各的，不允许交流，最后成绩三人的总和。我真的人傻了，因为misc一点不会，而且好入门点，就临时突击一下。之前从来没有了解过，而且时间紧没法仔细写，主要就是用来自己复习一下的。好了，废话不多说，开始总结。</p>
+<p>首先，图片隐写中最简单的就是，直接把flag存放到图片中，仔细一点就能看出来，当然这种题目比赛中肯定不会出。</p>
+<p>然后，我们还可以通过改变后缀，使图片无法解析，从而达到隐藏的目的。这里主要靠查看文件的头部和尾部，比如jpg文件的头部为FFD8、尾部为FFD9，而png文件头部一般为89 50 4e 47。</p>
+<p>之后，我们还遇到了图片中参杂其他文件的情况，这的时候我们通过binwalk -e [图片地址]的形式来对其进行分解。</p>
+<p>除此之外，还有将文件添加多余的IDAT块，这会导致我们的图片显示图片不正确，这里可以用tweakpng-1.4.6进行去除。有时候，也会将flag隐藏在里面，可以使用010Editor进行查看。</p>
+<p>最后，你可以发现基本所有题目都是基于exif的，因而查看exif信息十分重要，我们主要可以通过以下方式。<a target="_blank" rel="noopener" href="https://exif.tuchong.com/view/11537682">网站</a>，exiftool。</p>
+<p>如果有缩略图，使用MagicExif即可。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>所以，我们遇到这些题目时可以有下面的步骤。首先，winhex打开文件，看一看有无特殊字符，观察一下头部尾部。没啥特殊信息，binwalk，010Editoe， zsteg轮番上阵。都没有啥发现，看一看exif，或者缩略图。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45696568/article/details/115261347">ctfshow-Misc入门 图片篇(1-50)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/p/8986391.html">详解PNG文件结构</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012877472/article/details/50272771">BMP格式详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1155421">gif</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m1m2m3mmm/article/details/78401523">tif</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cr330326/p/12809418.html">webp</a></p>
+
                 
             </div>
             <hr/>
@@ -535,7 +643,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/misc/">
+                                    <span class="chip bg-color">misc</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -750,9 +862,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ctfshowPHP特性-中">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="ctfshowPHP特性-中(111-131)">
                         
-                        <span class="card-title">ctfshowPHP特性-中</span>
+                        <span class="card-title">ctfshowPHP特性-中(111-131)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,11 +879,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Violet
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">Web安全</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -975,7 +1103,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

@@ -370,21 +370,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">38</a></span>
+    <span class="count"><a href="/">46</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">5</a></span>
+    <span class="count"><a href="/categories">8</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">19</a></span>
+    <span class="count"><a href="/tags">28</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -400,21 +400,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">38</a></span>
+    <span class="count"><a href="/">46</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">5</a></span>
+    <span class="count"><a href="/categories">8</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">19</a></span>
+    <span class="count"><a href="/tags">28</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -558,7 +558,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,1,18,19],
+                data: [0,0,0,0,0,0,0,0,0,0,1,20,25],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -600,7 +600,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"总结","value":1},{"name":"Java","value":3},{"name":"Web安全","value":15},{"name":"计算机基础","value":2},{"name":"vmware","value":1}],
+                data: [{"name":"计算机底层","value":1},{"name":"总结","value":1},{"name":"Java","value":5},{"name":"Web安全","value":22},{"name":"计算机基础","value":3},{"name":"misc","value":1},{"name":"瞎扯","value":1},{"name":"vmware","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -624,7 +624,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Web安全","PHP","SQL注入","Java","反序列化","工具","开发","CTF","hexo","kali"]
+                data: ["Web安全","PHP","Java","开发","SQL注入","反序列化","命令执行","工具","CTF","xss"]
             }
         ],
         yAxis: [
@@ -637,7 +637,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [6,4,4,3,3,2,2,2,1,1],
+                data: [10,7,5,4,4,3,3,2,2,2],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -807,6 +807,18 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E16%E8%BF%9B%E5%88%B6/">
+                <span class="chip center-align waves-effect waves-light chip-default">二进制与16进制</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                <span class="chip center-align waves-effect waves-light chip-default">计算机组成</span>
+            </a>
+            
+            
+            
             <a href="/tags/hexo/">
                 <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
             </a>
@@ -881,14 +893,56 @@
             
             
             
+            <a href="/tags/misc/">
+                <span class="chip center-align waves-effect waves-light chip-default">misc</span>
+            </a>
+            
+            
+            
+            <a href="/tags/ctfshow/">
+                <span class="chip center-align waves-effect waves-light chip-default">ctfshow</span>
+            </a>
+            
+            
+            
             <a href="/tags/xss/">
                 <span class="chip center-align waves-effect waves-light chip-default">xss</span>
             </a>
             
             
             
+            <a href="/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+                <span class="chip center-align waves-effect waves-light chip-default">信息搜集</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%9E%8E%E6%89%AF/">
+                <span class="chip center-align waves-effect waves-light chip-default">瞎扯</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+                <span class="chip center-align waves-effect waves-light chip-default">命令执行</span>
+            </a>
+            
+            
+            
             <a href="/tags/vmware/">
                 <span class="chip center-align waves-effect waves-light chip-default">vmware</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
+                <span class="chip center-align waves-effect waves-light chip-default">文件包含</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%80%BB%E7%BB%93/">
+                <span class="chip center-align waves-effect waves-light chip-default">总结</span>
             </a>
             
             
@@ -905,14 +959,14 @@
             
             
             
-            <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
-                <span class="chip center-align waves-effect waves-light chip-default">命令执行</span>
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                <span class="chip center-align waves-effect waves-light chip-default">计算机网络</span>
             </a>
             
             
             
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                <span class="chip center-align waves-effect waves-light chip-default">计算机网络</span>
+            <a href="/tags/%E6%97%A0%E7%BA%BF/">
+                <span class="chip center-align waves-effect waves-light chip-default">无线</span>
             </a>
             
             
@@ -1048,7 +1102,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.9k</span>
+                        class="white-color">72.7k</span>
             
             
             

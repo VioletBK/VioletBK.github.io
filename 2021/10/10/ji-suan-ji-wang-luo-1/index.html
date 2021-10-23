@@ -1,0 +1,1460 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机网络1, Violet&#39;s Blog">
+    <meta name="description" content="Summary of knowledge learned">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>计算机网络1 | Violet&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Violet&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Violet&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Summary of knowledge learned
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机网络1</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                计算机基础
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-10-10
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>是一个将分散的、具有独立功能的计算机网络，通过通信设备和线路连接起来，由功能完善的软件实现<strong>资源共享</strong>和<strong>信息传递</strong>。</p>
+<p>计算机网络是互联的、自治的计算机集合。</p>
+<p>什么是互连，什么又是自治呢？</p>
+<p>互联，互联互通。自治，没有主从关系。</p>
+<p>没有互联，你怎么上网，自治，它们之间可不存在我比谁高级这种说法。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol>
+<li><p>数据通信（连通性）</p>
+</li>
+<li><p>资源共享</p>
+</li>
+</ol>
+<p>硬件、软件、数据</p>
+<ol start="3">
+<li><p>分布式处理</p>
+</li>
+<li><p>提高可靠性</p>
+</li>
+<li><p>负载均衡</p>
+</li>
+</ol>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ol>
+<li><p>组成部分：硬件、软件、协议</p>
+</li>
+<li><p>核心部分：为边缘服务</p>
+</li>
+</ol>
+<h3 id="功能组成"><a href="#功能组成" class="headerlink" title="功能组成"></a>功能组成</h3><ol>
+<li><p>通信子网：数据通信</p>
+</li>
+<li><p>资源子网：资源共享</p>
+</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-2d62ba265be486cb94ab531912aa3b9c_1440w.jpg"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ol>
+<li><p>部分范围LAN（广域网），MAN（城域网），WAN（局域网），PAN（个人局域网）</p>
+</li>
+<li><p>使用者分：公用网，专用网</p>
+</li>
+<li><p>交换技术分：电路交换，报文交换，分组交换</p>
+</li>
+<li><p>拓扑结构分</p>
+</li>
+<li><p>拓扑结构</p>
+</li>
+<li><p>传输技术：</p>
+</li>
+</ol>
+<p>广播式网络，</p>
+<p>点对点网络：分组存储转发，路由选择机制</p>
+<h2 id="标准化工作："><a href="#标准化工作：" class="headerlink" title="标准化工作："></a>标准化工作：</h2><p>标准分类：法定标准，事实标准</p>
+<h3 id="RFC（Request-for-comments）"><a href="#RFC（Request-for-comments）" class="headerlink" title="RFC（Request for comments）"></a>RFC（Request for comments）</h3><ol>
+<li><p>草案阶段。</p>
+</li>
+<li><p>建议标准（这时开始为RFC）</p>
+</li>
+<li><p>因特尔标准</p>
+</li>
+</ol>
+<h3 id="ISO，ITU，IEEE"><a href="#ISO，ITU，IEEE" class="headerlink" title="ISO，ITU，IEEE"></a>ISO，ITU，IEEE</h3><p>ISO：OSI参考模型</p>
+<p>ITU：通信标准</p>
+<p>IEEE：学术标准</p>
+<h2 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h2><p>速率即数据率，或称为数据传输率或比特率</p>
+<p>比特：1/0</p>
+<p>连接在计算机网络上的主机在数字信道上传送数据位数的速率</p>
+<p>单位b/s kb/s, Mb/s. GB/s, Tb/s</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>速度时：以1000作为转换</p>
+<p>存储时：以1024作为转换</p>
+<h3 id="带宽：理论最高量"><a href="#带宽：理论最高量" class="headerlink" title="带宽：理论最高量"></a>带宽：理论最高量</h3><ol>
+<li><p>原本概念为频率HZ，最高减去最低</p>
+</li>
+<li><p>现在为最高数据率，最高数据率：实际上是一s中发送了多少数据量，并不是传播速率。</p>
+</li>
+</ol>
+<p>1M/s 一μs可想传送1bit数据。电磁波1μs速度2*10^8m/s</p>
+<h3 id="吞吐量：实际量"><a href="#吞吐量：实际量" class="headerlink" title="吞吐量：实际量"></a>吞吐量：实际量</h3><p>单位时间内，通过某个网络的数据流。单位b/s，kb/s，Mb/s</p>
+<h2 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h2><p>指数据（报文/分组/比特流）从网络（链路）的一端传送到另一端所需的时间。也叫延迟或迟延，单位是s。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200323154457582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW95dWVf,size_16,color_FFFFFF,t_70"></p>
+<h3 id="发送时延"><a href="#发送时延" class="headerlink" title="发送时延"></a>发送时延</h3><p>数据长度/信道带宽</p>
+<h3 id="传播时延"><a href="#传播时延" class="headerlink" title="传播时延"></a>传播时延</h3><p>信道长度/电磁波在信道上传播速率</p>
+<h3 id="排队时延"><a href="#排队时延" class="headerlink" title="排队时延"></a>排队时延</h3><p>排队等待处理</p>
+<h3 id="处理时延"><a href="#处理时延" class="headerlink" title="处理时延"></a>处理时延</h3><p>将路由器之类的设备，选择路由，等待时间。</p>
+<h3 id="时延带宽积"><a href="#时延带宽积" class="headerlink" title="时延带宽积"></a>时延带宽积</h3><p>实验带宽积=传播时延*带宽</p>
+<p>bit      = s     * b/s</p>
+<p>简单地说，就是发送的第一个比特到达目的端时，已经发送了多少比特</p>
+<p>又被成为以比特为单位的链路长度。</p>
+<p>可以想象成，信道中最多能同时存在多少比特。</p>
+<h3 id="往返时延RTT"><a href="#往返时延RTT" class="headerlink" title="往返时延RTT"></a>往返时延RTT</h3><p>从发送方发送数据开始，到发送方收到接收方的确认。（接收方收到数据后立即发送确认）总共经历的实验。</p>
+<p><img src="1.png"></p>
+<p>RTT=传播*2+末端处理时间</p>
+<h2 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h2><h3 id="信道利用率"><a href="#信道利用率" class="headerlink" title="信道利用率"></a>信道利用率</h3><p>有无数据通过时间/（有+无）数据通过时间</p>
+<p>时延越大利用率越小</p>
+<h3 id="网络利用率"><a href="#网络利用率" class="headerlink" title="网络利用率"></a>网络利用率</h3><p>信道利用率加权平均值</p>
+<h2 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h2><h3 id="为什么要分层"><a href="#为什么要分层" class="headerlink" title="为什么要分层"></a>为什么要分层</h3><p>发送前的准备工作：</p>
+<ol>
+<li><p>到送通信的计算机必须将数据的通道进行激活</p>
+</li>
+<li><p>告诉网络如何识别目的主机</p>
+</li>
+<li><p>发起通信的计算机要查明目的主机是否开机</p>
+</li>
+</ol>
+<h3 id="如何分层"><a href="#如何分层" class="headerlink" title="如何分层"></a>如何分层</h3><p>下层对上层保持独立性，上层单向使用下层提供的服务。</p>
+<p><img src="https://www.tutorialandexample.com/wp-content/uploads/2020/10/image-201.png"></p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h4><p>第n层的活动要素成为n曾尸体。每同一层实体叫做对等实体</p>
+<h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4><ol>
+<li><p>语法：规定传输数据的格式。规定比特流，何处开始，何处结束，如何分割</p>
+</li>
+<li><p>语义：规定所要完成的功能。</p>
+</li>
+<li><p>同步：规定各种操作呃顺序</p>
+</li>
+</ol>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口服务点ASP：上层使用下层服务的入口。</p>
+<h4 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h4><p>下一层为相邻上层提供的功能调用。</p>
+<h3 id="SDU，PCI，与PDU"><a href="#SDU，PCI，与PDU" class="headerlink" title="SDU，PCI，与PDU"></a>SDU，PCI，与PDU</h3><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ubmxhcmsuY29tL3l1cXVlLzAvMjAyMC9wbmcvMTM1NTA4Mi8xNTk0ODcyMTQ2NTg5LTJmYjYxYmVlLWU5ZjAtNDFkNS1iMjZhLWViNWUzMTEzZjljOC5wbmc?x-oss-process=image/format,png"></p>
+<p>参考链接：<img src="https://blog.csdn.net/wind19/article/details/4669637"></p>
+<h4 id="SDU"><a href="#SDU" class="headerlink" title="SDU"></a>SDU</h4><p>SDU（service Data Unit）:服务数据单元，又叫业务数据单元，是指定层的用户服务的数据集，传送到接收方的时候同一协议层时数据没有发生变化，即业务部分，然后发给下层之后，下层将其封装在PDU中发送出去。服务数据单元是从高层协议来的信息单元传送到低层协议。第N层服务数据单元SDU，和上一层的协议数据单元（PDU）是一一对应的。根据协议数据单元的数据的不同，送到接收端的指定层。</p>
+<p>PDU(N) = SDU(N - 1)</p>
+<p>SDU(N) = PDU(N + 1)</p>
+<h4 id="PDU"><a href="#PDU" class="headerlink" title="PDU"></a>PDU</h4><p>PDU: 协议数据单元</p>
+<p>N层用户与N层协议之间传递的数据称为服务数据单元(SDU)</p>
+<p>N层协议实体之间传递的数据称为协议数据单元（PDU），通过数据发送/接收管理把用户提交的SDU以PDU的形式，通过下层通道发送到对端协议实体。在接收端再将PDU还原成SDU送给收端用户。</p>
+<p>PDU的封装/解封装：在发送方，将用户递交的SDU加上协议控制信息PCI，封装成PDU；在接收方，讲接收到的PDU解封装，去掉PCI，还原成SDU送交接收方用户。</p>
+<p>SDU分段/装配 ：如果下层通道的带宽不能满足传递SDU的需要，就需要将一个SDU分成多段，分别封装成PDU发送出去（分段）；在接收方再将这些PDU解封装后重新装配成SDU。</p>
+<p>SDU拼接/分离：拼接是指在发送方(n)层协议实体把多个长度较短的(n)SDU封装成一个(n)PDU来发送，在接收放再将接收到的(n)PDU解封装，将多个(n)SDU分离出来。采用拼接功能的目的是提高通道的利用率。</p>
+<p>PDU分割/组合：PDU分割是指在发送端(n)层协议实体把一个(n)PDU分割成多个(n-1)SDU，并行地从多个(n-1)通道发送出去；接收端再将收到的多个(n- 1)SDU组合成一个(n)PDU。由于这是一个N层功能，所以组合操作在N层中进行，即N层先得到多个分割开的(n)PDU，然后把它们组合成一个 (n)PDU。</p>
+<h2 id="OSI通信"><a href="#OSI通信" class="headerlink" title="OSI通信"></a>OSI通信</h2><p>上四层端与端通信，下面三层点到点。</p>
+<p>物联网淑慧试用</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>所有能与用户交互产生网络流量的程序</p>
+<p>协议：文件传输（FTP），电子邮件（SMTP），万维网（WWW）</p>
+<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>用于处理两个通信系统中交换信息的表示方式（语法语义）</p>
+<p>功能一：数据格式变化 翻译官（数据编码和解码）</p>
+<p>功能二：数据加密解密</p>
+<p>功能三：数据压缩与恢复</p>
+<h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3><p>向表示层实体/用户进程提供<strong>建立连接</strong>并在连接上<strong>有序****传输</strong>数据。</p>
+<p>功能一：建立管理终止会话</p>
+<p>功能二：使用校验点可使会话在通信失效时从校验点/同步点继续恢复通信，实现数据同步。</p>
+<p>使用传输大文件</p>
+<p>协议：ADSP、ASP</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>负责主机中两个进程的通信，即端到端的通信。传输单位是报文段或用户数据报</p>
+<p>功能一：可靠传输、不可靠传输（有无建立连接、返回确认）所以什么连接？TCP/IP三次握手</p>
+<p>功能二：差错控制，</p>
+<p>功能三：流量控制</p>
+<p>功能四：复用分用???啥意思来着</p>
+<p>一般来说，应用层会有比较多的进程同时在运行，同时和外部网络有数据的交互，就好比一条道路有多个车道有车辆在行驶，可是在底层，数据传输是串行的，也就是单车道，多车道的车要经过单车道，采取的方法是在单车道入口设立卡子，每个车道的车在卡子前排队，依次通过卡子进入单车道。排队的过程就是复用，反之就是分用或者叫解复用。</p>
+<p>复用：多个应用层进程可同时使用下层运输层的服务</p>
+<p>分用：运输层把收到的信息分别交付给上面应用层中的相应进程。</p>
+<p><img src="https://www.google.com.hk/imgres?imgurl=https://img-blog.csdnimg.cn/20190322185532712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3NDY1NjM4,size_16,color_FFFFFF,t_70&imgrefurl=https://blog.csdn.net/qq_37465638/article/details/88747149&tbnid=WFG-RinlGcbXNM&vet=12ahUKEwjw2JuNsL_zAhVM3pQKHdQYAUUQMygBegUIARCaAQ..i&docid=r4OV6jTrA0IMwM&w=848&h=350&q=%E4%BC%A0%E8%BE%93%E5%B1%82%E5%A4%8D%E7%94%A8%E5%88%86%E7%94%A8&hl=zh-CN&ved=2ahUKEwjw2JuNsL_zAhVM3pQKHdQYAUUQMygBegUIARCaAQ"></p>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>把<strong>分组</strong>从源端传到目的端，为分组交换网上的不同主机提供通信服务。网络层的传出单位为<strong>数据报</strong></p>
+<p>功能一：路由选择：最佳路径</p>
+<p>功能二：流量控制。</p>
+<p>功能三：差错控制。</p>
+<p>功能四：拥塞控制。</p>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>主要是将网络层传下来的数据包<strong>组装成帧</strong>。</p>
+<p>数据链路层/链路层的传输单位是<strong>帧</strong></p>
+<p>功能一：成帧（定义帧的开始和结束）</p>
+<p>功能二：差错控制（帧错，位错）</p>
+<p>功能三：流量控制</p>
+<p>功能四：访问（介入控制）控制对信道的访问。</p>
+<p>比如广播式网络。决定哪个设备接入数据</p>
+<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>主要任务是在<strong>物理媒体</strong>上实现比特流的<strong>透明传输</strong>。</p>
+<p>物理层传输传输单位是<strong>比特</strong></p>
+<p>透明传输：指不管所传数据是什么样的比特组合，都应当能在链路上传送。</p>
+<p>功能一：定义接口特性，比如确认接口的形状之类的。</p>
+<p>功能二：定义</p>
+<h2 id="TCP-IP-与-OSI"><a href="#TCP-IP-与-OSI" class="headerlink" title="TCP/IP 与 OSI"></a>TCP/IP 与 OSI</h2><p><img src="data:image/png;base64,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"></p>
+<ol>
+<li><p>都分层</p>
+</li>
+<li><p>基于独立的协议栈</p>
+</li>
+<li><p>可以实现异构网络互联</p>
+</li>
+</ol>
+<h3 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h3><ol>
+<li><p>OSO定义三点：服务，协议，接口</p>
+</li>
+<li><p>OSI先出现，参考模型先于协议发明</p>
+</li>
+<li><p>OSI网络层：面向连接与无面向连接。TCP/IP无连接。传输层：OSI面向连接，TCP/IP无连接面向连接</p>
+</li>
+</ol>
+<h3 id="五层参考模型"><a href="#五层参考模型" class="headerlink" title="五层参考模型"></a>五层参考模型</h3><p><img src="https://i2.wp.com/img-blog.csdnimg.cn/20190831212230115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWNoZW5nemltb3ppZ3JlYXQ=,size_16,color_FFFFFF,t_70"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Violet</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/10/10/ji-suan-ji-wang-luo-1/">http://example.com/2021/10/10/ji-suan-ji-wang-luo-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Violet</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/10/11/ctfshow-fan-xu-lie-hua/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="ctfshow反序列化">
+                        
+                        <span class="card-title">ctfshow反序列化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                        <span class="chip bg-color">反序列化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/09/ctfshow-wen-jian-bao-han-lou-dong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="ctfshow文件包含漏洞">
+                        
+                        <span class="card-title">ctfshow文件包含漏洞</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2227373273"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+			<span id="sitetime"></span>
+
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">author Violet</a>
+           
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">52.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:88888888" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 888888" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 8, 30, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+
+</body>
+
+</html>

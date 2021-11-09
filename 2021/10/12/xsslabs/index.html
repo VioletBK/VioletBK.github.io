@@ -530,10 +530,26 @@ location.href &#x3D; &#39;javascript:alert(1)&#39;   &#x2F;&#x2F; 这个在本�
 <p>如果浏览器遇到需要URL的上下文环境，URL解析器也会介入完成URL的解码工作。</p>
 <p>URL解析器的解码顺序会根据URL所在位置不同，可能在JavaScript解析器之前或之后解析</p>
 <h3 id="HTML实体编码"><a href="#HTML实体编码" class="headerlink" title="HTML实体编码"></a>HTML实体编码</h3><p>浏览器会对一些字符进行特殊识别处理，比如将 &lt; &gt; 识别为标签的开始结束。</p>
-<p>要想在HTML页面中呈现出特殊字符，就需要用到对应的字符实体。比如在HTML解析过程中，如果要求输出值为 &lt; &gt; ，那么输入值应该为其对应的实体 &lt; &gt;</p>
-<p>字符实体以&amp;开头 + 预先定义的实体名称，以分号结束，如“&lt;”的实体名称为&lt; </p>
-<p>或以&amp;开头 + #符号 以及字符的十进制数字，如”&lt;”的实体编号为&#60;</p>
-<p>或以&amp;开头 + #x符号 以及字符的十六进制数字，如”&lt;”的实体编号为&#x3c;</p>
+<p>要想在HTML页面中呈现出特殊字符，就需要用到对应的字符实体。比如在HTML解析过程中，如果要求输出值为 &lt; &gt; ，那么输入值应该为其对应的实体 </p>
+<pre class="line-numbers language-none"><code class="language-none">
+&lt; &gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>字符实体以&amp;开头 + 预先定义的实体名称，以分号结束，如“&lt;”的实体名称为</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&lt; 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>或以&amp;开头 + #符号 以及字符的十进制数字，如”&lt;”的实体编号为</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&amp;#60;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>或以&amp;开头 + #x符号 以及字符的十六进制数字，如”&lt;”的实体编号为</p>
+<pre class="line-numbers language-none"><code class="language-none">
+&amp;#x3c;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>字符都是有实体编号的但有些字符没有实体名称。</p>
 <p>如果想要知道实体编号可以用htmlspecialchars尝试一下。</p>
 <p><a target="_blank" rel="noopener" href="https://zh.rakko.tools/tools/21/">字符与编码实体的转换</a></p>
@@ -1193,7 +1209,7 @@ oonnmouseover%3D&quot;alert%28%29&quot;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">73.1k</span>
+                        class="white-color">83.1k</span>
             
             
             

@@ -1,0 +1,1397 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机网络-概论, Violet&#39;s Blog">
+    <meta name="description" content="Summary of knowledge learned">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>计算机网络-概论 | Violet&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Violet&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Violet&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Summary of knowledge learned
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机网络-概论</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                计算机基础
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-11-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="计算机网络的目的"><a href="#计算机网络的目的" class="headerlink" title="计算机网络的目的"></a>计算机网络的目的</h3><p>通过本书第一章和以前的学习，计算机网络的目的可以概括为实现主机与<strong>主机（host）</strong>之间，或者说端系统与<strong>端系统（end system）</strong>之间的交流。</p>
+<p>它们连接的媒介就是<strong>通信链路（communication link）</strong>和<strong>分组交换机（packet switch）</strong></p>
+<p>而communication link基本有这几种，同轴电缆、铜线、光纤。packet switch有<strong>链路层交换机（link-layer switch）</strong>，<strong>路由器（router）</strong>。</p>
+<p>一个分组经过一系列通信链路和分组交换机称为通过该网络的<strong>路径（route、Path）</strong>。</p>
+<p>端系统通过 <strong>因特网服务提供商(internet service provider, ISP)</strong> 接入因特网。</p>
+<p>end system、packet switch和其他的因特网部件都要运行一系列的<strong>协议（protocol）</strong></p>
+<p>我们在浏览网页或者打开app时可以发现它们同时有着媒体、文字、和图片，而这些涉及到多个交换数据的end system这种被称为<strong>分布式应用程序（distributed application）</strong></p>
+<p><strong>套接字接口（socket interface）</strong>这个端口规定了一个end system上的程序向另一个end system上的程序的数据交换方式。</p>
+<h3 id="协议（protocol）"><a href="#协议（protocol）" class="headerlink" title="协议（protocol）"></a>协议（protocol）</h3><p>定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送或接收一条报文或其他时间所采取的动作。</p>
+<p>即发送怎样的报文，发送和接收的方式是怎样的</p>
+<h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><p>网络边缘通常指host或者说end system。</p>
+<h3 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h3><p>简单地说就是将end system接入其<strong>边缘路由器（edge router）</strong></p>
+<p><strong>数字用户线（Digital subscriber Line DSL）</strong>，比如用户使用本地电话线接入因特网，这里的ISP为本地电话公司。</p>
+<p><strong>电缆因特网接入（cable Internet access）</strong>，与DSL使用电话线不同，这里使用的是有线电视公司的有线电视基础设施。</p>
+<p><img src="cIa.png"></p>
+<p>企业家庭接入，因特网和WIFI</p>
+<p>广域无线接入，3G,LTE</p>
+<h3 id="物理媒介（physical-medium）"><a href="#物理媒介（physical-medium）" class="headerlink" title="物理媒介（physical medium）"></a>物理媒介（physical medium）</h3><p>双绞铜线、同轴电缆、光纤、陆地无线电信号、卫星无线电信道。</p>
+<h3 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h3><p>我们在上面主要以end system为中心讲述，这里将主要讲述网络核心即packet switch部分。</p>
+<p>end system之间彼此交换<strong>报文（message）</strong>。源端将长报文划分为小的数据块称为 <strong>分组（packet）</strong>。每个packet都通过packet switch进行传送。</p>
+<p><strong>存储转发传输(store-and-forword transmission)</strong> ，packet switch在发送该分组的第一个比特之前，必须收到整个分组。</p>
+<p><strong>电路交换（circuit switching）</strong> 和 <strong>分组交换（packet switching）</strong> 区别在于电路交换需要提前建立连接，且会已知占用资源，会很浪费。</p>
+<p><strong>频分复用（frequency-Division Multiplexing，FDM）</strong>，想一下无限网就知道了，2.4GHZ、5GHZ</p>
+<p><strong>时分复用（Time-Division Multiplexing，TDM）</strong>，TDM中将时间化为帧，每个帧分为时隙，每个时隙分配给不同链接。</p>
+<p>ISP的ISP，它们之间需要不断互联构成我们的互联网。实际上，我们的互联网是分层的，就好像市ISP连到生ISP，此时前者充当<strong>customer</strong>，后者充当<strong>provider</strong>。接下来就是省链接国ISP。</p>
+<p>此外我们现在的网络还有<strong>存在点（Point of Presence，POP）</strong>，它存在各个层次，除了底层（接入ISP），它的作用是提供一条直接与ISP连接的高速链路。<br><strong>多宿（muti-home）</strong> 可以和两个或者多个ISP连接。</p>
+<p><strong>对等（peer）</strong> 它们的流量可以直接连接，不需要经过上层的ISP这样它们之间的连接就是免费的了。</p>
+<h3 id="时延、丢包、吞吐量"><a href="#时延、丢包、吞吐量" class="headerlink" title="时延、丢包、吞吐量"></a>时延、丢包、吞吐量</h3><p><strong>节点处理时延（nodel processing delay）</strong>，检查分组头部或者查路由表之类的所需要的时间。</p>
+<p><strong>排队时延（queuing delay）</strong>，分组在链路上等待传输的时间，主要取决于先到达的正在排队等待向链路传输的分组数量</p>
+<p>我们假设a为分组到达队列的平均速率，L为分组中的比特数，R为传输速率。当La/R&gt;1（L/R称为 <strong>流量强度(traffice intensity)</strong> ）时，表示我们收到的比特比发送的比特多这就导致堵塞。</p>
+<p><strong>传输时延（transmission delay）</strong>，所有分组的比特全部推向链路所需要的时间。</p>
+<p><strong>传播时延（propagation delay）</strong>，由于传输媒介导致比特从源端传播到另一端所需的时间。</p>
+<p>transmission delay 与 propagation delay的区别，可以看<a target="_blank" rel="noopener" href="https://media.pearsoncmg.com/aw/ecs_kurose_compnetwork_7/cw/content/interactiveanimations/transmission-vs-propogation-delay/transmission-propagation-delay-ch1/index.html">此链接</a></p>
+<p><strong>吞吐量</strong>，可以理解为接收文件的大小。在下载过程中，我们与服务器之间会间隔很多条链路，每一条链路的传输速率都是不同的，我们的吞吐量与最慢的链路有关，类似于木桶原理。</p>
+<h3 id="分层的体系结构"><a href="#分层的体系结构" class="headerlink" title="分层的体系结构"></a>分层的体系结构</h3><p>我们先用飞机旅行作为案例作解释。</p>
+<p><img src="air.png"></p>
+<p>我们飞机旅行主要可以分为5个部分，如上图所示。</p>
+<p>那么，我们这样做的目的是什么呢？模块化，这就是我们每一层的服务易于改变，并且不会影响到其他层数的服务情况。</p>
+<p>在网络中，我们也采用类似上面的 <strong>分层（layer）</strong> 来组织协议和实现这些协议的软件和硬件。</p>
+<p>同时我们可以注意一下，每一层layer可以向上一层layer提供 <strong>服务（service）</strong>，简单地说每一层的layer中的service包括本层自己本身所具有的，还有下层layer为它提供的。</p>
+<p>他的优点就如我们上面所说的易于更新，但是它也有一些缺点，比如每一层的功能可能会有重复，而造成冗余，比如差错控制。第二点，每一层可能有一些只有他们本层特有功能才会派上用场的protocol。</p>
+<p>每层的所有protocol被称为 <strong>协议栈（protocol slack）</strong> ，因特网中的protocol slack被划分为5层：应用层、传输层、网络层、数据链路层、物理层。</p>
+<p><strong>应用层（application layer）</strong> 的主要功能可以概括为使用protocol使end system应用程序之间交换信息分组。这个信息分组被称为 <strong>报文（message）</strong></p>
+<p><strong>运输层（transport layer）</strong>，应用程序之间传送应用层报文。运输层的分组被称为 <strong>报文段（segment）</strong></p>
+<p><strong>网络层（network layer）</strong>，负责将 <strong>数据报（datagram）</strong>的网络层分组从一台注意移动到另一台主机。</p>
+<p><strong>数据链路层（link layer）</strong>，传送 <strong>帧（frame）</strong></p>
+<p><strong>物理层（physical layer）</strong> 没啥好说的了，调制之类的功能。</p>
+<p>五层参考模型可以看下图</p>
+<p><img src="five.png"></p>
+<p>除了五层参考模型这种protocol slack之外还有OSI（七层参考模型）</p>
+<p>OSI与五层参考模型的区别在于多了 <strong>表示层（presentation  layer）</strong> 以及 <strong>会话层（session layer）</strong>。</p>
+<p>presentation layer的主要功能在于数据含义的解释</p>
+<p>session layer的主要功能在于交换数据定界和同步。</p>
+<p>下面还有一个重要的概念 <strong>封装（encapsulation）</strong>。简单的说，一个数据报不断向下传输会被添加各种属于各自layer的头。</p>
+<p>比如application-layer message传输到transport layer添加头部变为了transport-layer segment，继续向下叨叨network layer添加头部变为了network-layer datagram，最后传输到link layer变为了link-layer frame。详细的encapsulation可以看下图。</p>
+<p><img src="encapsulation.png"></p>
+<h2 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h2><p>因为书本书写不便，这里记录一下</p>
+<h3 id="1-1节"><a href="#1-1节" class="headerlink" title="1.1节"></a>1.1节</h3><p>R1：这里我们上面提及过，没有区别。end system包括手机，PC，智能手环之类的。Web服务器是一种端系统</p>
+<p>R2：In international politics, protocol is the etiquette（礼仪） of diplomacy and affairs of state. It may also refer to an international agreement that supplements or amends a treaty.</p>
+<p>外交协议常用于描述一系列国家来往规则。这些构建完备和经过时间检验的规则可以使国家和人民生活和工作更简单。协议规则以人民准则为基础，其中的一部分已经作为现在等级地位的声明。</p>
+<p>R3：可以让人们创建可以相互操作的网络系统和产品</p>
+<h3 id="1-2节"><a href="#1-2节" class="headerlink" title="1.2节"></a>1.2节</h3><p>R4：（1）电话线拨号调制上网（家庭）（2）DSL：家庭（小办公室）</p>
+<p>R5：HFC（Hybrid Fiber Coax）混合光纤同轴电缆。带宽由用户共享。不会出现，因为发送端只有一端。</p>
+<p>R6：拨号，DSL，Cable internet Access，Fiber to The Home，Option Network Terminator</p>
+<p>R7:10Mbps，100Mbps，1GbPs，10Gbps ……</p>
+<p>R8：Fiber，<strong>无屏蔽双绞线（Unshielded Twisted Pair，UTP）</strong>， 同轴电缆（coaxial cable）</p>
+<p>R9：拨号调制解调器56kps。Hybrid Fiber coax：下行，42.8Mbps，下行，30.7Mbps带宽共享。DSL（digital subscriber line）多个，带宽共享。FTTH一般为20Mbps带宽不共享。</p>
+<p>R10：WIFI，4G、5G。</p>
+<h3 id="1-3节"><a href="#1-3节" class="headerlink" title="1.3节"></a>1.3节</h3><p>R11:L/R1+L/R2</p>
+<p>R13：（1）2 （2）因为链路的带宽大小为2Mbps大于等于两个用户的总传输速率，所以不会出现排队时延。3个用户最大传输速率达到3Mbps，大于链路带宽，所以会出现排队时延。（3）0.2（4）0.2^3=0.008。0.008因为只有三个用户同时传输时，才会出现排队现象。</p>
+<p>R14： // peer可以不经过上层ISP，这样就不需要缴费。</p>
+<p>如果两个ISP不对等，那么当他们给对方发送流量时他们需要通过一个付费流量ISP提供商（中间商）来发送数据。通过直接对等传输，两个ISP可以减少给其他ISP提供商的费用。多个ISP可以通过Internet Exchanged Point（IXP）（通常由它自己的交换机单独构建）作为汇合点来直接对等传输。ISP通过对连接至IXP的每一个ISP收取少量费用来盈利，当然利润取决于IXP发送或接收的流量数。</p>
+<p>R15：谷歌的私有网络连接了它大大小小的所有的数据中心。谷歌数据中心的流量通过它的私有网络而不是公共网络来传输。大多数的数据中心位于或靠近低级的ISP。因此，当谷歌向用户分发数据时，可以跳过高级的ISP。</p>
+<p>是什么推动着这些内容提供商创建这些网络？首先，如果内容提供商使用更少的中间的ISP，它可以更容易控制用户体验。其次，通过减少至提供商的网络流量来节省成本。第三，如果ISP向利润率高的内容提供商收取高费用（在网络中立状态不适用的国家或地区），内容提供商可以避免额外成本。</p>
+<h3 id="1-4节"><a href="#1-4节" class="headerlink" title="1.4节"></a>1.4节</h3><p>R16：组成成分：nodel processing delay、queuing delay、transmission delay、propagation delay。</p>
+<p>固定：propagation 变化：nodel processing delay、queuing delay、transmission delay。</p>
+<p>R17:Length：100KM，Rate：100Mbps，Packet size：1kBytes<br>  Length：100KM Rate：512Kbps，Packet size：1kBytes</p>
+<p>R18：transmission delay：1000*8/2^6=0.004。propagation delay：2500/250000=0.01。delay time = 0.014s</p>
+<p>改：我看他们做的都没有计算transmission delay仔细看了题目，可能他的意思是传输完之后，再在链路上传播所需要的时间。</p>
+<p>L/s无关。</p>
+<p>R19:（1）500kbps（2）4MB/500kps=64s。（3）100kbps，320s</p>
+<p>R20：end system会将大文件分为各个小数据段分组，然后经过Protocol slack添加各种头部，最后通过物理媒介进行传输。mac地址。因为，分组交换和驱车行驶一样都知道目的地的名称，但不知道具体路径、并且packet switch和路人一样都知道路径的具体的行走方式，所以我们可以询问它们找到目的地。</p>
+<p>R21：只要emission rate 大于 transmisson rate就可以实现排队最终造成丢包。出现丢包的时间是不同的，因为因为发送方发送分组也是随机的, 并不是周期性的. 可能一次发送很多个分组, 导致出现丢包的时间较快, 否则出现丢包的时间会比较慢. 而发送速率仅代表平均发送速率.</p>
+<h3 id="1-5节"><a href="#1-5节" class="headerlink" title="1.5节"></a>1.5节</h3><p>R22：任务: 封装本层的报文段, 设置各种参数, 对接受到的报文段进行差错检查, 还可能进行流量设置, 分组重组等等.<br>多个层是可能执行相同的一个(或两个)任务的, 比如差错检验.</p>
+<p>R23：application layer、transmission layer 、network layer、link layer、physical layer</p>
+<p>application layer：负责将end system的应用程序与另一个end system的应用程序交换信息分组（message）</p>
+<p>transmission layer：负责应用程序端点之间传送传输层报文段（segment）</p>
+<p>network layer：负责网络分组的移动（datagram）</p>
+<p>link layer：负责数据帧的传递(frame)</p>
+<p>physical layer：调制解制</p>
+<p>R24：<br>message指的是在端系统的应用程序之间按照某种协议进行信息交换的分组.<br>segment指的是通过TCP/UDP等运输层协议对应用层报文进行封装后所形成的分组, 报文段对报文的传输参数进行了一定的设置, 使其具有了某种特性, 比如面向连接, 确保传递等.<br>datagram是对运输层报文段和目的地址进行封装后产生的分组. 数据报确定了分组的目的地, 使得分组可以通过网络层从发送方传送到接收方.<br>frame是对网络层数据报的封装, 它添加了下一个节点的具体地址, 使得分组能够传递到下一个节点.</p>
+<p>R25：network layer、link layer、physical layer</p>
+<h3 id="1-6节"><a href="#1-6节" class="headerlink" title="1.6节"></a>1.6节</h3><p>R26：病毒是一种需要某种形式的用户交互来感染用户设备的恶意软件. 比如说你收到了一封恶意电子右键, 里面包含了恶意可执行代码, 你只要执行了这些代码, 病毒就可能入侵你的系统.<br>蠕虫是一种无须任何明显用户交互就能进入设备的恶意软件. 比如说你运行了一个脆弱的网络程序, 攻击者可能通过该软件植入蠕虫到你的系统中, 无声无息.</p>
+<p>R27：DDos攻击(Distributed Denial-of-Service, 分布式拒绝服务攻击)<br>攻击者会通过恶意软件入侵我们的设备, 并且进一步感染其他设备, 当被感染的设备达到一定数量后变形成可供攻击者操控的僵尸网络.<br>攻击者利用由数以千计的受害主机形成的僵尸网络, 让每台主机向目标猛烈发送流量, 造成目标服务陷入瘫痪, 完成一次DDos攻击.</p>
+<p>R28：她可以窃听Alice和Bob之间的对话内容.<br>她可以模拟Alice或Bob发送分组给对方.</p>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>P1：略</p>
+<p>P2：我们需要知道，发送时间要看的是最后一个包的到达时间，最后一个包的发送时间为（P-1）L/R。到达目的端的时间为N（L/R）所以时间为（P-1+N）（L/N）</p>
+<p>P3：电路交换网：因为应用将以稳定速率，持续长时间运行，因此可以为其保留带宽。</p>
+<p>不需要。</p>
+<p>P4：（1）比如AB之间4条，AD之间四条，依次相邻的switch都可以连接4条。16（2）A=》B=》c4条，A=》D=》C 4条，共8条（3）可以。A-&gt;B-&gt;C 2 b-&gt;C-&gt;D 2, A-&gt;D-&gt;C 2, b-&gt;a-D 2。</p>
+<p>P5: 收费站：相距75Km，所以propagation delay = 0.75h。最后一辆车经过第一个收费站的时间为120s。即2min，所以三个收费站为6min最后时间为1.5h+6min为96min</p>
+<p>（2）94分48秒。</p>
+<p>P6：(1）dprop = m/s（2）dtans= L/R (3)dprop + dtans (4) end system (5) 链路上 （6）到达end system</p>
+<p>（7）m/s = L/R m=L/R*s= 120bit/56kbps * 2.5 * 10 ^ 8 =(5.36∗10 ^5)m</p>
+<p>p7：首先我们要计算一个分组需要的processing delay = 56 * 8 / 64kbps=0.007=7ms。transmission delay = 0.000224s=0.224ms。propagation delay = 10ms。 t = 7*2+0.224+10=24.224ms</p>
+<p>改，貌似这个题比特转换为模拟信号不需要时间，所以我们直接7+0.224+10=17.224即可</p>
+<p>p8：（1）20（2）0.1（3）C（n，120） * 下次一定</p>
+<p>p9:10000</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Violet</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/11/01/ji-suan-ji-wang-luo-gai-lun/">http://example.com/2021/11/01/ji-suan-ji-wang-luo-gai-lun/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Violet</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/11/04/ctfshow-sql-zhu-ru/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="ctfshow-sql注入">
+                        
+                        <span class="card-title">ctfshow-sql注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">sql注入</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/25/ctfshow-wen-jian-shang-chuan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="ctfshow-文件上传">
+                        
+                        <span class="card-title">ctfshow-文件上传</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本次内容是有关于文件上传
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    Web安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">Web安全</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+                        <span class="chip bg-color">文件上传</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2227373273"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+			<span id="sitetime"></span>
+
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">author Violet</a>
+           
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">83.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:88888888" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 888888" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 8, 30, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+
+</body>
+
+</html>

@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    8.4k
                 </div>
                 
 
@@ -637,7 +637,182 @@ Hello World.                    &#x2F;&#x2F; 内容
 <p>IMAP服务器把每个报文同一个文件夹联系起来，当报文第一次到达服务器时，它与收件人的INBOX文件夹联系起来。</p>
 <p>IMAP还有允许UA获得报文某些部分的命令，比如头部信息。</p>
 <h3 id="基于Web的电子邮件"><a href="#基于Web的电子邮件" class="headerlink" title="基于Web的电子邮件"></a>基于Web的电子邮件</h3><p>比如163邮箱。</p>
+<h2 id="DNS：因特网的目录服务"><a href="#DNS：因特网的目录服务" class="headerlink" title="DNS：因特网的目录服务"></a>DNS：因特网的目录服务</h2><p>因特网上的主机的标识方式为 <strong>主机名（hostname）</strong>，比如<a target="_blank" rel="noopener" href="http://www.facebook.com,但是我怎么看都像是域名,所以我查了一下,hostname就应该是我们传统意义上的主机名,有些疑惑./">www.facebook.com，但是我怎么看都像是域名，所以我查了一下，hostname就应该是我们传统意义上的主机名，有些疑惑。</a></p>
+<p>主机还可以通过 <strong>IP地址（IP address）</strong>标识。</p>
+<h3 id="DNS提供的服务"><a href="#DNS提供的服务" class="headerlink" title="DNS提供的服务"></a>DNS提供的服务</h3><p><strong>域名系统（Domain Name System，DNS）</strong>，可以将hostname与IP address进行转换。DNS是：（1）一个由分层的 <strong>DNS服务器（DNS server）</strong> 实现的分布式数据库；（2）一个使得主机可以查询分布式数据库的应用层协议。</p>
+<p>DNS server一般是运行BIND（Berkeley Internet Name Domain）的软件的Unix机器。DNS运行在UDP上，端口为53。</p>
+<p>DNS是一个应用层协议，主要原因在于（1）使用客户-服务器模式运行在通信的端系统之间（2）在通信的端系统之间通过传输层的端对端运输协议传送DNS报文。</p>
+<p>但是，它还有很特殊一点，它不直接与用户打交道，而是为其他软件提供服务，即hostname转IP address。</p>
+<p>当一个host上的browser访问一个violet.com网站，host主要经历了这些过程获得网站的Ip address。</p>
+<p>（1）同一台用户Host上运行着DNS应用的客户端<br>（2）browser从上述的url中抽取hostname,然后将这个hostname转交给DNS客户端<br>（3）DNS client向DNS server发送一个包含hostname的请求。<br>（4）DNS client最终会收到一份回答报文，其中含有对应该hostname的IP address<br>（5）接收到IP address后，browser便可以直接访问ip address的80 port进行TCP 连接。</p>
+<p>除了获得hostname的Ip address，DNS还提供了其他的service，</p>
+<p><strong>主机别名（host aliasing）</strong>，当一个hostname非常难记时，比如1有rqwhrwqwq.violet.com，他可能有别名 EG.violet.com，这样方便记忆。这种情况下前者复杂的hostname又被称为 <strong>规范主机名（canonical hostname）</strong>。DNS可以获得host aliasing对应的canonical hostname以及Ip address。</p>
+<p><strong>邮件服务器别名（mail server aliasing）</strong>，与host aliasing类似。</p>
+<p><strong>负载分配（load distribution）</strong>，繁忙的站点可能有多个服务器，也就说一个站点有多个IP address，DNS将这些Ip address存储为一个集合，当host 向站点请求访问时，DNS server会返回这个站点的ip address集合，而host一般会向集合位置最前面的ip address进行http访问。而DNS利用这个特性，就可以将不繁忙的服务器的ip address放置在集合的前面，从而实现了load distribution。</p>
+<h3 id="DNS工作机理概述"><a href="#DNS工作机理概述" class="headerlink" title="DNS工作机理概述"></a>DNS工作机理概述</h3><p>DNS设计模式可以设计为整个Internet只使用一个DNS server，当然这肯定不可以，会出现 <strong>单点故障（a singal point of falilure）</strong> 、 <strong>通信容量（traffic volume）</strong>、 <strong>远距离的集中式数据库（distant centralized database）</strong>、 <strong>维护（maintenance）</strong>的问题。</p>
+<p>为了解决这些问题，DNS使用了大量DNS server，他们以层次的分布在全世界范围内。</p>
+<p>大致上有三种DNS server，根服务器，<strong>顶级域（Top-Level Domain，TLD）</strong>DNS服务器和权威服务器。它们的层次结构见下图。</p>
+<p><img src="DNSServer.png"></p>
+<p>root DNS server: 提供TLD的 ip address</p>
+<p>TLD DNS server: 对于每个顶级域（如，com、org、net、edu）和所有国家的顶级域（cn、uk），都有TLD服务器（或服务器集群）。TLD服务器提供了权威DNS server 的ip address。</p>
+<p>authoritative DNS server: 因特网上具有公共可访问主机（如Web服务器和邮件服务器）的每个组织机构必须提供公共可访问的DNS记录，这些记录将hostname映射为ip addres。</p>
+<p>此外还有一个重要的DNS服务器 <strong>本地DNS服务器（local DNS Server）</strong> 。每一个ISP都有一台local DNS server。一般来说local dns server起着代理的作用，将client的DNS请求转发到DNS体系结构中。</p>
+<p>下面给出一个DNS迭代请求的例子。</p>
+<p>首先请求主机向local DNS server发出DNS请求，local DNS server向root DNS server发出请求，roor DNS server发现edu后缀，于是将edu对应的TLD DNS server的IP地址返回给local DNS server，它之后便向TLD DNS server发出请求。TLD DNS server注意到umass.edu，于是将其对应的authoritative DNS server的Ip address返回给local DNS server，local DNS server 对它发出请求，最终得到了对应主机的ip address。一共发送了8个DNS请求，4个请求，4个响应</p>
+<p><img src="DNSIteration.png"></p>
+<p>需要注意一点，TLD DNS server并不是知道所有authoritative DNS server 的IP address，它可能只知道指向authoritaticve DNS server的中间DNS server的IP address。</p>
+<p>除了Iteration query还有 <strong>递归查找（recursive query）</strong>，过程如下。</p>
+<p><img src="DNSRecursive.png"></p>
+<p>DNS有个很特殊的功能 <strong>DNS缓存（DNS caching）</strong>，当一个DNS server收到一个DNS response时（例如，包含hostname与IP address的映射），它将这个映射存储到本地存储器中，当它收到相同主机名的请求时，该DNS服务器可以提供所要求的IP address，哪怕他不是权威服务器。</p>
+<h3 id="DNS记录与报文"><a href="#DNS记录与报文" class="headerlink" title="DNS记录与报文"></a>DNS记录与报文</h3><p>共同实现DNS分布式数据库的素有DNS服务器存储了 <strong>资源记录（Resource Record，RR）</strong>，RR提供了主机名向IP地址的映射。</p>
+<p>RR是一个包含了下列字段的4元组，（Name，Value，Type，TTL）</p>
+<p>TTL是该记录的生存时间。Name与Value取决于Type</p>
+<p>Type=A，Name为主机名，Value为hostname对应的IP address。</p>
+<p>Type=NS，则Name是个domain（如violetBK.github.io），而value是个知道如何获得该域中主机IP address的authoritative DNS server的hostname。比如（foo.com,dns.foo.com,NS）。</p>
+<p>Type=CName，则value是个别名为Name对应的主机对应的canonical Name。</p>
+<p>Type = MX，则value是个别名为Name的邮件服务器的canonical Name。为了获得邮件服务器的canonical Name，DNS应当请求一个MX记录，为了获得其他服务器的规范主机名，DNS客户应当请求CNAME记录。</p>
+<p>DNS报文格式，如下图所示。</p>
+<p>首先前12个字节为首部区域，identification，用于标识这个报文。flag中有若干标志。1bit的“查询/应答”标志位，指出该报文是查询（0），还是应答（1）。当DNS为authoritative DNS server时，1bit的“authoritative”标志被置1于应答报文。此外还可以设置“希望recursive/iteration”于请求，或者“recursive/iteration可用”于应答。此外还有4个表示数量的字段，来标志首部后4类数据区域出现的数量。</p>
+<p>问题区域包含正在进行的查询信息。该区域包括，（1）名字字段，包含正在被查询的hostname。（2）类型字段，指出正在被查询的问题类型，比如A，MX。</p>
+<p>来自DNS server的回答中，回答区域包含了对最初请求名字的RR。在应答报文的回答区域中可以有多个RR，也就说一个hostname可以有多个ip address。</p>
+<p>权威区域包含了其他authoritative DNS server的record。</p>
+<p>附加区域包含了其他有用信息，比如对于一个CName请求的回答报文的回答区域包含一条RR，该RR提供了host的canonical Name。该附加区域包含了一个A类型的RR，该RR提供了该host的canonical Name的IP address。</p>
+<p><img src="DNSFormat1.png"></p>
+<p><img src="DNSFormat2.png"></p>
+<p>创建过网站的都会去尝试为自己的网站设置域名，<strong>注册登记机构（registrar）</strong>是一个商业实体，他延展该域名的唯一性，将该域名输入DNS数据库，并收取小部分费用。</p>
+<p>当我们注册域名时，我们需要向registrar提供基本和辅助DNS server的名字和Ip address。该registrar会将一个NS类型和一个A类型的RR存储到TLD服务器中。NS记录，记录到你域名的DNS服务器的hostname，A记录记录authoritative DNS server的hostname和ip address。</p>
+<h2 id="P2P文件分发"><a href="#P2P文件分发" class="headerlink" title="P2P文件分发"></a>P2P文件分发</h2><p>client-server architecture有着服务器负担过大的问题。而在P2P文件分发中，每个对等体可以向任何对等体重新分发他已经收到的该文件的任何部分，从而在分发过程中协助该服务器。</p>
+<p>在Clinet-Server architecture中我们下载完文件的时间为Dcs&gt;=max{NF/us,F/dmin}</p>
+<p>而在P2P中下载过程相对复杂。</p>
+<p>首先下载速度还是会受到下载速率最慢的主机影响即F/dmin</p>
+<p>其次，服务器的分发文件所需时间与client-server architectrue有所不同，我们只需要分发一份即可，即F/us</p>
+<p>最后，便是P2P的独特之处，P2P的上载总能力为所有主机加起来在加上服务器，则所有文件的最小分发时间为NF/(us+u1+u2+…un)</p>
+<p>最后Dp2p&gt;= max{F/us,,F/dmin,,NF/(us + Sui)}</p>
+<p>根据P2P文件分发有一个用于文件分发的协议BitTorrent（比特洪流）。我们这里简单说一下原理。</p>
+<p>首先每一个torrent都一个基础设施节点，称之为 <strong>跟踪器（tracker）</strong>。当一个对等体加入某torrent时，他向tracker注册自己，并周期地通知该tracker它仍在该torrent中。通过这种方式，torrent跟踪参与在洪流中的对等体。</p>
+<p>下面是一个Alice加入torrent的过程。</p>
+<p>首先Alice加入torrent时，跟踪器随机从对等体集合中训责一个子集，并将其子集中的对等体的ip address分发给Alice。从而Alice与这些对等体建立TCP连接。我们将所有与Alice建立TCP连接的对等体称为“临近对等体”，随着时间的流逝临近对等体会随着波动。peers may come and go once peer has entire file, it may (selfishly) leave or (altruistically) remain in torrent</p>
+<p>Alice会周期向临近对等体请求块列表（文件块），L个不同邻居就有了L个块列表，有了这个信息，ALice就可以向他还没有的快发出请求。</p>
+<p><img src="torrent.png"></p>
+<p>Alice需要做出以下的决定，首先她应当向她的邻居请求那些块，其次她应该向那些邻居请求。这里使用的时 <strong>最稀缺优先（rarest first）技术</strong>，在邻居中找她没有的块，并且寻找那些邻居中拥有量最少的块，由此保障每个块副本的数量均衡。</p>
+<p>请求解决了，那么应答呢？Alice应当应答哪些请求呢？基本思想是，根据当前向她提供数据的速率的高低，给出优先权。书上的翻译有点辣鸡，我直接给出ppt的内容并自己概述一下。</p>
+<pre class="line-numbers language-ppt" data-language="ppt"><code class="language-ppt">
+Alice sends chunks to those four peers currently sending her chunks at highest rate 
+other peers are choked by Alice (do not receive chunks from her)
+re-evaluate top 4 every10 secs
+every 30 secs: randomly select another peer, starts sending chunks
+“optimistically unchoke” this peer
+newly chosen peer may join top 4
 
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Alice首先根据给她发送块的速率高低给她的邻居们排个序，这里她对4个最快的邻居 <strong>疏通（unchoke）</strong> 即发送数据。与此同时Alice每隔30s随机选择一个别的对等体并向他发送数据，由于Alice正在发送数据，所以Alice可能成为她选择对等体的4个unchoke之一，这样的话他就也会向Alice发送数据。如果这个块发送速率够快，那么他就有可能成为Alice中的上载速率前四，这样他们就持续交换数据，否则Alice过30s后就选择新的对等体。</p>
+<p>在这个过程中Alice同时向5个对等体发送块。</p>
+<p>这里我们再提一下另一个P2P应用–分布式散列表（DHT）,它是一种简单的数据库，其数据库记录分布在一个p2p系统的多个对等体上。</p>
+<h2 id="视频流和内容分发网"><a href="#视频流和内容分发网" class="headerlink" title="视频流和内容分发网"></a>视频流和内容分发网</h2><h3 id="因特网视频"><a href="#因特网视频" class="headerlink" title="因特网视频"></a>因特网视频</h3><p>视频的一个重要特征是它可以被压缩，因而可用比特率来衡量视频质量。低质量视频100kps，流式高分辨率率电影超过3Mbps，4k流式展望超过10Mbps。</p>
+<p>对于流式视频最重要的性能度量是平均端到端吞吐量。</p>
+<h3 id="HTTP流和DASH"><a href="#HTTP流和DASH" class="headerlink" title="HTTP流和DASH"></a>HTTP流和DASH</h3><p>当用户要看视频时，客户与服务器之间创建一个TCP连接并发送对该HTTP GET请求。服务器要以尽可能快的速率在HTTP响应报文中发送该视频文件。而客户，字节被手机在客户应用缓存中，当缓存中的字节数量超过预先设定的门限，客户应用程序就开始播放。而流式视频应用会用程序周期性的从客户应用程序缓存中抓取真，对这些真进行解压缩并在用户屏幕上播放。</p>
+<p>下面我们介绍一个可以根据用户带宽大小自动选择比特率的 <strong>经HTTP的动态适应性流（Dynamic Adapative Streaming over HTTP，DASH）</strong>。</p>
+<p>HTTP服务器还有一个 <strong>告示文件（mainifest file）</strong> 为每个视频版本提供一个URL和比特率。</p>
+<h3 id="内容分发网"><a href="#内容分发网" class="headerlink" title="内容分发网"></a>内容分发网</h3><p>为了应对向分布于全世界的用户分发巨量视频数据的挑战，几乎所有视频公司都使用了 <strong>内容分发网（Content Distribution Network,CDN）</strong>。</p>
+<p>CDN有两个不同的服务器安置原则，</p>
+<p><strong>深入</strong> ，深入到ISP的接入网（即靠近end system的ISP），目的时靠近端用户，通过减少端用户和CDN集群之间的链路和路由器数量，改善用户感到的延迟和吞吐量。</p>
+<p><strong>邀请做客</strong> ，通过在少量的关键位置建造大集群邀请ISP做客，CDN通常将他们的集群防止在因特网交换点（IXP）。</p>
+<p>一旦一个CDN集群准备完成，它可以跨进群复制内容，一般根据CDN集群的服务类群确认。</p>
+<p>当一个主机请求一个特定的视频（由URL标识），CDN必须截获该请求以便可以（1）确认是和该用户的CDN服务器集群（2）将客户的请求重定向到该集群的某台服务器</p>
+<p>大多数的CDN利用利用DNS来截获和重定向请求。下面我们来解析一下这个过程。</p>
+<ol>
+<li><p>用户访问这个页面</p>
+</li>
+<li><p>用户点击视频链接，此时有个对于<a target="_blank" rel="noopener" href="http://netcinema.com/6Y7B23V%E7%9A%84DNS%E8%AF%B7%E6%B1%82">http://netcinema.com/6Y7B23V的DNS请求</a></p>
+</li>
+<li><p>用户LDNS将该DNS请求中继到authoritative DNS server中，权威DNS服务器发现主机名中包含video，为了将此CDN请求转交给KingCDN，权威DNS服务器不返回一个IP地址，而是向LDNS返回一个KingCDN域的hostname，比如a1105.kingcdn.com</p>
+</li>
+<li><p>此时对，DNS请求进入KingCDN专用DNS基础设施。用户的LDNS发送第二个请求，此时对a1105.kingcdn.com的DNS请求，KingCDN的DNS系统最终返回KINgCDN的内容服务器的IP地址。</p>
+</li>
+<li><p>LDNS向用户主机转发内容服务CDN节点的IP地址</p>
+</li>
+<li><p>建立TCP连接。</p>
+</li>
+</ol>
+<p><img src="CDN.png"></p>
+<p><strong>集群选择策略（cluster selection strategy）</strong>，即动态将客户定向到CDN中的某个服务器集群或数据中心。</p>
+<p>最简单的策略时， <strong>地理上最为邻接（geographically closest）</strong>。除此外还有根据流量条件为客户决定最好的集群，这里采用了实时测量（real-time measurement）</p>
+<h2 id="套接字编程"><a href="#套接字编程" class="headerlink" title="套接字编程"></a>套接字编程</h2><h3 id="UDP套接字编程"><a href="#UDP套接字编程" class="headerlink" title="UDP套接字编程"></a>UDP套接字编程</h3><p>我们之前说过，每个进程好比一座房子，socket彷佛一扇门。</p>
+<p>当使用UDP时，必须先将目的地址负在该分组之上。该分组传到发送发的socket周。因特网将使用该目的地址并通过因特网为该分组选录到接受进程的socket。当分组到达接收socket时，接受进程通过该socket取回分组。</p>
+<p>过程如下</p>
+<p><img src="UDPSocket.png"></p>
+<p>下面为python代码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># UDPClient</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+serverName <span class="token operator">=</span> <span class="token string">'192.168.235.128'</span>
+serverPort <span class="token operator">=</span> <span class="token number">12000</span>
+clientSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>  <span class="token comment"># AF_INET表明使用的是ipv4协议，SOCK——DGRANM表明使用的是使用UDP</span>
+message <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Input lowercase sentence: "</span><span class="token punctuation">)</span>
+clientSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>message<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span>serverName<span class="token punctuation">,</span>serverPort<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment"># 我们的内容在发送到socket时，需要以字节进行传输</span>
+modifiedMessage<span class="token punctuation">,</span> severAddress<span class="token operator">=</span>clientSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>modifiedMessage<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+clientSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># UDPServer</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+serverPort <span class="token operator">=</span> <span class="token number">12000</span>
+serverSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>  <span class="token comment"># AF_INET表明使用的是ipv4协议，SOCK——DGRANM表明使用的是使用UDP</span>
+serverSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span>serverPort<span class="token punctuation">)</span><span class="token punctuation">)</span>          <span class="token comment"># 将套接字与设定端口绑定起来</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"The Server is ready to receive the message"</span><span class="token punctuation">)</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    message<span class="token punctuation">,</span> clientAddress<span class="token operator">=</span>serverSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span>
+    modifiedMessage <span class="token operator">=</span> message<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serverSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>modifiedMessage<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>clientAddress<span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="TCP套接字编程"><a href="#TCP套接字编程" class="headerlink" title="TCP套接字编程"></a>TCP套接字编程</h3><p>与UDP不同，TCP是一个面向连接的协议。所以，我们在建立连接之前需要进行TCP的三次握手过程。</p>
+<p>首先，与UDP大致相同，TCP服务器在客户试图发起接触前必须左为进程运行起来，第二，服务器程序必须具有一个特殊的套接字，这个socket欢迎来自运行在任意主机上的客户进行初步接触。</p>
+<p>客户进程向服务器发起一个TCP连接，这是由客户程序创建一个TCPsocket完成的，它指定服务器的ip地址和socket的端口号。生成器套接字后，该客户发起三次握手，并创建一个与服务器的TCP连接。</p>
+<p>三次握手期间，服务器感知客户与特殊socket建立连接，于是生产一个新的socket。它是专门对客户进行连接的新的socket，称为 <strong>连接套接字（connection socket）</strong>。</p>
+<p>过程如下</p>
+<p><img src="TCPScoket.png"></p>
+<p>python代码如下</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># scoketServer</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+serverPort <span class="token operator">=</span> <span class="token number">12000</span>
+ServerSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span>SOCK_STREAM<span class="token punctuation">)</span>          <span class="token comment"># 创建服务器的套接字，第一个参数说明IPv4，第二个套接字说明TCP套接字</span>
+ServerSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span>serverPort<span class="token punctuation">)</span><span class="token punctuation">)</span>                  <span class="token comment"># 将该端口与socket联系起来</span>
+ServerSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>                              <span class="token comment"># 对于Tcp来说ServerSocket相当于欢迎之门</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"The server is ready to receive"</span><span class="token punctuation">)</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    connectionSocket<span class="token punctuation">,</span> addr <span class="token operator">=</span> ServerSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 聆听TCP连接请求，当client敲门时，程序为serverSocket调用accept</span>
+                                                    <span class="token comment"># 方法，这就会建立新的套接字，这个有这个特定客户独享</span>
+    sentence <span class="token operator">=</span> connectionSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    capitalizedSentence <span class="token operator">=</span> sentence<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    connectionSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>capitalizedSentence<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    connectionSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+serverName <span class="token operator">=</span> <span class="token string">'192.168.235.128'</span>
+serverPort <span class="token operator">=</span> <span class="token number">12000</span>
+clientSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span>SOCK_STREAM<span class="token punctuation">)</span>          <span class="token comment"># 创建客户的套接字，第一个参数说明IPv4，第二个参数说明TCP套接字</span>
+clientSocket<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span>serverName<span class="token punctuation">,</span>serverPort<span class="token punctuation">)</span><span class="token punctuation">)</span>       <span class="token comment"># TCP套接字发送数据之前需要建立TCP连接，这里的作用就是建立一个TCP连接</span>
+sentence <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"input lowercase sentence"</span><span class="token punctuation">)</span>
+clientSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>sentence<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                <span class="token comment"># 可以看到这里与UDP的区别，我们在UDP发送数据时，需要指定hostname和端口号</span>
+                                                    <span class="token comment"># ，这里由于使用TCP连接，我们直接发送数据即可，TCP连接会帮助我们将数据传到server socket</span>
+modifiedSentece <span class="token operator">=</span> clientSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"From Server : "</span><span class="token operator">+</span> modifiedSentece<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+clientSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -874,48 +1049,46 @@ Hello World.                    &#x2F;&#x2F; 内容
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/05/ji-suan-ji-wang-luo-ying-yong-ceng/">
+                <a href="/2021/11/10/java-gao-ji-bu-fen/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="计算机网络-应用层">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="java高级部分">
                         
-                        <span class="card-title">计算机网络-应用层</span>
+                        <span class="card-title">java高级部分</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这部分将对应用层的知识进行总结
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    计算机基础
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">计算机网络</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1170,7 +1343,7 @@ Hello World.                    &#x2F;&#x2F; 内容
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">83.1k</span>
+                        class="white-color">87.7k</span>
             
             
             

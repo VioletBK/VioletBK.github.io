@@ -491,18 +491,18 @@
 <p>一般来说server会形成data center以保障承受大量的数据。</p>
 <p><img src="csa.png"></p>
 <p>P2P体系结构（P2P architecture），有一个特点，对于data cneter的专用服务器有最小的依赖。</p>
-<p>与client-server architecture不同，每个end system彼此既是server又是client，这也就说它们彼此之间可以随意连接。同时，它们并不是实时在线。它们有一个很特殊的特征 **自拓展性(self-scalability)**。self-scalibilty带来了新的服务能力和新的需求。</p>
+<p>与client-server architecture不同，每个end system彼此既是server又是client，这也就说它们彼此之间可以随意连接。同时，它们并不是实时在线。它们有一个很特殊的特征 <strong>自拓展性(self-scalability)</strong> 。self-scalibilty带来了新的服务能力和新的需求。</p>
 <p><img src="P2P.png"></p>
 <h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>我们知道一个end system一般会有多个程序，那么它们之间是如何通信的。严谨点说程序之间的通信实际上是进程（process）之间的通信。不同之间的process通过message进行通信。</p>
 <p>在一对process通信的过程中，发起通信的process被标记为client，在会话开始时等待连接的进程是server。比如，web浏览器和web服务器</p>
-<p>我们知道process存在在application layer，所以我们进行不同end system之间的通信时，必须要经过下层的layer。process通过一个成为 <strong>套接字（socket）</strong> 的软件接口向网络发送报文和从网络接收报文，简单地说与transmission layer进行通信。</p>
+<p>我们知道process存在在application layer，所以我们进行不同end system之间的通信时，必须要经过下层的layer。process通过一个称为 <strong>套接字（socket）</strong> 的软件接口向网络发送报文和从网络接收报文，简单地说与transmission layer进行通信。</p>
 <p>由于socket建立在网络应用程序的可编程接口，因而又被称为应用程序与网络之间的 <strong>应用程序编程接口（Application Programming Interface，API）</strong></p>
 <p><img src="socket.png"></p>
-<p>当我们需要进行不同end system之间的process通信时，我们需要两个信息。（1）end system的地址，IP地址（2）在目的end system中指定接收Process的标识符。<strong>端口号（port number）</strong> 。</p>
+<p>当我们需要进行不同end system之间的process通信时，我们需要两个信息。<br>（1）end system的地址，IP地址<br>（2）在目的end system中指定接收Process的标识符。<strong>端口号（port number）</strong> 。</p>
 <h3 id="可供应用程序使用的运输服务"><a href="#可供应用程序使用的运输服务" class="headerlink" title="可供应用程序使用的运输服务"></a>可供应用程序使用的运输服务</h3><p>应用程序服务的需求可以分为：可靠数据传输、吞吐量、定时、安全性</p>
 <p><strong>可靠数据传输（reliable data transfer）</strong> 确保应用程序的一端发送的数据正确、完全地交付给该应用程序的另一端。</p>
 <p>当transmission layer无法提供reliable data transfer时，有可能被 <strong>容忍丢失的应用（loss-tolerant application）</strong>所接受。</p>
-<p>吞吐量，就是发送process能狗向接收Process交付比特的速率。</p>
+<p>吞吐量，就是发送方process能够向接收方Process交付比特的速率。</p>
 <p>这就产生一个需求，transmission layer可以以每种特定的速率提供确保的吞吐量。对吞吐量有需求的应用称为 <strong>带宽敏感的应用（bandwidth-senstive application）</strong> 。</p>
 <p>定时，比如发送方注入进socket的每一个比特到达接收方的socket不迟于100ms。</p>
 <p>安全性，transmission layer为应用程序提供一种或多种安全性服务。</p>
@@ -518,7 +518,7 @@
 <p>定义了，交换的报文类型，比如请求报文和响应报文。<br>各种报文类型的语法。<br>字段的语义，<br>确定一个进程何时以及如何发送报文，对报文的响应规则</p>
 <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Web的应用层协议是 <strong>超文本传输协议（HyperText Transfer Protocol，HTTP）</strong></p>
 <p>Web页面（Web page）是由对象组成的。一个object可以是一个文件、图片等。</p>
-<p>HTTP定义了Web客户向Web Server请求Web page的方式，以及Server想client发送Web page的方式。</p>
+<p>HTTP定义了Web客户向Web Server请求Web page的方式，以及Server向client发送Web page的方式。</p>
 <p>HTTP使用TCP作为他的支撑传输协议。</p>
 <p>HTTP协议不用担心数据丢失，也不关注TCP从网络数据丢失和乱序故障中恢复的细节。这也是protocol slack分层的好处。每一层只需要关注自己的事情，下层的事情无需关心，有点类似OOP</p>
 <p>HTTP是一个 <strong>无状态协议（stateless protocol）</strong></p>
@@ -529,7 +529,7 @@
 <p>（1）HTTP client在端口80向server发送一个TCP连接，client与server都有一个套接字与该连接相关联。</p>
 <p>（2）HTTP client经它的套接字向server发送一个HTTP请求报文</p>
 <p>（3）HTTP server从socket中接受这个请求，然后搜索请求的对象，并在HTTP响应报文中封装这个对象，从socket中发送出去。</p>
-<p>（4）HTTP client process通知TCp断开此TCP连接。</p>
+<p>（4）HTTP client process通知TCP断开此TCP连接。</p>
 <p>（5)HTTP sever process关闭TCP连接。</p>
 <p><strong>往返时间（Round-Trip Time）</strong> ，该时间是指一个短分组从客户到服务器然后再返回client的时间。RTT包括processing delay、queuing delay、分组时延。</p>
 <p><img src="RTT.png"></p>
@@ -564,7 +564,7 @@
 <p>404：Not Found：被请求的文档不在服务器上</p>
 <p>505：HTTP Version Not Supported：服务器不支持请求报文使用的HTTP协议版本。</p>
 <h3 id="用户与服务器的交互：cookie"><a href="#用户与服务器的交互：cookie" class="headerlink" title="用户与服务器的交互：cookie"></a>用户与服务器的交互：cookie</h3><p>希望将内容与用户身份联系起来。于是有了cookie</p>
-<p>cookie有4个组件，（1）HTTP响应报文中一个cookie首部行（2）在HTTP请求报文中的一个cookie首部行（3）在用户end system中保留一个cookie文件并由浏览器管理（4）位于Web站点的一个后端数据库</p>
+<p>cookie有4个组件，<br>（1）HTTP响应报文中一个cookie首部行<br>（2）在HTTP请求报文中的一个cookie首部行<br>（3）在用户end system中保留一个cookie文件并由浏览器管理<br>（4）位于Web站点的一个后端数据库</p>
 <p>cookie的一个创建过程</p>
 <p><img src="cookie.png"></p>
 <p>首先client收到 set-cookie后，client会在特定cookie文件中添加cookie数据，下一次请求Server时会携带这个cookie值。</p>
@@ -574,8 +574,8 @@
 <p>使用Web cache受访问一个站点的过程可以概括为</p>
 <p>我们之前访问一个站点时都是去直接访问他的server，但是多了web cache后，我们首先访问web cache，web cache查看是否储存Client请求的对象，如果有便直接返回请求对象，反之web cache请求server中相应对象，储存该对象后并返回给client。</p>
 <p>通过使用 <strong>内容分发网络（Content Distrubution Network，CDN）</strong>，WEb cache正在发挥越来越重要的作用</p>
-<h3 id="条件GET方法"><a href="#条件GET方法" class="headerlink" title="条件GET方法"></a>条件GET方法</h3><p>我们使用web cache可以极大的方便我们的使用。但是这又带来一个问题，如果web cache中存储的对象是过时的怎么班。这时候我们就可以使用 <strong>条件GET（conditional GET）</strong> 方法。</p>
-<p>（1）如果使用get方式（2）报文中包含了 “if-Modified-Since” header line。那么这就是一个 conditional get method。</p>
+<h3 id="条件GET方法"><a href="#条件GET方法" class="headerlink" title="条件GET方法"></a>条件GET方法</h3><p>我们使用web cache可以极大的方便我们的使用。但是这又带来一个问题，如果web cache中存储的对象是过时的，那怎么办。这时候我们就可以使用 <strong>条件GET（conditional GET）</strong> 方法。</p>
+<p>（1）如果使用get方式<br>（2）报文中包含了 “if-Modified-Since” header line。那么这就是一个 conditional get method。</p>
 <p>id-Modified-Since表示上一次接收object副本时的Last-Modified的值，当conditional get method发送给server时，server会对应If-Modified-Since查看请求object是否被修改，如果被修改则将对象返回，如果没有则返回以下报文。</p>
 <p>HTTP/1.0 304 Not Modified</p>
 <h2 id="因特网中的电子邮箱"><a href="#因特网中的电子邮箱" class="headerlink" title="因特网中的电子邮箱"></a>因特网中的电子邮箱</h2><p><img src="email.png"></p>
@@ -658,13 +658,13 @@ Hello World.                    &#x2F;&#x2F; 内容
 <p>authoritative DNS server: 因特网上具有公共可访问主机（如Web服务器和邮件服务器）的每个组织机构必须提供公共可访问的DNS记录，这些记录将hostname映射为ip addres。</p>
 <p>此外还有一个重要的DNS服务器 <strong>本地DNS服务器（local DNS Server）</strong> 。每一个ISP都有一台local DNS server。一般来说local dns server起着代理的作用，将client的DNS请求转发到DNS体系结构中。</p>
 <p>下面给出一个DNS迭代请求的例子。</p>
-<p>首先请求主机向local DNS server发出DNS请求，local DNS server向root DNS server发出请求，roor DNS server发现edu后缀，于是将edu对应的TLD DNS server的IP地址返回给local DNS server，它之后便向TLD DNS server发出请求。TLD DNS server注意到umass.edu，于是将其对应的authoritative DNS server的Ip address返回给local DNS server，local DNS server 对它发出请求，最终得到了对应主机的ip address。一共发送了8个DNS请求，4个请求，4个响应</p>
+<p>首先请求主机向local DNS server发出DNS请求，local DNS server向root DNS server发出请求，root DNS server发现edu后缀，于是将edu对应的TLD DNS server的IP地址返回给local DNS server，它之后便向TLD DNS server发出请求。TLD DNS server注意到umass.edu，于是将其对应的authoritative DNS server的Ip address返回给local DNS server，local DNS server 对它发出请求，最终得到了对应主机的ip address。一共发送了8个DNS请求，4个请求，4个响应</p>
 <p><img src="DNSIteration.png"></p>
 <p>需要注意一点，TLD DNS server并不是知道所有authoritative DNS server 的IP address，它可能只知道指向authoritaticve DNS server的中间DNS server的IP address。</p>
 <p>除了Iteration query还有 <strong>递归查找（recursive query）</strong>，过程如下。</p>
 <p><img src="DNSRecursive.png"></p>
 <p>DNS有个很特殊的功能 <strong>DNS缓存（DNS caching）</strong>，当一个DNS server收到一个DNS response时（例如，包含hostname与IP address的映射），它将这个映射存储到本地存储器中，当它收到相同主机名的请求时，该DNS服务器可以提供所要求的IP address，哪怕他不是权威服务器。</p>
-<h3 id="DNS记录与报文"><a href="#DNS记录与报文" class="headerlink" title="DNS记录与报文"></a>DNS记录与报文</h3><p>共同实现DNS分布式数据库的素有DNS服务器存储了 <strong>资源记录（Resource Record，RR）</strong>，RR提供了主机名向IP地址的映射。</p>
+<h3 id="DNS记录与报文"><a href="#DNS记录与报文" class="headerlink" title="DNS记录与报文"></a>DNS记录与报文</h3><p>共同实现DNS分布式数据库的所有有DNS服务器存储了 <strong>资源记录（Resource Record，RR）</strong>，RR提供了主机名向IP地址的映射。</p>
 <p>RR是一个包含了下列字段的4元组，（Name，Value，Type，TTL）</p>
 <p>TTL是该记录的生存时间。Name与Value取决于Type</p>
 <p>Type=A，Name为主机名，Value为hostname对应的IP address。</p>
@@ -691,7 +691,7 @@ Hello World.                    &#x2F;&#x2F; 内容
 <p>根据P2P文件分发有一个用于文件分发的协议BitTorrent（比特洪流）。我们这里简单说一下原理。</p>
 <p>首先每一个torrent都一个基础设施节点，称之为 <strong>跟踪器（tracker）</strong>。当一个对等体加入某torrent时，他向tracker注册自己，并周期地通知该tracker它仍在该torrent中。通过这种方式，torrent跟踪参与在洪流中的对等体。</p>
 <p>下面是一个Alice加入torrent的过程。</p>
-<p>首先Alice加入torrent时，跟踪器随机从对等体集合中训责一个子集，并将其子集中的对等体的ip address分发给Alice。从而Alice与这些对等体建立TCP连接。我们将所有与Alice建立TCP连接的对等体称为“临近对等体”，随着时间的流逝临近对等体会随着波动。peers may come and go once peer has entire file, it may (selfishly) leave or (altruistically) remain in torrent</p>
+<p>首先Alice加入torrent时，跟踪器随机从对等体集合中选择一个子集，并将其子集中的对等体的ip address分发给Alice。从而Alice与这些对等体建立TCP连接。我们将所有与Alice建立TCP连接的对等体称为“临近对等体”，随着时间的流逝临近对等体会随着波动。peers may come and go once peer has entire file, it may (selfishly) leave or (altruistically) remain in torrent</p>
 <p>Alice会周期向临近对等体请求块列表（文件块），L个不同邻居就有了L个块列表，有了这个信息，ALice就可以向他还没有的快发出请求。</p>
 <p><img src="torrent.png"></p>
 <p>Alice需要做出以下的决定，首先她应当向她的邻居请求那些块，其次她应该向那些邻居请求。这里使用的时 <strong>最稀缺优先（rarest first）技术</strong>，在邻居中找她没有的块，并且寻找那些邻居中拥有量最少的块，由此保障每个块副本的数量均衡。</p>
@@ -1053,13 +1053,13 @@ clientSocket<span class="token punctuation">.</span>close<span class="token punc
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/10/java-gao-ji-bu-fen/">
+                <a href="/2021/11/12/java-duo-xian-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="java高级部分">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Java多线程">
                         
-                        <span class="card-title">java高级部分</span>
+                        <span class="card-title">Java多线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1070,7 +1070,7 @@ clientSocket<span class="token punctuation">.</span>close<span class="token punc
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-12
                         </span>
                         <span class="publish-author">
                             
@@ -1087,8 +1087,8 @@ clientSocket<span class="token punctuation">.</span>close<span class="token punc
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/JavaSE/">
+                        <span class="chip bg-color">JavaSE</span>
                     </a>
                     
                 </div>
@@ -1343,7 +1343,7 @@ clientSocket<span class="token punctuation">.</span>close<span class="token punc
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">87.7k</span>
+                        class="white-color">108.7k</span>
             
             
             

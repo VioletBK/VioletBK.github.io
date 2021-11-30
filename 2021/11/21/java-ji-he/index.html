@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java高级部分, Violet&#39;s Blog">
+    <meta name="keywords" content="Java集合, Violet&#39;s Blog">
     <meta name="description" content="Summary of knowledge learned">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>java高级部分 | Violet&#39;s Blog</title>
+    <title>Java集合 | Violet&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java高级部分</h1>
+                    <h1 class="description center-align post-title">Java集合</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/JavaSE/">
+                                <span class="chip bg-color">JavaSE</span>
                             </a>
                         
                     </div>
@@ -456,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-10
+                    2021-11-21
                 </div>
                 
 
@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.4k
                 </div>
                 
 
@@ -485,7 +485,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h2><h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p>add(Object obj),addAll(Collection coll),size,isEmpty(),clear();</p>
+<p>contains(Object obj),containsAll(Object obj),remove(Object obj),removeAll(Collection coll),retainsAll(Collection coll),equals(Object obj)</p>
+<p>hashCode(),toArray(),iterator()</p>
+<h3 id="集合、数组之间的转换"><a href="#集合、数组之间的转换" class="headerlink" title="集合、数组之间的转换"></a>集合、数组之间的转换</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token comment">// 8.toArray()集合转换为数组</span>
+        <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> coll1<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 拓展：数组转换为集合:调用Arrays类的静态方法aList</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token string">"AA"</span><span class="token punctuation">,</span> <span class="token string">"BB"</span><span class="token punctuation">,</span> <span class="token string">"CC"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span> lis12 <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">123</span><span class="token punctuation">,</span><span class="token number">456</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  会被识别成一个元素，导致输出值为地址值</span>
+        <span class="token class-name">List</span> lis1 <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">123</span><span class="token punctuation">,</span><span class="token number">456</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lis1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">
+ <span class="token class-name">Collection</span> coll <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">456</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">c_Person</span><span class="token punctuation">(</span><span class="token string">"Jerry"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"Tom"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Iterator</span> iterator <span class="token operator">=</span> coll<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//        System.out.println(iterator.next());</span>
+<span class="token comment">//        System.out.println(iterator.next());</span>
+<span class="token comment">//        System.out.println(iterator.next());</span>
+<span class="token comment">//        System.out.println(iterator.next());</span>
+
+<span class="token comment">//        // 方式二：不推荐</span>
+<span class="token comment">//        for (int i = 0; i &lt; coll.size(); i++) &#123;</span>
+<span class="token comment">//            System.out.println(iterator);</span>
+<span class="token comment">//        &#125;</span>
+
+        <span class="token comment">// 方式三：推荐</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token comment">// 指针下移，然后将下一以后集合位置上的元素返回</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>for</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Collection</span> coll <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">456</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">c_Person</span><span class="token punctuation">(</span><span class="token string">"Jerry"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        coll<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"Tom"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// for( 集合中元素的类型 局部变量：集合对象)</span>
+        <span class="token comment">// 内部使用了迭代器</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj <span class="token operator">:</span> coll<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h3><p>Collection接口：单列集合、用来存储一个一个的对象</p>
+<pre><code>List接口：存储有序的、可重复的数据     “动态数组”
+    ArrayList：List接口的主要实现类，线程不安全的，效率高 底层使用Object[] elementData存储
+    LinkedList：对于频繁的插入、删除操作，使用此类效率比ArrayList高；底层使用双向关联表存储
+    Vector   作为List接口的古老实现类：线程安全的，效率第：底层使用Object[] elementData存储
+</code></pre>
+<p>常用方法</p>
+<p>增：add(Objection obj);<br>删: remove(Object obj)/remove(int index)<br>改：srt(int index, Objection obj)<br>查：get(int index)<br>插；add(int index, Object ele)<br>长度：size()</p>
+<p>存储元素的要求</p>
+<p>equals方法要重写</p>
+<h3 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h3><p>存储数据的特点：无序的、不可重复</p>
+<ol>
+<li><p>无序性：不等于随机性。存储的数据在底层数组中并非按照数组索引的顺序添加，而是根据数据的hash值决定的</p>
+</li>
+<li><p>不可重复性：保证添加的元素按照equals判断时不能返回true，即：相同的元素只能添加一个</p>
+</li>
+</ol>
+<p>添加过程</p>
+<p>我们向HashSet中添加元素a，首先调用元素a所在类的hashcode方法计算元素a的哈希值，此哈希值接着通过牟总算法计算出在HashSet底部<br>    数组中的存放位置（即为：索引位置），判断数组此位置上是否已有元素，<br>    如果此位置没有其他元素，则元素a添加成功，       –&gt; 情况一<br>    如果此位置上有其他元素b（或以链表形式存在的多个元素），则比较匀速a于元素b的hash值<br>        如果hash值不同，则元素a添加成功          –&gt; 情况二<br>        如果hash值相同，进而需要调用a所在类的equlas()方法：<br>            equals返回true，添加失败<br>            否则添加成功</p>
+<ol>
+<li><p>Set接口的框架<br>Collection接口：单列集合，用来存储一个一个对对<br>set接口：存储无序的、不可重复的数据</p>
+<pre><code>HashSet:作为set接口的主要实现类：线程不安全，可以存储null值
+    LinkedHashSet：作为HashSet的子类，遍历其内部数据时，可以按照添加顺序遍历
+    对于比较频繁的遍历操作，LinkedHashSet效率高于HashSet
+TreeSet：可以按照添加对象指定属性，进行排序
+</code></pre>
+</li>
+<li><p>Set接口没有额外定义新的方法，使用的都是Collection中声明过的方法</p>
+</li>
+<li><p>要求：向Set中提娜佳的数据，其所在的类一定要重写hashCode()个equals()<br> 要求重写的hashCode与equals保持一致性，相等的对象有相同的hash值</p>
+</li>
+</ol>
+<p>TreeSet</p>
+<ol>
+<li>向TreeSet中添加的数据，要求时相同类的对象</li>
+<li>两种排序方式：自然排序 和 定制排序</li>
+<li>自然排序中：比较两个对象是否相同的标准为：comapreTo()返回0，不再是equals</li>
+</ol>
+<p>自然排序</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">TreeSet</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 不能添加不同类的对象</span>
+<span class="token comment">//        set.add(123);</span>
+<span class="token comment">//        set.add(456);</span>
+<span class="token comment">//        set.add("AA");</span>
+<span class="token comment">//        set.add(new User("Tom",12));</span>
+<span class="token comment">//        set.add(34);</span>
+<span class="token comment">//        set.add(-34);</span>
+<span class="token comment">//        set.add(54);</span>
+<span class="token comment">//        set.add(39);</span>
+<span class="token comment">//        set.add(24);</span>
+
+        <span class="token comment">// 举例二</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Tom"</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Jerry"</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Jim"</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Mike"</span><span class="token punctuation">,</span><span class="token number">52</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Jack"</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"Jack"</span><span class="token punctuation">,</span><span class="token number">98</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Iterator</span> i <span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>定制</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Comparator</span> com <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 按照年林从小到大排序</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o1<span class="token punctuation">,</span> <span class="token class-name">Object</span> o2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>o1 <span class="token keyword">instanceof</span> <span class="token class-name">User</span> <span class="token operator">&amp;&amp;</span> o2 <span class="token keyword">instanceof</span> <span class="token class-name">User</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token class-name">User</span> u1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">User</span><span class="token punctuation">)</span> o1<span class="token punctuation">;</span>
+                    <span class="token class-name">User</span> u2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">User</span><span class="token punctuation">)</span> o2<span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>u1<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>u2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">throw</span>  <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"输入的类型数据不匹配"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="常用的实现类结构"><a href="#常用的实现类结构" class="headerlink" title="常用的实现类结构"></a>常用的实现类结构</h3><p>|—- Map：双列数据：存储key-value对的数据 –类似于高中的函数 y=f(x)<br>   |—- HashMap:作为Map的主要实现类，线程不安全，效率高：存储null的key和value<br>       |—- LinkedHashMap:保证在遍历map元素时，可以按照添加的顺序实现遍历<br>           原因：在原有的HashMap底层结构基础上，添加了一对指针，指向前一个和后一个<br>           对于频繁的过滤操作，此类执行效率高于HashMap<br>   |—-TreeMap：<br>   |—-Hashtable：作为古老的实现类<br>       |—-Properties</p>
+<p>HashMap的底层：数组+链表 （jdk7之前）<br>        数组+链表+红黑树（jdk 8）</p>
+<h3 id="Map结构的理解"><a href="#Map结构的理解" class="headerlink" title="Map结构的理解"></a>Map结构的理解</h3><p>Map中的key无序的、不可重复的、使用Set存储所有数据       –&gt; key所在的类要重写equals和hashCode<br>Map中的value：无序的、可重复的、使用Collection存储所有的value –&gt; value所在的类要重写equals()<br>一个键值对：key-value构成一个Entry对象<br>Map中的entry：无序的、不可重复的、使用Set粗出所有的Entry</p>
+<p>图示：</p>
+<p><img src="1.png"></p>
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><p> HashMap map = new HashMap();<br>在实例化以后，底层创建一个长度为16的以为i数组Entry[] table<br>…可能已经执行过…<br>map.put(key1,value1);：<br>首先，调用key1所在类的hashCode计算key1的hash值，此哈希值经过某种算法计算以后，得到Entry数组中存放位置<br>如果此位置上的位置为空，此时key1,value1添加成功。<br>如果此位置上的数据不为空，（意味着此位置有一个或多个数据（一链表形式存在）），比较key1和已经存在的一个或多个数据的哈希值：<br>    如果key1的哈希值与已经存在的数据的哈希值都不相同，此时key1-value1添加成功。<br>    如果key1的哈希值和已经存在的某一个数据的哈希值相同，继续比较：调用key1的所在类的equals一一比较：<br>        如果equals()返回false：此时添加成功<br>        如果equals()返回true：此时使用value1替代相同key的value值</p>
+<p>jdk8中相对jdk7不同</p>
+<ol>
+<li>new HashMap()：底层没有创建一个长度为16的数组</li>
+<li>jdk 8底层的数组时：Node[]，而非Entry[]</li>
+<li>首次调用put[] 方法时，底层创建长度为16的数组</li>
+<li>jdk7底层结构只有：数组+链表。jdk8中底层结构：数组+链表+红黑树<br> 当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8且当前数组的长度 &gt;64时，<br> 此时索引位置上所有数据改为使用红黑树存储</li>
+</ol>
+<h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><p>添加、修改、删除操作<br>Object put(Object key,Object value):将指定key-value添加到（或修改）当前的map对象中<br>void putAll(Map m)：将m中所有的key-value对存放到当前的map中<br>Objct remove(Object key)：移除指定key的kay-value对，并返回value<br>void clear():清空当前map中所有的数据</p>
+<p>元素查询的操作<br>Object get(Object key):获取只当key对应的value<br>boolean containsKey(Object key):是否包含指定key<br>boolean ContainsValue(Object value):是否包含指定value<br>int size():饭返回map中key-value的个数<br>boolean isEmpty()：判断当前map是否为空<br>boolean equals(Object obj)：判断当前map和参数对象obj是否相等</p>
+<p>元视图操作<br>Set keySet():饭hi所有key构成的Set集合<br>Collection values()：返回所有value构成额Collection集合<br>Set entrySet()：返回所有key-value对构成的set集合</p>
+<p>添加：put<br>删除：remove<br>修改：put<br>查询：get<br>长度size</p>
+<h3 id="TreeMap的使用"><a href="#TreeMap的使用" class="headerlink" title="TreeMap的使用"></a>TreeMap的使用</h3><p>向TreeMap中添加key-value，要求key必须是由同一类创建的对象</p>
+<p>因为要按照key及逆行排序：自然排序、定制排序</p>
+<h3 id="Propeties的使用"><a href="#Propeties的使用" class="headerlink" title="Propeties的使用"></a>Propeties的使用</h3><h2 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h2><h3 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h3><p>reverse(List)：反转 List 中元素的顺序<br>shuffle(List)：对 List 集合元素进行随机排序<br>sort(List)：根据元素的自然顺序对指定 List 集合元素按升序排序<br>sort(List，Comparator)：根据指定的 Comparator 产生的顺序对 List 集合元素进行排序<br>swap(List，int， int)：将指定 list 集合中的 i 处元素和 j 处元素进行交换</p>
+<p>Object max(Collection)：根据元素的自然顺序，返回给定集合中的最大元素<br>Object max(Collection，Comparator)：根据 Comparator 指定的顺序，返回 给定集合中的最大元素<br>Object min(Collection)<br>Object min(Collection，Comparator)<br>int frequency(Collection，Object)：返回指定集合中指定元素的出现次数<br>void copy(List dest,List src)：将src中的内容复制到dest中</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token class-name">List</span> dest <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>dest<span class="token punctuation">,</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>dest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>boolean replaceAll(List list，Object oldVal，Object newVal)：使用新值替换List 对象的所有旧值</p>
+<p>说明ArrayList和HashMap都是线程不安全的，如果程序要求线程安全，我们可以将ArrayList、HashMap转换成线程的</p>
+
                 
             </div>
             <hr/>
@@ -511,7 +690,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/11/10/java-gao-ji-bu-fen/">http://example.com/2021/11/10/java-gao-ji-bu-fen/</a>
+                    <a href="http://example.com/2021/11/21/java-ji-he/">http://example.com/2021/11/21/java-ji-he/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,8 +728,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/JavaSE/">
+                                    <span class="chip bg-color">JavaSE</span>
                                 </a>
                             
                         </div>
@@ -722,18 +901,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/10/java-gao-ji-bu-fen/">
+                <a href="/2021/11/25/java-fan-xing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="java高级部分">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java泛型">
                         
-                        <span class="card-title">java高级部分</span>
+                        <span class="card-title">Java泛型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -743,9 +921,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -758,12 +936,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/JavaSE/">
+                        <span class="chip bg-color">JavaSE</span>
                     </a>
                     
                 </div>
@@ -777,31 +954,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/05/ji-suan-ji-wang-luo-ying-yong-ceng/">
+                <a href="/2021/11/18/ejbca-bu-shu-ji-jian-dan-ying-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="计算机网络-应用层">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="EJBCA部署及简单应用">
                         
-                        <span class="card-title">计算机网络-应用层</span>
+                        <span class="card-title">EJBCA部署及简单应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这部分将对应用层的知识进行总结
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    计算机基础
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -811,8 +988,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">计算机网络</span>
+                    <a href="/tags/Java%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">Java开发</span>
                     </a>
                     
                 </div>
@@ -1018,7 +1195,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">87.7k</span>
+                        class="white-color">108.7k</span>
             
             
             

@@ -571,7 +571,7 @@
 <li><p>在集合中使用泛型</p>
 </li>
 </ol>
-<p>总结：<br>（1） 集合接口或者集合类在jdk5.0时都修改为带泛型的结构<br>（2）在实例化集合类时，可以指明具体的泛型类型。<br>（3）在指明完以后，在集合类或接口中凡是定义类或接口时，内部结构(比如方法，属性、构造器)使用到类的泛型的位置，都指定为实例化时泛型的类型<br>比如 add(E e)     —&gt;实例化以后：add(Integer e)<br>(4) 注意泛型的类型必须是类，不能是基本数据类型，选哟基本数据类型的位置用包装类代替<br>(5) 如果实例化时，没有指明泛型的类型。默认类型为java.lang.Object类型。</p>
+<p>总结：<br>（1） 集合接口或者集合类在jdk5.0时都修改为带泛型的结构<br>（2）在实例化集合类时，可以指明具体的泛型类型。<br>（3）在指明完以后，在集合类或接口中凡是定义类或接口时，内部结构(比如方法，属性、构造器)使用到类的泛型的位置，都指定为实例化时泛型的类型<br>比如 add(E e)     —&gt;实例化以后：add(Integer e)<br>(4) 注意泛型的类型必须是类，不能是基本数据类型，使用基本数据类型的位置用包装类代替<br>(5) 如果实例化时，没有指明泛型的类型。默认类型为java.lang.Object类型。</p>
 <h2 id="自定义泛型类与接口"><a href="#自定义泛型类与接口" class="headerlink" title="自定义泛型类与接口"></a>自定义泛型类与接口</h2><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>【Order】</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">public</span> <span class="token keyword">class</span> b_Order<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
@@ -1415,7 +1415,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">110.1k</span>
+                        class="white-color">117.1k</span>
             
             
             

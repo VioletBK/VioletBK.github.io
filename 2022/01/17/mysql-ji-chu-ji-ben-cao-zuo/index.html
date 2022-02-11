@@ -599,7 +599,7 @@ DESCRIBE employees;	# 显示了创建时表中字段的详细信息
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2f49b4a22d3284c65b061655887976862.png"></p>
-<!-- ![](image/2022-01-17-18-27-25.png) -->
+<!--  -->
 
 
 <h3 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h3><p>当我们想要获取某一条具有某一特征分数据时，可以通过过滤数据where进行提取。</p>
@@ -618,7 +618,7 @@ SELECT * FROM employees WHERE last_name&#x3D;&quot;king&quot;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v224963ba5b7244cf98735a59926510e8a.png" alt="算术运算符的描述"></p>
-<!-- ![](image/2022-01-18-16-03-28.png) -->
+<!--  -->
 
 <h4 id="加法与乘法运算符"><a href="#加法与乘法运算符" class="headerlink" title="加法与乘法运算符"></a>加法与乘法运算符</h4><p>例子：</p>
 <pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">
@@ -672,11 +672,11 @@ FROM DUAL;
 
 <h3 id="2-比较运算符"><a href="#2-比较运算符" class="headerlink" title="2. 比较运算符"></a>2. 比较运算符</h3><p>比较运算符用来对表达式左边的操作数和右边的操作数进行比较，比较的结果为真则返回1，比较的结果 为假则返回0，其他情况则返回NULL。<br>比较运算符经常被用来作为SELECT查询语句的条件来使用，返回符合条件的结果记录。</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2d998aaf66e8a49af964782869b39831b.png" alt="比较运算符的解释与使用"></p>
-<!-- ![](image/2022-01-18-16-21-41.png) -->
+<!--  -->
 
 <p>下面是非符号运算符</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v209266aada52a42719304d2c48bdd55a7.png" alt="非符号运算符的使用的使用"></p>
-<!-- ![](image/2022-01-18-17-44-34.png) -->
+<!--  -->
 
 <h4 id="lt-gt-lt-gt-lt-lt-gt-gt"><a href="#lt-gt-lt-gt-lt-lt-gt-gt" class="headerlink" title="= &lt;=&gt; &lt;&gt; != &lt; &lt;= &gt; &gt;="></a>= &lt;=&gt; &lt;&gt; != &lt; &lt;= &gt; &gt;=</h4><p>例子：</p>
 <pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">
@@ -811,17 +811,17 @@ FROM DUAL;
 
 <h3 id="3-逻辑运算符"><a href="#3-逻辑运算符" class="headerlink" title="3. 逻辑运算符"></a>3. 逻辑运算符</h3><p>MYSQL支持以下四种逻辑运算符</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2cc19baec4c214d9795e3dcc6b471f5ee.png" alt="逻辑运算符"></p>
-<!-- ![](image/2022-01-18-17-52-19.png) -->
+<!--  -->
 
 <h3 id="4-位运算符"><a href="#4-位运算符" class="headerlink" title="4. 位运算符"></a>4. 位运算符</h3><p>位运算符是在二进制数上进行计算的运算符。位运算符会先将操作数变成二进制数，然后进行位运算， 最后将计算结果从二进制变回十进制数。</p>
 <p><strong>注意：在SQL中是以8为一个字节单位</strong> ， 所以我们进行非运算时，需要以8为为基本单位进行取反</p>
 <p>运算符如下</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v293d2faa9869c4fee9ce45f9bf8d5b11d.png" alt="位运算符"></p>
-<!-- ![位运算符](image/2022-01-18-17-58-05.png) -->
+<!--  -->
 
 <h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><p>优先级可以见下表</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2edb322861ed24a7eb9f8009f7dbb21a6.png" alt="运算符优先级"></p>
-<!-- ![运算符优先级](image/2022-01-18-17-55-27.png) -->
+<!--  -->
 
 <h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><pre class="line-numbers language-none"><code class="language-none">
 【题目】 
@@ -957,7 +957,7 @@ FROm departments,employees;
 
 <p>笛卡尔乘积是一个数学运算。假设我有两个集合 X 和 Y，那么 X 和 Y 的笛卡尔积就是 X 和 Y 的所有可能 组合，也就是第一个对象来自于 X，第二个对象来自于 Y 的所有可能。组合的个数即为两个集合中元素个数的乘积数。</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v24344f12f66e14fb2b935528aeb3cdfaf.png" alt="笛卡尔积"></p>
-<!-- ![笛卡尔积](image/2022-01-19-14-06-51.png) -->
+<!--  -->
 
 <ul>
 <li><p>笛卡尔积的错误会在下面条件下产生： </p>
@@ -1122,13 +1122,13 @@ ON e.department_id &#x3D; d.department_id;
 
 <h3 id="UNION-与-UNION-ALL"><a href="#UNION-与-UNION-ALL" class="headerlink" title="UNION 与 UNION ALL"></a>UNION 与 UNION ALL</h3><p>合并查询结果 利用UNION关键字，可以给出多条SELECT语句，并将它们的结果组合成单个结果集。<br>合并时，两个表对应的列数和数据类型必须相同，并且相互对应。各个SELECT语句之间使用UNION或UNION ALL关键字分隔。</p>
 <p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v28e0b9bf91da34a918e79e73507fb1488.png" alt="UNION 与 UNION ALL"></p>
-<!-- ![UNION 与 UNION ALL](image/2022-01-19-16-24-00.png) -->
+<!--  -->
 
 <blockquote>
 <p>注意：执行UNION ALL语句时所需要的资源比UNION语句少。如果明确知道合并数据后的结果数据 不存在重复数据，或者不需要去除重复的数据，则尽量使用UNION ALL语句，以提高数据查询的效率。</p>
 </blockquote>
 <h4 id="7种SQL-JOINS的实现"><a href="#7种SQL-JOINS的实现" class="headerlink" title="7种SQL JOINS的实现"></a>7种SQL JOINS的实现</h4><p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2a18516edf7e74663bfb494ad739e41f2.png" alt="7种SQL JOINS的实现"></p>
-<!-- ![7种SQL JOINS的实现](image/2022-01-19-16-21-20.png) -->
+<!--  -->
 
 <pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">
 # 中图：内连接
@@ -1601,12 +1601,12 @@ WHERE department_name IN (&#39;Sales&#39;,&#39;IT&#39;)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaSE/">
-                        <span class="chip bg-color">JavaSE</span>
-                    </a>
-                    
                     <a href="/tags/Java%E6%A0%B8%E5%BF%83%E5%8D%B7I/">
                         <span class="chip bg-color">Java核心卷I</span>
+                    </a>
+                    
+                    <a href="/tags/JavaSE/">
+                        <span class="chip bg-color">JavaSE</span>
                     </a>
                     
                 </div>
@@ -1812,7 +1812,7 @@ WHERE department_name IN (&#39;Sales&#39;,&#39;IT&#39;)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">119k</span>
+                        class="white-color">117.2k</span>
             
             
             

@@ -494,21 +494,21 @@
 </li>
 </ol>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-docker pull primekey&#x2F;ejbca-ce
+docker pull primekey/ejbca-ce
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>根据该docker镜像中的描述，可以直接使用如下命令启动一个无需客户端证书的临时测试实例（仅限于测试，不推荐在公网环境下使用）：</li>
 </ol>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-docker run -it --rm -p 80:8080 -p 443:8443 -h mycahostname -e TLS_SETUP_ENABLED&#x3D;&quot;simple&quot; primekey&#x2F;ejbca-ce
+docker run -it --rm -p <span class="token number">80</span>:8080 -p <span class="token number">443</span>:8443 -h mycahostname -e <span class="token assign-left variable">TLS_SETUP_ENABLED</span><span class="token operator">=</span><span class="token string">"simple"</span> primekey/ejbca-ce
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="4">
 <li>或使用如下命令启动一个客户端证书验证的实例</li>
 </ol>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-docker run -it --rm -p 80:8080 -p 443:8443 -h mycahostname primekey&#x2F;ejbca-ce
+docker run -it --rm -p <span class="token number">80</span>:8080 -p <span class="token number">443</span>:8443 -h mycahostname primekey/ejbca-ce
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><strong>注意：</strong></p>
@@ -630,39 +630,39 @@ docker run -it --rm -p 80:8080 -p 443:8443 -h mycahostname primekey&#x2F;ejbca-c
 <h2 id="实现安全的邮件通信"><a href="#实现安全的邮件通信" class="headerlink" title="实现安全的邮件通信"></a>实现安全的邮件通信</h2><h3 id="步骤一）设置主机名并更新-etc-hosts"><a href="#步骤一）设置主机名并更新-etc-hosts" class="headerlink" title="步骤一）设置主机名并更新 /etc/hosts"></a>步骤一）设置主机名并更新 /etc/hosts</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
 hostnamectl set-hostname violeteg.cn
 
-exec bash
+<span class="token builtin class-name">exec</span> <span class="token function">bash</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>此外，你需要在 /etc/hosts 中添加系统的主机名和 IP：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-vim &#x2F;etc&#x2F;hosts
+<span class="token function">vim</span> /etc/hosts
 
-82.157.126.166 violeteg.cn
+<span class="token number">82.157</span>.126.166 violeteg.cn
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="15.png"></p>
 <h3 id="步骤二）安装-Postfix-邮件服务器"><a href="#步骤二）安装-Postfix-邮件服务器" class="headerlink" title="步骤二）安装 Postfix 邮件服务器"></a>步骤二）安装 Postfix 邮件服务器</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-yum -y install postfix dovecot cyrus-sasl
+yum -y <span class="token function">install</span> postfix dovecot cyrus-sasl
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>结果如下</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
- yum -y install postfix dovecot cyrus-sasl
+ yum -y <span class="token function">install</span> postfix dovecot cyrus-sasl
 Loaded plugins: fastestmirror, langpacks
-Repository epel is listed more than once in the configuration
+Repository epel is listed <span class="token function">more</span> than once <span class="token keyword">in</span> the configuration
 Loading mirror speeds from cached hostfile
  * webtatic: uk.repo.webtatic.com
-docker-ce-stable                                                                                                                 | 3.5 kB  00:00:00     
-epel                                                                                                                             | 4.7 kB  00:00:00     
-extras                                                                                                                           | 2.9 kB  00:00:00     
-mysql-connectors-community                                                                                                       | 2.6 kB  00:00:00     
+docker-ce-stable                                                                                                                 <span class="token operator">|</span> <span class="token number">3.5</span> kB  00:00:00     
+epel                                                                                                                             <span class="token operator">|</span> <span class="token number">4.7</span> kB  00:00:00     
+extras                                                                                                                           <span class="token operator">|</span> <span class="token number">2.9</span> kB  00:00:00     
+mysql-connectors-community                                                                                                       <span class="token operator">|</span> <span class="token number">2.6</span> kB  00:00:00     
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h3 id="步骤三）启动并启用-Postfix-服务"><a href="#步骤三）启动并启用-Postfix-服务" class="headerlink" title="步骤三）启动并启用 Postfix 服务"></a>步骤三）启动并启用 Postfix 服务</h3><p>成功安装 Postfix 后，运行以下命令启动Postfix 服务：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
 systemctl start postfix
-systemctl enable postfix
+systemctl <span class="token builtin class-name">enable</span> postfix
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>用一下命令查看postfix状态</p>
@@ -672,50 +672,50 @@ systemctl status postfix
 
 <p>状态如下，说明Postfix正常运行。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-[root@violeteg ~]# systemctl status postfix
+<span class="token punctuation">[</span>root@violeteg ~<span class="token punctuation">]</span><span class="token comment"># systemctl status postfix</span>
 ● postfix.service - Postfix Mail Transport Agent
-   Loaded: loaded (&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;postfix.service; enabled; vendor preset: disabled)
-   Active: active (running) since Wed 2021-10-13 18:47:33 CST; 1 months 16 days ago
- Main PID: 1434 (master)
-    Tasks: 3
-   Memory: 5.7M
-   CGroup: &#x2F;system.slice&#x2F;postfix.service
-           ├─ 1434 &#x2F;usr&#x2F;libexec&#x2F;postfix&#x2F;master -w
-           ├─ 1452 qmgr -l -t unix -u
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/postfix.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+   Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since Wed <span class="token number">2021</span>-10-13 <span class="token number">18</span>:47:33 CST<span class="token punctuation">;</span> <span class="token number">1</span> months <span class="token number">16</span> days ago
+ Main PID: <span class="token number">1434</span> <span class="token punctuation">(</span>master<span class="token punctuation">)</span>
+    Tasks: <span class="token number">3</span>
+   Memory: <span class="token number">5</span>.7M
+   CGroup: /system.slice/postfix.service
+           ├─ <span class="token number">1434</span> /usr/libexec/postfix/master -w
+           ├─ <span class="token number">1452</span> qmgr -l -t unix -u
            └─28716 pickup -l -t unix -u
 
-Oct 13 18:47:31 VM-16-16-centos systemd[1]: Starting Postfix Mail Transport Agent...
-Oct 13 18:47:33 VM-16-16-centos postfix&#x2F;master[1434]: daemon started -- version 2.10.1, configuration &#x2F;etc&#x2F;postfix
-Oct 13 18:47:33 VM-16-16-centos systemd[1]: Started Postfix Mail Transport Agent.
+Oct <span class="token number">13</span> <span class="token number">18</span>:47:31 VM-16-16-centos systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Starting Postfix Mail Transport Agent<span class="token punctuation">..</span>.
+Oct <span class="token number">13</span> <span class="token number">18</span>:47:33 VM-16-16-centos postfix/master<span class="token punctuation">[</span><span class="token number">1434</span><span class="token punctuation">]</span>: daemon started -- version <span class="token number">2.10</span>.1, configuration /etc/postfix
+Oct <span class="token number">13</span> <span class="token number">18</span>:47:33 VM-16-16-centos systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Started Postfix Mail Transport Agent.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="步骤四）安装-mailx-邮件客户端"><a href="#步骤四）安装-mailx-邮件客户端" class="headerlink" title="步骤四）安装 mailx 邮件客户端"></a>步骤四）安装 mailx 邮件客户端</h3><p>在配置 Postfix 服务器之前，我们需要安装 mailx，要安装它，请运行以下命令：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-yum install mailx
+yum <span class="token function">install</span> mailx
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h3 id="步骤五）配置-Postfix-邮件服务器"><a href="#步骤五）配置-Postfix-邮件服务器" class="headerlink" title="步骤五）配置 Postfix 邮件服务器"></a>步骤五）配置 Postfix 邮件服务器</h3><p>Postfix 的配置文件位于 /etc/postfix/main.cf 中</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-vi &#x2F;etc&#x2F;postfix&#x2F;main.cf
+<span class="token function">vi</span> /etc/postfix/main.cf
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>然后我们修改以下几行，因为这几行分布在不同位置，所以可以使用/+查找字符进行查找，n为向下查找，N为向上查找</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-myhostname &#x3D; your_hostname
-mydomain &#x3D; your_domain
-myorigin &#x3D; $mydomain
-## 取消注释并将 inet_interfaces 设置为 all##
-inet_interfaces &#x3D; all
-## 更改为 all ##
-inet_protocols &#x3D; all
-## 注释 ##
-#mydestination &#x3D; $myhostname, localhost.$mydomain, localhost
-## 取消注释 ##
-mydestination &#x3D; $myhostname, localhost.$mydomain, localhost, $mydomain
-## 取消注释并添加 IP 范围 ##
-mynetworks &#x3D; 192.168.1.0&#x2F;24, 127.0.0.0&#x2F;8
-## 取消注释 ##
-home_mailbox &#x3D; Maildir&#x2F;
+myhostname <span class="token operator">=</span> your_hostname
+mydomain <span class="token operator">=</span> your_domain
+myorigin <span class="token operator">=</span> <span class="token variable">$mydomain</span>
+<span class="token comment">## 取消注释并将 inet_interfaces 设置为 all##</span>
+inet_interfaces <span class="token operator">=</span> all
+<span class="token comment">## 更改为 all ##</span>
+inet_protocols <span class="token operator">=</span> all
+<span class="token comment">## 注释 ##</span>
+<span class="token comment">#mydestination = $myhostname, localhost.$mydomain, localhost</span>
+<span class="token comment">## 取消注释 ##</span>
+mydestination <span class="token operator">=</span> <span class="token variable">$myhostname</span>, localhost.<span class="token variable">$mydomain</span>, localhost, <span class="token variable">$mydomain</span>
+<span class="token comment">## 取消注释并添加 IP 范围 ##</span>
+mynetworks <span class="token operator">=</span> <span class="token number">192.168</span>.1.0/24, <span class="token number">127.0</span>.0.0/8
+<span class="token comment">## 取消注释 ##</span>
+home_mailbox <span class="token operator">=</span> Maildir/
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>配置完成后，保存退出，重启postfix。</p>
@@ -725,29 +725,29 @@ systemctl restart postfix
 
 <h2 id="步骤六）测试-Postfix-邮件服务器"><a href="#步骤六）测试-Postfix-邮件服务器" class="headerlink" title="步骤六）测试 Postfix 邮件服务器"></a>步骤六）测试 Postfix 邮件服务器</h2><p>创建一个测试账号</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-useradd postfixuser
-passwd postfixuser
+<span class="token function">useradd</span> postfixuser
+<span class="token function">passwd</span> postfixuser
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>接下来，运行以下命令，从本地用户 pkumar 发送邮件到另一个用户 postfixuser。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
 telnet localhost smtp
 或者
-telnet localhost 25
+telnet localhost <span class="token number">25</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如果没有telnet，下载即可</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-yum install telnet -y
+yum <span class="token function">install</span> telnet -y
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>便得到了以下结果</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
-[root@violeteg ~]# telnet localhost smtp
-Trying ::1...
+<span class="token punctuation">[</span>root@violeteg ~<span class="token punctuation">]</span><span class="token comment"># telnet localhost smtp</span>
+Trying ::1<span class="token punctuation">..</span>.
 Connected to localhost.
-Escape character is &#39;^]&#39;.
-220 violeteg.cn ESMTP Postfix
+Escape character is <span class="token string">'^]'</span><span class="token builtin class-name">.</span>
+<span class="token number">220</span> violeteg.cn ESMTP Postfix
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面的结果确认与 postfix 邮件服务器的连接正常。接下来，输入命令：</p>
@@ -758,14 +758,14 @@ ehlo localhost
 <p>结果如下</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">
 ehlo localhost
-250-violeteg.cn
-250-PIPELINING
-250-SIZE 10240000
-250-VRFY
-250-ETRN
-250-ENHANCEDSTATUSCODES
-250-8BITMIME
-250 DSN
+<span class="token number">250</span>-violeteg.cn
+<span class="token number">250</span>-PIPELINING
+<span class="token number">250</span>-SIZE <span class="token number">10240000</span>
+<span class="token number">250</span>-VRFY
+<span class="token number">250</span>-ETRN
+<span class="token number">250</span>-ENHANCEDSTATUSCODES
+<span class="token number">250</span>-8BITMIME
+<span class="token number">250</span> DSN
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
@@ -1453,7 +1453,7 @@ Hello, Welcome to my mailserver (Postfix)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">119k</span>
+                        class="white-color">117.2k</span>
             
             
             

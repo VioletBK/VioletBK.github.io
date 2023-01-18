@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构-表、栈、队列, Violet&#39;s Blog">
+    <meta name="keywords" content="数据结构, Violet&#39;s Blog">
     <meta name="description" content="Summary of knowledge learned">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构-表、栈、队列 | Violet&#39;s Blog</title>
+    <title>数据结构 | Violet&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/data.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构-表、栈、队列</h1>
+                    <h1 class="description center-align post-title">数据结构</h1>
                 </div>
             </div>
         </div>
@@ -429,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C%E8%89%B9/">
+                                <span class="chip bg-color">C艹</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -452,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    483
+                    2.9k
                 </div>
                 
 
@@ -506,13 +519,59 @@ EndADT
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><p>线性表根据在计算机的储存方式可以分为两种：</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="考纲要求"><a href="#考纲要求" class="headerlink" title="考纲要求"></a>考纲要求</h3><p>理解线性表的概念，熟练掌握顺序表和链表的概念和操作。能够利用顺序表和链表有效地表示多项式等结构，并设计高效率算法。理解和掌握循环链表和双向链表的基本概念和基本操作。</p>
+<h3 id="线性表的概念"><a href="#线性表的概念" class="headerlink" title="线性表的概念"></a>线性表的概念</h3><blockquote>
+<p>线性表：零个或多个数据元素的有限序列</p>
+</blockquote>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-08-47-22.png" class="">
+
+
+
+<p>线性表根据在计算机的储存方式可以分为两种：</p>
 <ul>
 <li>顺序线性表</li>
 <li>链式线性表</li>
 </ul>
-<h3 id="顺序线性表"><a href="#顺序线性表" class="headerlink" title="顺序线性表"></a>顺序线性表</h3><p>顺序线性表：使用一段连续的地址存储单元放置线性表的数据元素。</p>
-<pre class="line-numbers language-none"><code class="language-none">
+<p>之后拿到书具体再研究</p>
+<h3 id="线性表的操作（ADT）"><a href="#线性表的操作（ADT）" class="headerlink" title="线性表的操作（ADT）"></a>线性表的操作（ADT）</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">
+ADT<span class="token operator">:</span>线性表<span class="token punctuation">(</span>List<span class="token punctuation">)</span>
+Data<span class="token operator">:</span> 
+  线性表的数据集合为<span class="token punctuation">&#123;</span>a1<span class="token punctuation">,</span>a2<span class="token punctuation">,</span>……<span class="token punctuation">,</span>an<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+Operation<span class="token operator">:</span>
+  <span class="token function">InitList</span><span class="token punctuation">(</span><span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token operator">*</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">getElement</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 将线性表L中的第i个位置元素值返回给e</span>
+  <span class="token function">LocateElement</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 在行i星标L中查找于给定值e相等的元素，如果查找成功，返回在表中徐浩表示成功；否则，返回e表示失败</span>
+  <span class="token function">ListInsert</span><span class="token punctuation">(</span><span class="token operator">*</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ListDelete</span><span class="token punctuation">(</span><span class="token operator">*</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ListLength</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 返回元素个数</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此外还有其他操作比如取并集。</p>
+<p>操作可以简述为：判断LB中元素LA是否存在，如果不存在，则插入LA中。</p>
+<h3 id="顺序线性表"><a href="#顺序线性表" class="headerlink" title="顺序线性表"></a>顺序线性表</h3><p>顺序线性表：使用一段连续的地址存储单元放置线性表的数据元素（ <strong>数据类型是相同的</strong> ）。</p>
+<p>存储结构如下：</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-10-28-50.png" class="">
+
+
+<h4 id="插入算法的实现"><a href="#插入算法的实现" class="headerlink" title="插入算法的实现"></a>插入算法的实现</h4><p>基本思想如下：</p>
+<ul>
+<li>插入位置不合理报错，如插入a[0]前或者a[length+1];  if(i&lt;0 || i &gt; length + 1)</li>
+<li>如果插入后，线性表的长度大于最大长度，报错或者动态增加容量</li>
+<li>插入从后向前，从a[length-1]到a[i-1]依次后移一位。</li>
+<li>将元素插入。</li>
+<li>length+1</li>
+</ul>
+<h4 id="删除算法的实现"><a href="#删除算法的实现" class="headerlink" title="删除算法的实现"></a>删除算法的实现</h4><p>基本思想如下：</p>
+<ul>
+<li>删除位置不合理，就是说不在0到length-1的范围内。</li>
+<li>取出删除元素</li>
+<li>从被删除i位置，a[i]依次向后向前移一位</li>
+<li>长度减一</li>
+</ul>
+<h4 id="插入与删除的时间复杂度"><a href="#插入与删除的时间复杂度" class="headerlink" title="插入与删除的时间复杂度"></a>插入与删除的时间复杂度</h4><p>最好情况，插入删除都在顺序表尾部。</p>
+<p>此时时间复杂度为O(1)，总体平均为O(n-1/2);所以时间复杂度为O(n)</p>
+<h4 id="顺序线性表的优缺点"><a href="#顺序线性表的优缺点" class="headerlink" title="顺序线性表的优缺点"></a>顺序线性表的优缺点</h4><pre class="line-numbers language-none"><code class="language-none">
 顺序线性表的优缺点：
 优点：
 - 可以快速获取下标的数据元素，时间复杂度为O(1)
@@ -524,7 +583,199 @@ EndADT
 - 造成存储空间碎片
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><h4 id="单链表的读取（感觉有点问题）"><a href="#单链表的读取（感觉有点问题）" class="headerlink" title="单链表的读取（感觉有点问题）"></a>单链表的读取（感觉有点问题）</h4><p>单链表不像顺序表一样通过数组构建，因此无法直接查找特定位置的数据元素。</p>
+<ul>
+<li>声明一个节点p执行链表的第一个节点。（问题就来了，第一个节点是否代表头节点，但是头节点一般是不存储数据的，所以我们可以假设第一个节点不为头节点，应为p=L-&gt;next）</li>
+<li>声明一个j，初始化设置为1(0)，设置循环条件(p!=null &amp;&amp; j &lt; i)。（感觉这里且或者或都可以，还是为了保障安全性，还是使用或）。</li>
+<li>随着循环的进行j++，p= p-&gt;next</li>
+<li>如果到了i位置，p为Null说明到了链表的末尾，即没有查询到</li>
+<li>否则查询到</li>
+</ul>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>e插入p节点之后。</p>
+<p>核心代码为</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+e<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+p<span class="token operator">-></span>next <span class="token operator">=</span> e<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>基本思想如下</p>
+<ul>
+<li>插入位置是否合理</li>
+<li>遍历到要插入的位置（遍历使用上面的取节点），否则报错</li>
+<li>到达位置之后，创建一个新的节点，并将数据传给它。</li>
+<li>使用核心代码进行插入。</li>
+</ul>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>核心代码为</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+t <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+p<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
+<span class="token keyword">delete</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="单链表的整体创建"><a href="#单链表的整体创建" class="headerlink" title="单链表的整体创建"></a>单链表的整体创建</h4><p>首插法：即将新建的节点插入到头指针与上一个新节点之间</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+LinkedList l <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LinkedList</span><span class="token punctuation">(</span>ElementType data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+l<span class="token operator">-></span>next <span class="token operator">=</span> List <span class="token operator">-></span> next<span class="token punctuation">;</span>
+List <span class="token operator">-></span> next <span class="token operator">=</span> l<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>尾插法：更符合我们的逻辑，即将新建节点插入到链表的最后。</p>
+<p>其实这里逻辑上符合常规，但是实际算法比较麻烦。因为我们需要不断指向尾部，如果使用遍历的方式的话，必然会造成很高的时间复杂度，所以我们可以创建一个尾节点不断指向链表的尾部。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token keyword">void</span> <span class="token function">createNewLinkedList</span><span class="token punctuation">(</span>LinkedList <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  LinkedList <span class="token operator">*</span> r <span class="token operator">=</span> <span class="token operator">*</span>L<span class="token punctuation">;</span>    <span class="token comment">// 指向链表尾部，链表一开始只有一个头节点即*L</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    LinkedList <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LinkedList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    r<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token punctuation">;</span>    
+    r <span class="token operator">=</span> p<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h4><p>删除的思路在于：</p>
+<ul>
+<li>声明节点p和q</li>
+<li>将第一个节点赋值给p</li>
+<li>将p-&gt;next赋值给q，然后释放p，再将q赋值给q</li>
+</ul>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>将单链表中终端节点的指针端有空指针改为指向头节点，就使整个单链表形成一个环，这种头尾相接的单链表成为单循环链表，简称循环链表（circular linked list）</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-14-47-17.png" class="">
+
+<p>循环链表和单链表的主要差异就在于循环的判断条件上，现在为p-&gt;next 是否等于头节点。</p>
+<h4 id="尾指针"><a href="#尾指针" class="headerlink" title="尾指针"></a>尾指针</h4><p>我们可以设置一个尾指针指向终端节点，此时查找开始节点和终端节点都十分的方便。终端节点表示为rear，开始节点表示为rear-&gt;next</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-14-51-37.png" class="">
+
+<p>合并两个链表，当有尾指针后，合并两个链表会十分方便。</p>
+<p>原本为</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-14-56-13.png" class="">
+
+<p>合并操作如下，*p = rearA-&gt;next; rearA-&gt;next = rearB-&gt;next-&gt;next,<font color="red">这里是因为要指向第一个节点，而非头节点</font>; rearB-&gt;next=p ;</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-14-56-38.png" class="">
+
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>双向链表（double linked list）实在单链表的每个节点中，在设置一个指向其前驱节点的指针域。所以双向链表有两个指针域，一个指向前驱，一个指向直接后继。</p>
+<p>结构如下。</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-15-06-45.png" class="">
+
+<h4 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a>插入</h4><p>因为有两个指针域，所以它要修改两个指针变量。插入S，找到p。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+s<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span> 
+s<span class="token operator">-></span>prior <span class="token operator">=</span> p<span class="token punctuation">;</span> 
+s<span class="token operator">-></span>next<span class="token operator">-></span>prior <span class="token operator">=</span> <span class="token function">s</span><span class="token punctuation">(</span>或者p<span class="token operator">-></span>next<span class="token operator">-></span>prior<span class="token operator">=</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token operator">-></span>next <span class="token operator">=</span> s<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>删除操作可以分解为，前一个节点的后驱变为后一个节点即s-&gt;prior-&gt;next=s-&gt;next; 后一个节点的前驱变为前一个节点，s-&gt;next-&gt;prior = s-&gt;prior;然后释放s,delete(s);</p>
+<h3 id="未完成部分"><a href="#未完成部分" class="headerlink" title="未完成部分"></a>未完成部分</h3><ul>
+<li>各个部分的概念。</li>
+<li>用链表或者顺序表表示多项式</li>
+</ul>
+<h2 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h2><h3 id="考纲要求-1"><a href="#考纲要求-1" class="headerlink" title="考纲要求"></a>考纲要求</h3><p>掌握通用栈和队列的基本概念与实现方法，掌握链式栈、递归、循环队列、链式队列和优先队列的存储表示和实现，并能够应用于求表达式计算和解迷宫等实际问题的求解。</p>
+<h3 id="栈的概念"><a href="#栈的概念" class="headerlink" title="栈的概念"></a>栈的概念</h3><p>很多软件中可以实现撤销(undo)操作，这里就是使用栈。后进先出。</p>
+<p>栈(stack)是限定金在标为进行插入和删除操作的线性表</p>
+<p>我们把允许插入和删除的一端称为栈顶(top)，另一端称为栈底(bottom)，不含任何数据元素的栈称为空栈。栈又被称为后进先出(Last In First Out)的线性，简称为LIFO结构。</p>
+<h3 id="进栈与出栈"><a href="#进栈与出栈" class="headerlink" title="进栈与出栈"></a>进栈与出栈</h3><p>1、2、3依次入栈，会有哪些出栈顺序呢？</p>
+<p>321、123、213、132、231</p>
+<blockquote>
+<p>从这里我们可以得到，312必不可能，因为3第一个出栈代表全部数都已经进栈，然后其余数字再依次出栈，所以2必然会在1之前。那么我们对此进行规律总结。如1、2、3、4、5中，4先出栈，1到3必然按照从大到小的顺序进行出栈。同样的规律用于子序列中。</p>
+</blockquote>
+<h3 id="栈的抽象数据类型"><a href="#栈的抽象数据类型" class="headerlink" title="栈的抽象数据类型"></a>栈的抽象数据类型</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+ADT 栈<span class="token punctuation">(</span>ADT<span class="token punctuation">)</span>
+Data
+  同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系
+
+operation：
+  <span class="token function">InitStack</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 初始化操作，建立一个空栈</span>
+  <span class="token function">destroyStack</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 销毁栈</span>
+  <span class="token function">clearStack</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 清空栈</span>
+  <span class="token function">stackIsEmpty</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 判断栈是否为空</span>
+  <span class="token function">getTop</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">,</span><span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 如果栈不为空，得到栈顶</span>
+  <span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 压栈</span>
+  <span class="token function">pop</span><span class="token punctuation">(</span><span class="token operator">*</span>s<span class="token punctuation">,</span><span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 出栈</span>
+  <span class="token function">stackLength</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 得到栈的元素个数</span>
+
+endADT<span class="token punctuation">;</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="栈的顺序存储结构以及实现"><a href="#栈的顺序存储结构以及实现" class="headerlink" title="栈的顺序存储结构以及实现"></a>栈的顺序存储结构以及实现</h3><h4 id="栈的顺序存储结构"><a href="#栈的顺序存储结构" class="headerlink" title="栈的顺序存储结构"></a>栈的顺序存储结构</h4><p>存在栈的最大长度StackSize。栈顶位置top必须小于StackSize。</p>
+<p>当栈存在一个元素是，top等于0，因此通常把空栈的判断条件定位top等于-1</p>
+<p>栈的结构定义</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+  elementType data<span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> top<span class="token punctuation">;</span>        <span class="token comment">// 用于栈顶指针</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="进栈操作"><a href="#进栈操作" class="headerlink" title="进栈操作"></a>进栈操作</h4><p>原理很简单</p>
+<p>S-&gt;top++;<br>S-&gt;data[top] = e;</p>
+<h4 id="出栈操作"><a href="#出栈操作" class="headerlink" title="出栈操作"></a>出栈操作</h4><p>与进栈操作类似</p>
+<p>*e = S-&gt;data[S-&gt;top];<br>S-&gt;top–;</p>
+<h3 id="栈的链式存储结构及实现"><a href="#栈的链式存储结构及实现" class="headerlink" title="栈的链式存储结构及实现"></a>栈的链式存储结构及实现</h3><h4 id="栈的链式存储结构"><a href="#栈的链式存储结构" class="headerlink" title="栈的链式存储结构"></a>栈的链式存储结构</h4><p>栈只用栈顶来做插入和删除操作，那么问题就来了，宅顶放在链表的头部还是尾部。由于单链表有头指针，而栈顶指针也是必须的，那么干脆合二为一。</p>
+<p>同时由于已经有栈顶在头部了，相应的头节点也就失去了意义。</p>
+<img src="/2022/01/17/shu-ju-jie-gou-biao-zhan-dui-lie/2022-03-03-17-13-33.png" class="">
+
+
+<h4 id="链栈结构代码"><a href="#链栈结构代码" class="headerlink" title="链栈结构代码"></a>链栈结构代码</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token keyword">struct</span> <span class="token class-name">StackNode</span><span class="token punctuation">&#123;</span>
+  elementType data<span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> <span class="token class-name">StackNode</span> <span class="token operator">*</span> next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">LinkedStack</span><span class="token punctuation">&#123;</span>
+  LinkedStackPtr top<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="链栈进栈操作"><a href="#链栈进栈操作" class="headerlink" title="链栈进栈操作"></a>链栈进栈操作</h4><p>使用首插发。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token function">Push</span><span class="token punctuation">(</span>LinkedStack <span class="token operator">*</span>S<span class="token punctuation">,</span> elementType e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  StackNode <span class="token operator">*</span> s <span class="token operator">=</span> <span class="token keyword">new</span> StackNode<span class="token punctuation">;</span>
+  s<span class="token operator">-></span>data <span class="token operator">=</span> e<span class="token punctuation">;</span>
+  s<span class="token operator">-></span>next <span class="token operator">=</span> S<span class="token operator">-></span>top<span class="token punctuation">;</span>
+  S<span class="token operator">-></span>top <span class="token operator">=</span> s<span class="token punctuation">;</span>
+  S<span class="token operator">-></span>count<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="链栈的出栈操作"><a href="#链栈的出栈操作" class="headerlink" title="链栈的出栈操作"></a>链栈的出栈操作</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token function">Pop</span><span class="token punctuation">(</span>LinkedStack <span class="token operator">*</span>S<span class="token punctuation">,</span> elementType <span class="token operator">*</span>e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  StackNode <span class="token operator">*</span>p <span class="token operator">=</span> S<span class="token operator">-></span>top<span class="token punctuation">;</span>
+  S<span class="token operator">-></span>top <span class="token operator">=</span> S<span class="token operator">-></span>top<span class="token operator">-></span>next<span class="token punctuation">;</span>
+  e <span class="token operator">=</span> p<span class="token operator">-></span>data<span class="token punctuation">;</span>
+  <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  S<span class="token operator">-></span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="栈的应用——递归"><a href="#栈的应用——递归" class="headerlink" title="栈的应用——递归"></a>栈的应用——递归</h3><h4 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token keyword">int</span> <span class="token function">Fbi</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> i<span class="token operator">:</span><span class="token number">0</span><span class="token operator">?</span><span class="token number">0</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> <span class="token function">Fbi</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">Fbi</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="栈的应用——四则运算"><a href="#栈的应用——四则运算" class="headerlink" title="栈的应用——四则运算"></a>栈的应用——四则运算</h3><p>直接进行四则运算太过于复杂，所以这里使用后缀表达式，计算后缀表达式。</p>
+<h4 id="后缀表达式计算规则"><a href="#后缀表达式计算规则" class="headerlink" title="后缀表达式计算规则"></a>后缀表达式计算规则</h4><p>运算规则：从左到右遍历，遇到数字压栈，遇到符号就将栈顶两个数字出栈，进行运算，结果压栈，然后一直得到结果。</p>
+<p>如：9 3 1 -3 * + 10 2 / +</p>
+<ol>
+<li>9 3 1依次进栈</li>
+<li><ul>
+<li>，1，3出栈 3-1=2，2进栈</li>
+</ul>
+</li>
+<li>3进栈</li>
+<li><em>，2与3进栈， 2</em>3 = 6进栈</li>
+<li>+,9和6出栈，9+6 = 15进栈</li>
+<li>10 ，2 进栈</li>
+<li>/ 2，10 出栈 10/2=5进栈</li>
+<li>+，5，15出栈 5+15=20</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -587,7 +838,11 @@ EndADT
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/C%E8%89%B9/">
+                                    <span class="chip bg-color">C艹</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1041,7 +1296,7 @@ EndADT
 			<span id="sitetime"></span>
 
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">author Violet</a>
@@ -1049,7 +1304,7 @@ EndADT
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">136.8k</span>
+                        class="white-color">167.2k</span>
             
             
             
